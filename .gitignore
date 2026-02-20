@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.venv/
+auth_state.json
+local_browser_profile/

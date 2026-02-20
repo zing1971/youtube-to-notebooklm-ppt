@@ -1,0 +1,5 @@
+pyyaml
+feedparser
+beautifulsoup4
+requests
+patchright
