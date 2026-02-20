@@ -10,19 +10,25 @@ def get_auth_state():
     cookies = []
     with sync_playwright() as p:
         # 嘗試使用系統的 chrome
+        stealth_args = [
+            '--disable-blink-features=AutomationControlled',
+            '--no-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-web-security'
+        ]
         try:
             context = p.chromium.launch_persistent_context(
                 user_data_dir="./local_browser_profile",
                 headless=False,
                 channel="chrome",
-                args=['--no-sandbox']
+                args=stealth_args
             )
         except Exception as e:
             # Fallback to default chromium
             context = p.chromium.launch_persistent_context(
                 user_data_dir="./local_browser_profile",
                 headless=False,
-                args=['--no-sandbox']
+                args=stealth_args
             )
             
         page = context.new_page()
