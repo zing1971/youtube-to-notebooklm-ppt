@@ -5,7 +5,7 @@ import requests
 import feedparser
 import os
 import re
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from bs4 import BeautifulSoup
 from patchright.sync_api import sync_playwright
 
@@ -247,36 +247,68 @@ def inject_to_notebooklm(page, video_url):
 def generate_ppt(page, video_title):
     print(f"🎬 開始使用 NotebookLM 內建功能生成『{video_title}』的簡報...")
     try:
-        # 確保關閉剛剛新增成功的各種遮罩或彈窗
+        # 確保關閉彈窗
         page.keyboard.press("Escape")
         time.sleep(2)
-        
+
+        # 切換到「工作室」面板
         print("開啟『工作室』面板並尋找簡報生成按鈕...")
         try:
-            # 點擊工作室面板 (Studio) 確保簡報按鈕可見
             page.locator('text="工作室"').last.click(timeout=3000)
             time.sleep(2)
         except:
             pass
-            
+
+        # 配額檢測：檢查是否已達每日上限
+        quota_exceeded = page.locator('text="每日上限"').count() > 0
+        if quota_exceeded:
+            print("⚠️ 簡報生成配額已達每日上限，無法生成簡報。請等待 24 小時後重試。")
+            return False
+
+        # 檢查簡報按鈕是否被禁用（disabled-tile）
+        briefing_disabled = page.evaluate('''() => {
+            const el = document.querySelector('div[aria-label="簡報"]');
+            if (!el) return false;
+            return el.classList.contains('disabled-tile');
+        }''')
+        if briefing_disabled:
+            print("⚠️ 簡報按鈕已被禁用，可能配額已用完或來源不足。")
+            return False
+
+        # 記錄點擊前的記事數量，用於驗證是否成功生成
+        notes_before = page.evaluate('''() => {
+            return document.querySelectorAll('.artifact-item-button').length;
+        }''')
+
+        # 點擊簡報按鈕
         try:
-            # 優先尋找名稱為簡報的按鈕
-            page.get_by_text("簡報", exact=True).last.click(timeout=8000)
+            briefing_btn = page.locator('div[aria-label="簡報"]').first
+            briefing_btn.click(timeout=5000)
             print("✅ 成功點擊『簡報』按鈕！")
         except Exception as e:
             try:
-                # 備案：尋找任何包含「簡報」的按鈕
-                page.locator('button:has-text("簡報")').last.click(timeout=5000)
-                print("✅ 成功點擊包含『簡報』的按鈕！")
+                page.get_by_text("簡報", exact=True).last.click(timeout=5000)
+                print("✅ 成功點擊『簡報』文字！")
             except Exception as e2:
-                print(f"找不到『簡報』按鈕: {e2}")
+                print(f"❌ 找不到『簡報』按鈕: {e2}")
                 return False
-            
-        print("等待 NotebookLM 生成簡報並自動存入記事 (預計 45 秒)...")
-        time.sleep(45)
-        print("✅ NotebookLM 已成功生成簡報！")
+
+        # 等待生成完成（最多 90 秒，每 10 秒檢查一次）
+        print("等待 NotebookLM 生成簡報...")
+        for i in range(9):
+            time.sleep(10)
+            notes_after = page.evaluate('''() => {
+                return document.querySelectorAll('.artifact-item-button').length;
+            }''')
+            if notes_after > notes_before:
+                print(f"✅ NotebookLM 已成功生成簡報！(新增 {notes_after - notes_before} 筆記事)")
+                return True
+            print(f"  ⏳ 已等待 {(i+1)*10} 秒...")
+
+        # 超時但不確定是否成功，回傳 True 讓流程繼續
+        print("⚠️ 等待逾時，簡報可能仍在生成中。")
         return True
-    
+
     except Exception as e:
         print(f"⚠️ 生成簡報時發生錯誤: {e}")
         return False
@@ -317,10 +349,22 @@ def main():
                 processed_videos[channel["name"]] = []
             processed = processed_videos[channel["name"]]
 
+            # 篩選：只處理最近 3 天內發布的影片
+            cutoff = datetime.now(timezone.utc) - timedelta(days=3)
+
             for item in feed.entries:
                 video_url = item.link
                 video_id = video_url.split("v=")[-1]
                 title = item.title
+
+                # 日期篩選
+                try:
+                    published_dt = datetime.fromisoformat(item.published)
+                    if published_dt < cutoff:
+                        print(f"⏭️ 跳過（發布超過 3 天）: {title} ({item.published[:10]})")
+                        continue
+                except Exception:
+                    pass  # 無法解析日期時不跳過，繼續處理
 
                 if video_id not in processed:
                     print(f"⭐ 發現新影片: {title}")
@@ -329,8 +373,6 @@ def main():
                     page.goto(notebook_url)
                     page.reload()
                     time.sleep(8)
-                    with open("notebook_dom.html", "w", encoding="utf-8") as f:
-                        f.write(page.content())
                     
                     # 依據來源隔離計畫，在匯入前先淨空所有舊來源
                     clear_all_existing_sources(page)
@@ -339,11 +381,14 @@ def main():
                     
                     if success:
                         # 使用 NotebookLM 內建的工作室功能生成簡報
-                        generate_ppt(page, title)
+                        ppt_ok = generate_ppt(page, title)
 
-                        processed.append(video_id)
-                        save_processed_videos(processed_videos)
-                        print("✅ 更新了處理紀錄。")
+                        if ppt_ok:
+                            processed.append(video_id)
+                            save_processed_videos(processed_videos)
+                            print("✅ 更新了處理紀錄。")
+                        else:
+                            print("⚠️ 簡報生成失敗，此影片不標記為已處理，下次執行時會重試。")
                         time.sleep(2)
                 else:
                     print(f"已處理過: {title}")
