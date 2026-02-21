@@ -1,7 +1,0 @@
-<input _ngcontent-ng-c1490548963="" class="title-input mat-title-large ng-untouched ng-pristine ng-valid" style="width: 489px;">
----
-<textarea _ngcontent-ng-c1002191818="" rows="1" matinput="" cdktextareaautosize="" aria-label="根據輸入的查詢內容，探索來源" formcontrolname="discoverSourcesQuery" class="mat-mdc-input-element cdk-textarea-autosize query-box-textarea ng-untouched ng-pristine ng-invalid mat-mdc-form-field-textarea-control mat-mdc-form-field-input-control mdc-text-field__input cdk-text-field-autofill-monitored" placeholder="在網路上搜尋新來源" jslog="274655;track:impression,input_text" id="mat-input-0" required="" aria-required="true" style="height: 24px;"></textarea>
----
-<textarea _ngcontent-ng-c122582314="" rows="1" cdkautosizeminrows="0" aria-label="查詢方塊" matinput="" class="cdk-textarea-autosize mat-mdc-autocomplete-trigger query-box-input ng-untouched ng-pristine ng-invalid" disabled="true" autocomplete="off" placeholder="上傳來源即可開始使用" style=""></textarea>
----
-<textarea _ngcontent-ng-c1002191818="" rows="1" matinput="" cdktextareaautosize="" aria-label="根據輸入的查詢內容，探索來源" formcontrolname="discoverSourcesQuery" class="mat-mdc-input-element cdk-textarea-autosize query-box-textarea ng-untouched ng-pristine ng-invalid mat-mdc-form-field-textarea-control mat-mdc-form-field-input-control mdc-text-field__input cdk-text-field-autofill-monitored" placeholder="在網路上搜尋新來源" jslog="274655;track:impression,input_text" id="mat-input-1" required="" aria-required="true" style="height: 24px;"></textarea>
