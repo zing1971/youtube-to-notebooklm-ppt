@@ -66,29 +66,30 @@ def inject_to_notebooklm(notebook_url, video_url):
         try:
             print("嘗試尋找『新增來源』按鈕...")
             try:
-                page.click('button:has-text("新增來源"), button:has-text("Add source")', timeout=3000)
+                page.get_by_role("button", name="新增來源").click(timeout=3000)
             except:
-                pass 
-            time.sleep(1)
-            
-            print("嘗試選擇 YouTube / 網站選項...")
-            try:
-                page.click('div[role="button"]:has-text("網站"), div[role="button"]:has-text("YouTube"), button:has-text("網站")', timeout=3000)
-            except:
-                pass
-            time.sleep(1)
-            
-            print("輸入影片網址...")
-            page.locator('input').first.fill(video_url)
-            time.sleep(1)
-            
-            print("按 Enter 確認新增...")
-            page.keyboard.press("Enter")
+                try:
+                    page.locator('button:has-text("Add source")').click(timeout=3000)
+                except:
+                    pass
             time.sleep(2)
+            
+            # NotebookLM 更新了介面：現在直接在彈出視窗(Dialog)裡面的輸入框貼網址即可
+            print("輸入影片網址...")
+            # NotebookLM 的輸入框其實是 textarea！
+            dialog_input = page.locator('textarea').last
+            dialog_input.fill(video_url, timeout=5000)
+            time.sleep(2)
+            
+            print("確認新增...")
+            page.keyboard.press("Enter")
+            time.sleep(5)
+            # 有些情況下輸入網址按 Enter 後，還需要額外點選插入
             try:
-                page.click('button:has-text("插入"), button:has-text("新增"), button:has-text("Insert"), button:has-text("Add")', timeout=3000)
+                page.get_by_role("button", name="插入").click(timeout=3000)
             except:
                 pass
+            
             time.sleep(5)
             print("✅ 成功傳送指令到 NotebookLM！")
         except Exception as e:
