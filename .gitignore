@@ -3,3 +3,5 @@ __pycache__/
 .venv/
 auth_state.json
 local_browser_profile/
+gh_browser_profile/
+error.png
