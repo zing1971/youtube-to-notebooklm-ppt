@@ -12,7 +12,6 @@ from patchright.sync_api import sync_playwright
 CONFIG_FILE = "config.yaml"
 PROCESSED_FILE = "processed_videos.json"
 AUTH_FILE = "auth_state.json"
-BRIEFINGS_DIR = "briefings"
 
 def load_config():
     with open(CONFIG_FILE, "r", encoding="utf-8") as f:
@@ -99,53 +98,29 @@ def inject_to_notebooklm(page, video_url):
         return False
 
 def generate_ppt(page, video_title):
-    print(f"🎬 開始為影片『{video_title}』請求生成簡報大綱...")
+    print(f"🎬 開始使用 NotebookLM 內建功能生成『{video_title}』的簡報...")
     try:
         # 確保關閉剛剛新增成功的各種遮罩或彈窗
         page.keyboard.press("Escape")
         time.sleep(2)
         
-        prompt = f"請根據剛才匯入的最新這部影片「{video_title}」，幫我製作一份簡報 (PPT) 草稿大綱。請規劃至少 5 頁以上的投影片，每一頁都必須寫出『標題』與『重點列點 (Bullet points)』。請用繁體中文詳細撰寫，內容要具體。"
-        
-        # 尋找頁面下方的聊天對話框
+        print("尋找『簡報』生成按鈕...")
         try:
-            chat_input = page.locator('textarea[placeholder*="開始輸入"]').first
-            chat_input.fill(prompt, timeout=3000)
-        except:
-            try:
-                chat_input = page.locator('textarea[placeholder*="詢問"]').first
-                chat_input.fill(prompt, timeout=3000)
-            except:
-                # Fallback to the first textarea we see if placeholders fail
-                page.locator('textarea').first.fill(prompt)
-
-        time.sleep(1)
-        page.keyboard.press("Enter")
-        
-        print("耐心等待 NotebookLM 生成簡報內容中 (預計 45 秒)...")
+            # 優先尋找名稱為簡報的按鈕
+            page.locator('text="簡報"').last.click(timeout=8000)
+            print("✅ 成功點擊簡報按鈕！")
+        except Exception as e:
+            print(f"找不到『簡報』按鈕: {e}")
+            return False
+            
+        print("等待 NotebookLM 生成簡報並自動存入記事 (預計 45 秒)...")
         time.sleep(45)
-        
-        print("擷取生成的文字結果...")
-        # 擷取畫面上看起來像 AI 回答的區塊。
-        # 因為不確定具體的 class，找一段包含了「標題」或是「投影片」等明顯特徵的長文章。
-        response_text = page.evaluate('''() => {
-            const elements = Array.from(document.querySelectorAll('div, article'));
-            const possible = elements.filter(el => {
-                const text = el.innerText || '';
-                return text.includes('標題') && text.length > 200;
-            });
-            if (possible.length > 0) {
-                possible.sort((a, b) => b.innerText.length - a.innerText.length);
-                return possible[0].innerText;
-            }
-            // 完全 fallback
-            return document.body.innerText;
-        }''')
-        
-        return response_text
+        print("✅ NotebookLM 已成功生成簡報！")
+        return True
+    
     except Exception as e:
         print(f"⚠️ 生成簡報時發生錯誤: {e}")
-        return None
+        return False
 
 def main():
     print("開始執行 YouTube to NotebookLM Sync...\n")
@@ -153,9 +128,6 @@ def main():
     config = load_config()
     processed_videos = load_processed_videos()
     channels = config.get("channels", [])
-
-    if not os.path.exists(BRIEFINGS_DIR):
-        os.makedirs(BRIEFINGS_DIR)
 
     with sync_playwright() as p:
         # 開啟瀏覽器 (使用持久化 context 以維持登入狀態)
@@ -212,20 +184,8 @@ def main():
                     
                     success = inject_to_notebooklm(page, video_url)
                     
-                    if success:
-                        # 生成並儲存 PPT 草稿
-                        ppt_content = generate_ppt(page, title)
-                        if ppt_content:
-                            safe_title = re.sub(r'[\\/*?:"<>|]', "", title)
-                            date_str = datetime.now().strftime("%Y%m%d_%H%M%S")
-                            filename = f"{date_str}_{safe_title[:30]}.md"
-                            filepath = os.path.join(BRIEFINGS_DIR, filename)
-                            
-                            with open(filepath, "w", encoding="utf-8") as f:
-                                # 過濾掉太多無關的 Navbar 文字，簡單保留最精華的部份
-                                f.write(f"# {title}\n\n")
-                                f.write(ppt_content)
-                            print(f"📝 成功將簡報儲存為 {filepath}")
+                        # 使用 NotebookLM 內建的工作室功能生成簡報
+                        generate_ppt(page, title)
 
                         processed.append(video_id)
                         save_processed_videos(processed_videos)
