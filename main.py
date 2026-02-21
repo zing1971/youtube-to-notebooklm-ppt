@@ -65,24 +65,39 @@ def inject_to_notebooklm(notebook_url, video_url):
         # 由於 NotebookLM 經常改版，我們會使用一些常用的策略
         try:
             print("嘗試尋找『新增來源』按鈕...")
-            # 點左上方或中間的新增來源按鈕
-            page.click('button[aria-label="Add source"], button:has-text("Add source")', timeout=5000)
-            time.sleep(2)
-            
-            print("嘗試選擇 YouTube 選項...")
-            page.click('text=YouTube', timeout=5000)
-            time.sleep(2)
-            
-            print("輸入影片網址...")
-            page.fill('input[type="url"]', video_url, timeout=5000)
+            try:
+                page.click('button:has-text("新增來源"), button:has-text("Add source")', timeout=3000)
+            except:
+                pass 
             time.sleep(1)
             
-            print("確認新增...")
-            page.click('button:has-text("Insert"), button:has-text("Add")', timeout=5000)
+            print("嘗試選擇 YouTube / 網站選項...")
+            try:
+                page.click('div[role="button"]:has-text("網站"), div[role="button"]:has-text("YouTube"), button:has-text("網站")', timeout=3000)
+            except:
+                pass
+            time.sleep(1)
+            
+            print("輸入影片網址...")
+            page.locator('input').first.fill(video_url)
+            time.sleep(1)
+            
+            print("按 Enter 確認新增...")
+            page.keyboard.press("Enter")
+            time.sleep(2)
+            try:
+                page.click('button:has-text("插入"), button:has-text("新增"), button:has-text("Insert"), button:has-text("Add")', timeout=3000)
+            except:
+                pass
             time.sleep(5)
             print("✅ 成功傳送指令到 NotebookLM！")
         except Exception as e:
             print(f"❌ UI 操作逾時或失敗，可能需要深入檢查目前的 NotebookLM Selectors 元素: {e}")
+            try:
+                page.screenshot(path="error.png")
+                print("已儲存當前畫面至 error.png 以供除錯。")
+            except Exception:
+                pass
 
         context.close()
 
