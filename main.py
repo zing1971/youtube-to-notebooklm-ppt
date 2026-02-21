@@ -66,59 +66,99 @@ def clear_all_existing_sources(page):
     """逐一刪除 NotebookLM 中所有現有來源，確保簡報只基於新匯入的影片。"""
     print("🧹 [清理舊來源] 確保產生的簡報不會受到舊資料影響...")
     try:
-        # 確保關閉剛剛生成的簡報筆記或其他彈窗
+        # 確保關閉彈窗
+        page.keyboard.press("Escape")
+        time.sleep(1)
         page.keyboard.press("Escape")
         time.sleep(1)
 
+        # 確保在「來源」分頁
+        try:
+            page.locator('text="來源"').first.click(timeout=3000)
+            time.sleep(2)
+        except:
+            pass
+
+        # 用「選取所有來源」checkbox 是否存在來快速判斷有無來源
+        # 這個 checkbox 只存在於「來源」面板，不會誤選到「工作室」面板
+        has_sources = page.locator('input[aria-label="選取所有來源"]').count() > 0
+        if not has_sources:
+            print("✅ Notebook 中沒有任何現有來源，無需清理。")
+            return True
+
         deleted_count = 0
-        max_rounds = 20  # 安全上限，避免無限迴圈
+        max_rounds = 20
 
         for round_num in range(max_rounds):
-            # 找出所有來源項目的「更多」選單按鈕（三個點）
-            more_buttons = page.locator('.source-item-more-button').all()
-            
-            # 如果也找不到，嘗試透過 aria-label 找
-            if len(more_buttons) == 0:
-                more_buttons = page.locator('button[aria-label="更多"], button[aria-label="More"], button[aria-label="More options"], button[aria-label="Source options"]').all()
-            
-            if len(more_buttons) == 0:
-                if deleted_count > 0:
-                    print(f"✅ 已全部清除！共刪除了 {deleted_count} 個舊來源。")
-                else:
-                    print("✅ Notebook 中沒有任何現有來源，無需清理。")
-                break
+            # 使用 JavaScript 精準定位：只找「來源」面板內的三點選單
+            # 策略：找到包含「選取所有來源」checkbox 的容器，在同一容器內找 more buttons
+            source_more_count = page.evaluate('''() => {
+                // 找到「選取所有來源」checkbox 作為錨點
+                const selectAll = document.querySelector('input[aria-label="選取所有來源"]');
+                if (!selectAll) return 0;
+                // 向上找到來源面板容器（通常是最近的 section 或大型容器）
+                let container = selectAll.closest('section') || selectAll.parentElement?.parentElement?.parentElement?.parentElement?.parentElement;
+                if (!container) return 0;
+                // 在這個容器內找 more buttons
+                return container.querySelectorAll('button[aria-label="更多"]').length;
+            }''')
 
-            print(f"  第 {round_num + 1} 輪：偵測到 {len(more_buttons)} 個來源，正在刪除第一個...")
+            if source_more_count == 0:
+                # 再確認一次是否真的已清空
+                has_sources = page.locator('input[aria-label="選取所有來源"]').count() > 0
+                if not has_sources:
+                    if deleted_count > 0:
+                        print(f"✅ 已全部清除！共刪除了 {deleted_count} 個舊來源。")
+                    else:
+                        print("✅ Notebook 中沒有任何現有來源，無需清理。")
+                    break
+                # 有 selectAll checkbox 但沒有 more button，可能 DOM 還在載入
+                time.sleep(2)
+                continue
+
+            print(f"  第 {round_num + 1} 輪：偵測到 {source_more_count} 個來源，正在刪除第一個...")
 
             try:
-                # 步驟 1: 點擊第一個來源的三點選單
-                more_buttons[0].click(timeout=3000)
-                time.sleep(1)
+                # 步驟 1: 用 JavaScript 精確點擊來源面板內的第一個 more button
+                clicked = page.evaluate('''() => {
+                    const selectAll = document.querySelector('input[aria-label="選取所有來源"]');
+                    if (!selectAll) return false;
+                    let container = selectAll.closest('section') || selectAll.parentElement?.parentElement?.parentElement?.parentElement?.parentElement;
+                    if (!container) return false;
+                    const btn = container.querySelector('button[aria-label="更多"]');
+                    if (btn) { btn.click(); return true; }
+                    return false;
+                }''')
 
-                # 步驟 2: 找到彈出選單中的「移除來源」按鈕並點擊
-                remove_btn = page.locator('.more-menu-delete-source-button').first
-                if not remove_btn.is_visible(timeout=2000):
-                    # 備用：嘗試透過文字尋找
-                    remove_btn = page.locator('button:has-text("移除來源"), button:has-text("Remove source"), button:has-text("Delete source")').first
+                if not clicked:
+                    print("  ⚠️ JavaScript 點擊失敗")
+                    continue
+
+                time.sleep(1.5)
+
+                # 步驟 2: 點擊彈出選單中的「移除來源」
+                remove_btn = page.locator('button:has-text("移除來源")').first
+                if not remove_btn.is_visible(timeout=3000):
+                    remove_btn = page.locator('button:has-text("Remove source"), button:has-text("Delete source")').first
                 
                 remove_btn.click(timeout=3000)
                 time.sleep(1)
 
-                # 步驟 3: 處理確認對話框（「要刪除 XXX 嗎？」）
+                # 步驟 3: 處理確認對話框
                 try:
-                    confirm_btn = page.locator('button[aria-label="確認刪除"], div[role="dialog"] button:has-text("刪除"), div[role="dialog"] button:has-text("Delete")').first
-                    if confirm_btn.is_visible(timeout=3000):
-                        confirm_btn.click(timeout=3000)
-                        print("  → 已確認刪除")
+                    confirm_btn = page.locator('button[aria-label="確認刪除"]').first
+                    if not confirm_btn.is_visible(timeout=2000):
+                        confirm_btn = page.locator('div[role="dialog"] button:has-text("刪除"), div[role="dialog"] button:has-text("Delete")').last
+                    confirm_btn.click(timeout=3000)
+                    print("  → 已確認刪除")
                 except:
-                    pass  # 沒有確認對話框，表示已直接刪除
+                    pass
 
                 deleted_count += 1
-                time.sleep(3)  # 等待 UI 更新
+                time.sleep(3)
 
             except Exception as e:
                 print(f"  ⚠️ 刪除第 {round_num + 1} 個來源時發生錯誤: {e}")
-                # 嘗試按 Escape 關閉可能殘留的選單
                 page.keyboard.press("Escape")
                 time.sleep(1)
                 continue

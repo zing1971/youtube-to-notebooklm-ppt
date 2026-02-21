@@ -1,14 +1,11 @@
-"""測試逐一刪除來源的功能：使用 config.yaml 中的正式 notebook。"""
+"""快速驗證修正後的 clear_all_existing_sources 是否能在 headless 模式下正確刪除來源。"""
 import time
-import yaml
+import sys
+sys.path.insert(0, '.')
 from patchright.sync_api import sync_playwright
+from main import clear_all_existing_sources
 
-# 載入正式設定
-with open("config.yaml", "r", encoding="utf-8") as f:
-    config = yaml.safe_load(f)
-
-notebook_url = config["channels"][0]["notebook_url"]
-print(f"目標 Notebook: {notebook_url}")
+notebook_url = "https://notebooklm.google.com/notebook/1bfac9bf-cf57-492a-87d0-23e88b56f251"
 
 with sync_playwright() as p:
     context = p.chromium.launch_persistent_context(
@@ -24,21 +21,26 @@ with sync_playwright() as p:
 
     page = context.pages[0] if context.pages else context.new_page()
     page.goto(notebook_url, timeout=60000)
-    
-    # 等待完全載入
+    page.reload()
     time.sleep(10)
     
-    print("=== 頁面已載入，開始測試 clear_all_existing_sources ===")
+    # 先看有幾個來源
+    sources = page.locator('button[aria-label="更多"]').all()
+    print(f"目前有 {len(sources)} 個來源")
     
-    # 從 main.py 匯入函式
-    from main import clear_all_existing_sources
+    if len(sources) == 0:
+        print("目前沒有來源需要刪除，測試完畢。")
+        context.close()
+        exit()
     
+    print("\n=== 開始執行 clear_all_existing_sources ===")
     result = clear_all_existing_sources(page)
     print(f"\n函式回傳: {result}")
     
-    # 截圖確認結果
-    page.screenshot(path="after_clear_test.png")
-    print("已儲存清除後截圖: after_clear_test.png")
+    # 再查一次
+    remaining = page.locator('button[aria-label="更多"]').all()
+    print(f"剩餘來源: {len(remaining)}")
     
+    page.screenshot(path="verify_cleared.png")
     context.close()
     print("=== 測試完成 ===")
