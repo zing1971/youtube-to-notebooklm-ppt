@@ -75,7 +75,14 @@ async def archive_notebook_artifacts(client, notebook, drive_service, folder_id)
     archived_count = 0
     
     for art in artifacts:
-        if art.created_at and art.created_at < cutoff_time:
+        if not art.created_at:
+            continue
+            
+        art_time = art.created_at
+        if art_time.tzinfo is None:
+            art_time = art_time.replace(tzinfo=timezone.utc)
+            
+        if art_time < cutoff_time:
             print(f"🔍 發現過期產出物: {art.title} (於 {art.created_at} 建立)")
             
             # 準備暫存下載路徑
