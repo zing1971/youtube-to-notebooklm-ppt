@@ -35,6 +35,11 @@ jobs:
       - name: Run Sync Script
         run: python main.py
 
+      - name: Archive Studio Artifacts
+        env:
+          GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
+        run: python archive_studio.py
+
       - name: Commit state changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:

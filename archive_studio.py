@@ -1,0 +1,151 @@
+import asyncio
+import json
+import os
+import yaml
+from pathlib import Path
+from datetime import datetime, timedelta, timezone
+
+from google.oauth2.service_account import Credentials
+from googleapiclient.discovery import build
+from googleapiclient.http import MediaFileUpload
+from notebooklm import NotebookLMClient
+
+CONFIG_FILE = "config.yaml"
+# 使用 Google Drive API v3
+SCOPES = ['https://www.googleapis.com/auth/drive.file']
+
+def load_config():
+    if not os.path.exists(CONFIG_FILE):
+        return {}
+    with open(CONFIG_FILE, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f)
+
+def get_drive_service():
+    """初始化 Google Drive API"""
+    # 從環境變數讀取 Service Account 的 JSON 內容
+    creds_json = os.environ.get("GDRIVE_CREDENTIALS")
+    if not creds_json:
+        raise ValueError("請設定環境變數 GDRIVE_CREDENTIALS")
+    
+    creds_dict = json.loads(creds_json)
+    creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
+    return build('drive', 'v3', credentials=creds)
+
+def upload_to_drive(service, file_path, folder_id, mime_type=None):
+    """上傳檔案至指定的 Google Drive 目錄"""
+    file_name = Path(file_path).name
+    file_metadata = {
+        'name': file_name,
+        'parents': [folder_id]
+    }
+    
+    media = MediaFileUpload(file_path, mimetype=mime_type, resumable=True)
+    
+    # 嘗試覆蓋同名檔案（需先尋找該目錄下是否有同名檔案）
+    query = f"name='{file_name}' and '{folder_id}' in parents and trashed=false"
+    results = service.files().list(q=query, spaces='drive', fields='files(id, name)').execute()
+    existing_files = results.get('files', [])
+    
+    if existing_files:
+        # 更新現有檔案
+        file_id = existing_files[0]['id']
+        updated_file = service.files().update(
+            fileId=file_id,
+            media_body=media
+        ).execute()
+        return updated_file.get('id')
+    else:
+        # 建立新檔案
+        created_file = service.files().create(
+            body=file_metadata,
+            media_body=media,
+            fields='id'
+        ).execute()
+        return created_file.get('id')
+
+async def archive_notebook_artifacts(client, notebook, drive_service, folder_id):
+    """將單一 Notebook 的舊產出物上傳到 Drive 並從 Notebook 刪除"""
+    print(f"--- 檢查 Notebook: {notebook.title} ---")
+    artifacts = await client.artifacts.list(notebook.id)
+    if not artifacts:
+        print("  沒有產出物。")
+        return
+        
+    cutoff_time = datetime.now(timezone.utc) - timedelta(hours=24)
+    archived_count = 0
+    
+    for art in artifacts:
+        if art.created_at and art.created_at < cutoff_time:
+            print(f"🔍 發現過期產出物: {art.title} (於 {art.created_at} 建立)")
+            
+            # 準備暫存下載路徑
+            tmp_dir = Path("tmp_artifacts")
+            tmp_dir.mkdir(exist_ok=True)
+            safe_title = "".join(c for c in art.title if c.isalnum() or c in (' ', '-', '_')).rstrip()
+            file_name_base = f"{notebook.title}_{safe_title}"
+            
+            # 根據類型下載
+            downloaded_path = None
+            mime_type = "text/plain"
+            
+            try:
+                # 這裡試著判斷產出物類型
+                # NotebookLM 目前產出物類型為 Report=2, Audio=3, 互動=4, Infographic=6, SlideDeck=7
+                # 簡單起見，我們先統一當作 report (Markdown) 下載，如果失敗就跳過
+                file_path = str(tmp_dir / f"{file_name_base}.md")
+                downloaded_path = await client.artifacts.download_report(notebook.id, file_path, art.id)
+                mime_type = "text/markdown"
+            except Exception as e:
+                print(f"  ⚠️ 無法作為 Report 下載 {art.title}: {e}")
+                # 未來可擴充處理 Audio / SlideDeck
+                continue
+            
+            if downloaded_path and os.path.exists(downloaded_path):
+                print(f"  📥 已下載至 {downloaded_path}，準備上傳 Google Drive...")
+                try:
+                    drive_file_id = upload_to_drive(drive_service, downloaded_path, folder_id, mime_type)
+                    print(f"  ☁️ 上傳成功！Drive File ID: {drive_file_id}")
+                    
+                    # 上傳成功後，從 NotebookLM 刪除
+                    await client.artifacts.delete(notebook.id, art.id)
+                    print(f"  🗑️ 已從 NotebookLM 移除.")
+                    archived_count += 1
+                except Exception as e:
+                    print(f"  ❌ 上傳至 Google Drive 失敗: {e}")
+                finally:
+                    # 清理本地暫存檔
+                    try:
+                        os.remove(downloaded_path)
+                    except Exception:
+                        pass
+        else:
+            print(f"  ⏭️ 保留近期產出物: {art.title}")
+            
+    print(f"✅ 完成，共歸檔 {archived_count} 個項目。")
+
+async def main():
+    print("開始執行 NotebookLM 工作室歸檔作業...\n")
+    
+    config = load_config()
+    folder_id = config.get("gdrive_folder_id")
+    
+    if not folder_id:
+        print("❌ 錯誤：尚未在 config.yaml 中設定 gdrive_folder_id")
+        return
+        
+    try:
+        drive_service = get_drive_service()
+    except Exception as e:
+        print(f"❌ 初始化 Google Drive API 失敗: {e}")
+        return
+        
+    client = await NotebookLMClient.from_storage()
+    async with client:
+        notebooks = await client.notebooks.list()
+        for nb in notebooks:
+            await archive_notebook_artifacts(client, nb, drive_service, folder_id)
+            
+    print("\n🏁 歸檔執行完成")
+
+if __name__ == "__main__":
+    asyncio.run(main())
