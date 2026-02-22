@@ -30,9 +30,7 @@ jobs:
           NOTEBOOKLM_AUTH_JSON: ${{ secrets.NOTEBOOKLM_AUTH_JSON }}
         run: |
           mkdir -p ~/.notebooklm
-          cat << 'EOF' > ~/.notebooklm/storage_state.json
-          ${{ secrets.NOTEBOOKLM_AUTH_JSON }}
-          EOF
+          python -c "import os, json; json.dump(json.loads(os.environ['NOTEBOOKLM_AUTH_JSON']), open(os.path.expanduser('~/.notebooklm/storage_state.json'), 'w'))"
 
       - name: Run Sync Script
         run: python main.py
