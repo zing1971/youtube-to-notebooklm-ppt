@@ -2,4 +2,4 @@ pyyaml
 feedparser
 beautifulsoup4
 requests
-patchright
+notebooklm-py
