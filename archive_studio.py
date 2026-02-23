@@ -12,7 +12,7 @@ from notebooklm import NotebookLMClient
 
 CONFIG_FILE = "config.yaml"
 # 使用 Google Drive API v3
-SCOPES = ['https://www.googleapis.com/auth/drive.file']
+SCOPES = ['https://www.googleapis.com/auth/drive']
 
 def load_config():
     if not os.path.exists(CONFIG_FILE):
@@ -41,8 +41,9 @@ def upload_to_drive(service, file_path, folder_id, mime_type=None):
     
     media = MediaFileUpload(file_path, mimetype=mime_type, resumable=True)
     
-    # 嘗試覆蓋同名檔案（需先尋找該目錄下是否有同名檔案）
-    query = f"name='{file_name}' and '{folder_id}' in parents and trashed=false"
+    # 嘗試覆蓋同名檔案（需先尋找該目錄下是否有同名檔案，並對檔名中的單引號進行跳脫）
+    escaped_name = file_name.replace("'", "\\'")
+    query = f"name='{escaped_name}' and '{folder_id}' in parents and trashed=false"
     results = service.files().list(q=query, spaces='drive', fields='files(id, name)').execute()
     existing_files = results.get('files', [])
     
@@ -130,6 +131,8 @@ async def archive_notebook_artifacts(client, notebook, drive_service, folder_id)
             
     print(f"✅ 完成，共歸檔 {archived_count} 個項目。")
 
+import sys
+
 async def main():
     print("開始執行 NotebookLM 工作室歸檔作業...\n")
     
@@ -138,19 +141,25 @@ async def main():
     
     if not folder_id:
         print("❌ 錯誤：尚未在 config.yaml 中設定 gdrive_folder_id")
-        return
+        sys.exit(1)
         
     try:
         drive_service = get_drive_service()
+        # 驗證資料夾是否存在且具備存取權
+        drive_service.files().get(fileId=folder_id, fields='id, name').execute()
     except Exception as e:
-        print(f"❌ 初始化 Google Drive API 失敗: {e}")
-        return
+        print(f"❌ 初始化 Google Drive API 或存取目標資料夾失敗: {e}")
+        sys.exit(1)
         
     client = await NotebookLMClient.from_storage()
-    async with client:
-        notebooks = await client.notebooks.list()
-        for nb in notebooks:
-            await archive_notebook_artifacts(client, nb, drive_service, folder_id)
+    try:
+        async with client:
+            notebooks = await client.notebooks.list()
+            for nb in notebooks:
+                await archive_notebook_artifacts(client, nb, drive_service, folder_id)
+    except Exception as e:
+        print(f"❌ 執行歸檔作業時發生錯誤: {e}")
+        sys.exit(1)
             
     print("\n🏁 歸檔執行完成")
 
