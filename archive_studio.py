@@ -5,13 +5,13 @@ import yaml
 from pathlib import Path
 from datetime import datetime, timedelta, timezone
 
-from google.oauth2.service_account import Credentials
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 from notebooklm import NotebookLMClient
 from dotenv import load_dotenv
-
-# 載入 .env 檔案中的環境變數
 load_dotenv()
 
 CONFIG_FILE = "config.yaml"
@@ -26,13 +26,25 @@ def load_config():
 
 def get_drive_service():
     """初始化 Google Drive API"""
-    # 從環境變數讀取 Service Account 的 JSON 內容
-    creds_json = os.environ.get("GDRIVE_CREDENTIALS")
-    if not creds_json:
-        raise ValueError("請設定環境變數 GDRIVE_CREDENTIALS")
-    
-    creds_dict = json.loads(creds_json)
-    creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
+    creds = None
+    # the file token.json stores the user's access and refresh tokens
+    if os.path.exists('token.json'):
+        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+        
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            if not os.path.exists('credentials.json'):
+                raise FileNotFoundError("找不到 credentials.json！請先從 Google Cloud Console 下載 OAuth 用戶端 ID 憑證並命名為 credentials.json")
+            flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+            creds = flow.run_local_server(port=0)
+            
+        # Save the credentials for the next run
+        with open('token.json', 'w') as token:
+            token.write(creds.to_json())
+
     return build('drive', 'v3', credentials=creds)
 
 def upload_to_drive(service, file_path, folder_id, mime_type=None):

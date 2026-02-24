@@ -6,3 +6,7 @@ local_browser_profile/
 gh_browser_profile/
 error.png
 notebooklm_profile/
+
+credentials.json
+token.json
+.env
