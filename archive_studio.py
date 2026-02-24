@@ -9,6 +9,10 @@ from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 from notebooklm import NotebookLMClient
+from dotenv import load_dotenv
+
+# 載入 .env 檔案中的環境變數
+load_dotenv()
 
 CONFIG_FILE = "config.yaml"
 # 使用 Google Drive API v3
