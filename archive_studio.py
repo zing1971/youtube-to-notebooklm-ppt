@@ -155,7 +155,7 @@ async def main():
         print(f"❌ 初始化 Google Drive API 或存取目標資料夾失敗: {e}")
         sys.exit(1)
         
-    client = await NotebookLMClient.from_storage("storage_state.json")
+    client = await NotebookLMClient.from_storage()
     try:
         async with client:
             notebooks = await client.notebooks.list()
