@@ -10,3 +10,4 @@ notebooklm_profile/
 credentials.json
 token.json
 .env
+.firecrawl/
