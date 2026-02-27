@@ -24,6 +24,13 @@ def load_config():
     with open(CONFIG_FILE, "r", encoding="utf-8") as f:
         return yaml.safe_load(f)
 
+def extract_notebook_id(notebook_url):
+    """從 NotebookLM URL 提取 notebook ID"""
+    if not notebook_url:
+        return None
+    # 範例: https://notebooklm.google.com/notebook/1bfac9bf-cf57-492a-87d0-23e88b56f251
+    return notebook_url.rstrip("/").split("/")[-1]
+
 def get_drive_service():
     """初始化 Google Drive API"""
     creds = None
@@ -88,7 +95,8 @@ async def archive_notebook_artifacts(client, notebook, drive_service, folder_id)
         print("  沒有產出物。")
         return
         
-    cutoff_time = datetime.now(timezone.utc) - timedelta(hours=24)
+    # 歸檔超過 3 天 (72 小時) 的產出物
+    cutoff_time = datetime.now(timezone.utc) - timedelta(days=3)
     archived_count = 0
     
     for art in artifacts:
@@ -170,9 +178,28 @@ async def main():
     client = await NotebookLMClient.from_storage()
     try:
         async with client:
+            channels = config.get("channels", [])
+            # 取得所有在 config.yaml 中指定的 notebook ID
+            target_notebook_ids = []
+            for channel in channels:
+                nb_url = channel.get("notebook_url")
+                nb_id = extract_notebook_id(nb_url)
+                if nb_id:
+                    target_notebook_ids.append(nb_id)
+            
+            if not target_notebook_ids:
+                print("⚠️ 警告：config.yaml 中沒有設定任何 notebook_url")
+                return
+
+            print(f"預計檢查 {len(target_notebook_ids)} 個指定的知識庫...")
+            
             notebooks = await client.notebooks.list()
             for nb in notebooks:
-                await archive_notebook_artifacts(client, nb, drive_service, folder_id)
+                if nb.id in target_notebook_ids:
+                    await archive_notebook_artifacts(client, nb, drive_service, folder_id)
+                else:
+                    # 選項：可以印出跳過的訊息，但若太多則略過
+                    pass
     except Exception as e:
         print(f"❌ 執行歸檔作業時發生錯誤: {e}")
         sys.exit(1)
