@@ -1,0 +1,883 @@
+﻿sync	Set up job	嚜?026-02-23T15:12:21.7759063Z Current runner version: '2.331.0'
+sync	Set up job	2026-02-23T15:12:21.7800047Z ##[group***Runner Image Provisioner
+sync	Set up job	2026-02-23T15:12:21.7803835Z Hosted Compute Agent
+sync	Set up job	2026-02-23T15:12:21.7863276Z Version: 20260123.484
+sync	Set up job	2026-02-23T15:12:21.7866258Z Commit: 6bd6555ca37d84114959e1c76d2c01448ff61c5d
+sync	Set up job	2026-02-23T15:12:21.7868909Z Build Date: 2026-01-23T19:41:17Z
+sync	Set up job	2026-02-23T15:12:21.7871599Z Worker ID: ***bcfd6dee-ad47-45dc-ac3f-61f69129e21b***
+sync	Set up job	2026-02-23T15:12:21.7874232Z Azure Region: northcentralus
+sync	Set up job	2026-02-23T15:12:21.7876921Z ##[endgroup***
+sync	Set up job	2026-02-23T15:12:21.7880374Z ##[group***Operating System
+sync	Set up job	2026-02-23T15:12:21.7882867Z Ubuntu
+sync	Set up job	2026-02-23T15:12:21.7885110Z 24.04.3
+sync	Set up job	2026-02-23T15:12:21.7887561Z LTS
+sync	Set up job	2026-02-23T15:12:21.7889799Z ##[endgroup***
+sync	Set up job	2026-02-23T15:12:21.7892170Z ##[group***Runner Image
+sync	Set up job	2026-02-23T15:12:21.7894574Z Image: ubuntu-24.04
+sync	Set up job	2026-02-23T15:12:21.7897084Z Version: 20260201.15.1
+sync	Set up job	2026-02-23T15:12:21.7900177Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260201.15/images/ubuntu/Ubuntu2404-Readme.md
+sync	Set up job	2026-02-23T15:12:21.7904782Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260201.15
+sync	Set up job	2026-02-23T15:12:21.7907979Z ##[endgroup***
+sync	Set up job	2026-02-23T15:12:21.7912154Z ##[group***GITHUB_TOKEN Permissions
+sync	Set up job	2026-02-23T15:12:21.7916767Z Contents: write
+sync	Set up job	2026-02-23T15:12:21.7919219Z Metadata: read
+sync	Set up job	2026-02-23T15:12:21.7921605Z ##[endgroup***
+sync	Set up job	2026-02-23T15:12:21.7925735Z Secret source: Actions
+sync	Set up job	2026-02-23T15:12:21.7928347Z Prepare workflow directory
+sync	Set up job	2026-02-23T15:12:21.8285297Z Prepare all required actions
+sync	Set up job	2026-02-23T15:12:21.8325815Z Getting action download info
+sync	Set up job	2026-02-23T15:12:22.2086356Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+sync	Set up job	2026-02-23T15:12:22.3267251Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+sync	Set up job	2026-02-23T15:12:22.4217550Z Download action repository 'stefanzweifel/git-auto-commit-action@v5' (SHA:b863ae1933cb653a53c021fe36dbb774e1fb9403)
+sync	Set up job	2026-02-23T15:12:22.8440422Z Complete job name: sync
+sync	Checkout repository	嚜?026-02-23T15:12:22.9610237Z ##[group***Run actions/checkout@v4
+sync	Checkout repository	2026-02-23T15:12:22.9613498Z with:
+sync	Checkout repository	2026-02-23T15:12:22.9616474Z   repository: zing1971/youtube-to-notebooklm-ppt
+sync	Checkout repository	2026-02-23T15:12:22.9619930Z   token: ***
+sync	Checkout repository	2026-02-23T15:12:22.9622537Z   ssh-strict: true
+sync	Checkout repository	2026-02-23T15:12:22.9625120Z   ssh-user: git
+sync	Checkout repository	2026-02-23T15:12:22.9628046Z   persist-credentials: true
+sync	Checkout repository	2026-02-23T15:12:22.9630798Z   clean: true
+sync	Checkout repository	2026-02-23T15:12:22.9633516Z   sparse-checkout-cone-mode: true
+sync	Checkout repository	2026-02-23T15:12:22.9636435Z   fetch-depth: 1
+sync	Checkout repository	2026-02-23T15:12:22.9639038Z   fetch-tags: false
+sync	Checkout repository	2026-02-23T15:12:22.9641755Z   show-progress: true
+sync	Checkout repository	2026-02-23T15:12:22.9644881Z   lfs: false
+sync	Checkout repository	2026-02-23T15:12:22.9664274Z   submodules: false
+sync	Checkout repository	2026-02-23T15:12:22.9667467Z   set-safe-directory: true
+sync	Checkout repository	2026-02-23T15:12:22.9671592Z ##[endgroup***
+sync	Checkout repository	2026-02-23T15:12:23.0882646Z Syncing repository: zing1971/youtube-to-notebooklm-ppt
+sync	Checkout repository	2026-02-23T15:12:23.0889071Z ##[group***Getting Git version info
+sync	Checkout repository	2026-02-23T15:12:23.0894552Z Working directory is '/home/runner/work/youtube-to-notebooklm-ppt/youtube-to-notebooklm-ppt'
+sync	Checkout repository	2026-02-23T15:12:23.0904045Z [command***/usr/bin/git version
+sync	Checkout repository	2026-02-23T15:12:23.0909134Z git version 2.52.0
+sync	Checkout repository	2026-02-23T15:12:23.0936195Z ##[endgroup***
+sync	Checkout repository	2026-02-23T15:12:23.0951531Z Temporarily overriding HOME='/home/runner/work/_temp/96863ec9-23eb-4cb3-a9f5-9a84c247110f' before making global git config changes
+sync	Checkout repository	2026-02-23T15:12:23.0959660Z Adding repository directory to the temporary git global config as a safe directory
+sync	Checkout repository	2026-02-23T15:12:23.0967602Z [command***/usr/bin/git config --global --add safe.directory /home/runner/work/youtube-to-notebooklm-ppt/youtube-to-notebooklm-ppt
+sync	Checkout repository	2026-02-23T15:12:23.1003499Z Deleting the contents of '/home/runner/work/youtube-to-notebooklm-ppt/youtube-to-notebooklm-ppt'
+sync	Checkout repository	2026-02-23T15:12:23.1013173Z ##[group***Initializing the repository
+sync	Checkout repository	2026-02-23T15:12:23.1018416Z [command***/usr/bin/git init /home/runner/work/youtube-to-notebooklm-ppt/youtube-to-notebooklm-ppt
+sync	Checkout repository	2026-02-23T15:12:23.1096159Z hint: Using 'master' as the name for the initial branch. This default branch name
+sync	Checkout repository	2026-02-23T15:12:23.1102770Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+sync	Checkout repository	2026-02-23T15:12:23.1109702Z hint: to use in all of your new repositories, which will suppress this warning,
+sync	Checkout repository	2026-02-23T15:12:23.1115342Z hint: call:
+sync	Checkout repository	2026-02-23T15:12:23.1119023Z hint:
+sync	Checkout repository	2026-02-23T15:12:23.1121804Z hint: 	git config --global init.defaultBranch <name>
+sync	Checkout repository	2026-02-23T15:12:23.1126593Z hint:
+sync	Checkout repository	2026-02-23T15:12:23.1130090Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+sync	Checkout repository	2026-02-23T15:12:23.1133974Z hint: 'development'. The just-created branch can be renamed via this command:
+sync	Checkout repository	2026-02-23T15:12:23.1137588Z hint:
+sync	Checkout repository	2026-02-23T15:12:23.1140998Z hint: 	git branch -m <name>
+sync	Checkout repository	2026-02-23T15:12:23.1145890Z hint:
+sync	Checkout repository	2026-02-23T15:12:23.1151297Z hint: Disable this message with "git config set advice.defaultBranchName false"
+sync	Checkout repository	2026-02-23T15:12:23.1158740Z Initialized empty Git repository in /home/runner/work/youtube-to-notebooklm-ppt/youtube-to-notebooklm-ppt/.git/
+sync	Checkout repository	2026-02-23T15:12:23.1169544Z [command***/usr/bin/git remote add origin https://github.com/zing1971/youtube-to-notebooklm-ppt
+sync	Checkout repository	2026-02-23T15:12:23.1181465Z ##[endgroup***
+sync	Checkout repository	2026-02-23T15:12:23.1189232Z ##[group***Disabling automatic garbage collection
+sync	Checkout repository	2026-02-23T15:12:23.1194839Z [command***/usr/bin/git config --local gc.auto 0
+sync	Checkout repository	2026-02-23T15:12:23.1204628Z ##[endgroup***
+sync	Checkout repository	2026-02-23T15:12:23.1209659Z ##[group***Setting up auth
+sync	Checkout repository	2026-02-23T15:12:23.1213936Z [command***/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+sync	Checkout repository	2026-02-23T15:12:23.1226794Z [command***/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+sync	Checkout repository	2026-02-23T15:12:23.1539125Z [command***/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+sync	Checkout repository	2026-02-23T15:12:23.1574625Z [command***/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+sync	Checkout repository	2026-02-23T15:12:23.1802563Z [command***/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+sync	Checkout repository	2026-02-23T15:12:23.1835245Z [command***/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+sync	Checkout repository	2026-02-23T15:12:23.2065143Z [command***/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+sync	Checkout repository	2026-02-23T15:12:23.2102715Z ##[endgroup***
+sync	Checkout repository	2026-02-23T15:12:23.2110768Z ##[group***Fetching the repository
+sync	Checkout repository	2026-02-23T15:12:23.2117968Z [command***/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +06a346d582c17ee3224692f09a0c8f220f51287f:refs/remotes/origin/master
+sync	Checkout repository	2026-02-23T15:12:23.4834492Z From https://github.com/zing1971/youtube-to-notebooklm-ppt
+sync	Checkout repository	2026-02-23T15:12:23.4859357Z  * [new ref***         06a346d582c17ee3224692f09a0c8f220f51287f -> origin/master
+sync	Checkout repository	2026-02-23T15:12:23.4877458Z ##[endgroup***
+sync	Checkout repository	2026-02-23T15:12:23.4886633Z ##[group***Determining the checkout info
+sync	Checkout repository	2026-02-23T15:12:23.4894878Z ##[endgroup***
+sync	Checkout repository	2026-02-23T15:12:23.4900516Z [command***/usr/bin/git sparse-checkout disable
+sync	Checkout repository	2026-02-23T15:12:23.4919708Z [command***/usr/bin/git config --local --unset-all extensions.worktreeConfig
+sync	Checkout repository	2026-02-23T15:12:23.4952652Z ##[group***Checking out the ref
+sync	Checkout repository	2026-02-23T15:12:23.4958740Z [command***/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+sync	Checkout repository	2026-02-23T15:12:23.5016657Z Reset branch 'master'
+sync	Checkout repository	2026-02-23T15:12:23.5023634Z branch 'master' set up to track 'origin/master'.
+sync	Checkout repository	2026-02-23T15:12:23.5036394Z ##[endgroup***
+sync	Checkout repository	2026-02-23T15:12:23.5063731Z [command***/usr/bin/git log -1 --format=%H
+sync	Checkout repository	2026-02-23T15:12:23.5083519Z 06a346d582c17ee3224692f09a0c8f220f51287f
+sync	Set up Python	嚜?026-02-23T15:12:23.5640088Z ##[group***Run actions/setup-python@v5
+sync	Set up Python	2026-02-23T15:12:23.5644659Z with:
+sync	Set up Python	2026-02-23T15:12:23.5649227Z   python-version: 3.12
+sync	Set up Python	2026-02-23T15:12:23.5653645Z   check-latest: false
+sync	Set up Python	2026-02-23T15:12:23.5658643Z   token: ***
+sync	Set up Python	2026-02-23T15:12:23.5662971Z   update-environment: true
+sync	Set up Python	2026-02-23T15:12:23.5667422Z   allow-prereleases: false
+sync	Set up Python	2026-02-23T15:12:23.5671731Z   freethreaded: false
+sync	Set up Python	2026-02-23T15:12:23.5676133Z ##[endgroup***
+sync	Set up Python	2026-02-23T15:12:23.7504896Z ##[group***Installed versions
+sync	Set up Python	2026-02-23T15:12:23.7609798Z Successfully set up CPython (3.12.12)
+sync	Set up Python	2026-02-23T15:12:23.7622449Z ##[endgroup***
+sync	Install dependencies	嚜?026-02-23T15:12:23.7879545Z ##[group***Run python -m pip install --upgrade pip
+sync	Install dependencies	2026-02-23T15:12:23.7888373Z [36;1mpython -m pip install --upgrade pip[0m
+sync	Install dependencies	2026-02-23T15:12:23.7894719Z [36;1mpip install -r requirements.txt[0m
+sync	Install dependencies	2026-02-23T15:12:23.8120919Z shell: /usr/bin/bash -e ***0***
+sync	Install dependencies	2026-02-23T15:12:23.8125827Z env:
+sync	Install dependencies	2026-02-23T15:12:23.8130529Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Install dependencies	2026-02-23T15:12:23.8136180Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.12/x64/lib/pkgconfig
+sync	Install dependencies	2026-02-23T15:12:23.8141804Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Install dependencies	2026-02-23T15:12:23.8147224Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Install dependencies	2026-02-23T15:12:23.8152524Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Install dependencies	2026-02-23T15:12:23.8157946Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.12/x64/lib
+sync	Install dependencies	2026-02-23T15:12:23.8162837Z ##[endgroup***
+sync	Install dependencies	2026-02-23T15:12:31.2176018Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages (26.0)
+sync	Install dependencies	2026-02-23T15:12:31.3390233Z Collecting pip
+sync	Install dependencies	2026-02-23T15:12:31.3969597Z   Downloading pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+sync	Install dependencies	2026-02-23T15:12:31.4051664Z Downloading pip-26.0.1-py3-none-any.whl (1.8 MB)
+sync	Install dependencies	2026-02-23T15:12:31.4533769Z    ???????????????????????????????????????? 1.8/1.8 MB 73.6 MB/s  0:00:00
+sync	Install dependencies	2026-02-23T15:12:31.5427949Z Installing collected packages: pip
+sync	Install dependencies	2026-02-23T15:12:31.5430677Z   Attempting uninstall: pip
+sync	Install dependencies	2026-02-23T15:12:31.5450691Z     Found existing installation: pip 26.0
+sync	Install dependencies	2026-02-23T15:12:31.6547301Z     Uninstalling pip-26.0:
+sync	Install dependencies	2026-02-23T15:12:31.6613453Z       Successfully uninstalled pip-26.0
+sync	Install dependencies	2026-02-23T15:12:32.5359280Z Successfully installed pip-26.0.1
+sync	Install dependencies	2026-02-23T15:12:33.5347237Z Collecting notebooklm-py (from -r requirements.txt (line 1))
+sync	Install dependencies	2026-02-23T15:12:33.5906930Z   Downloading notebooklm_py-0.3.2-py3-none-any.whl.metadata (11 kB)
+sync	Install dependencies	2026-02-23T15:12:33.6466202Z Collecting pyyaml (from -r requirements.txt (line 2))
+sync	Install dependencies	2026-02-23T15:12:33.6504200Z   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+sync	Install dependencies	2026-02-23T15:12:33.6665820Z Collecting feedparser (from -r requirements.txt (line 3))
+sync	Install dependencies	2026-02-23T15:12:33.6699891Z   Downloading feedparser-6.0.12-py3-none-any.whl.metadata (2.7 kB)
+sync	Install dependencies	2026-02-23T15:12:33.6869522Z Collecting beautifulsoup4 (from -r requirements.txt (line 4))
+sync	Install dependencies	2026-02-23T15:12:33.6903486Z   Downloading beautifulsoup4-4.14.3-py3-none-any.whl.metadata (3.8 kB)
+sync	Install dependencies	2026-02-23T15:12:33.7144270Z Collecting requests (from -r requirements.txt (line 5))
+sync	Install dependencies	2026-02-23T15:12:33.7189546Z   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+sync	Install dependencies	2026-02-23T15:12:33.7651883Z Collecting google-api-python-client (from -r requirements.txt (line 6))
+sync	Install dependencies	2026-02-23T15:12:33.7691596Z   Downloading google_api_python_client-2.190.0-py3-none-any.whl.metadata (7.0 kB)
+sync	Install dependencies	2026-02-23T15:12:33.8141220Z Collecting google-auth (from -r requirements.txt (line 7))
+sync	Install dependencies	2026-02-23T15:12:33.8180581Z   Downloading google_auth-2.48.0-py3-none-any.whl.metadata (6.2 kB)
+sync	Install dependencies	2026-02-23T15:12:33.8333260Z Collecting google-auth-httplib2 (from -r requirements.txt (line 8))
+sync	Install dependencies	2026-02-23T15:12:33.8370534Z   Downloading google_auth_httplib2-0.3.0-py3-none-any.whl.metadata (3.1 kB)
+sync	Install dependencies	2026-02-23T15:12:33.8512194Z Collecting google-auth-oauthlib (from -r requirements.txt (line 9))
+sync	Install dependencies	2026-02-23T15:12:33.8545816Z   Downloading google_auth_oauthlib-1.2.4-py3-none-any.whl.metadata (3.1 kB)
+sync	Install dependencies	2026-02-23T15:12:33.8739319Z Collecting click>=8.0.0 (from notebooklm-py->-r requirements.txt (line 1))
+sync	Install dependencies	2026-02-23T15:12:33.8787325Z   Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+sync	Install dependencies	2026-02-23T15:12:33.8941896Z Collecting httpx>=0.27.0 (from notebooklm-py->-r requirements.txt (line 1))
+sync	Install dependencies	2026-02-23T15:12:33.8974639Z   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+sync	Install dependencies	2026-02-23T15:12:33.9282311Z Collecting rich>=13.0.0 (from notebooklm-py->-r requirements.txt (line 1))
+sync	Install dependencies	2026-02-23T15:12:33.9315213Z   Downloading rich-14.3.3-py3-none-any.whl.metadata (18 kB)
+sync	Install dependencies	2026-02-23T15:12:33.9432491Z Collecting sgmllib3k (from feedparser->-r requirements.txt (line 3))
+sync	Install dependencies	2026-02-23T15:12:33.9473327Z   Downloading sgmllib3k-1.0.0.tar.gz (5.8 kB)
+sync	Install dependencies	2026-02-23T15:12:33.9535349Z   Installing build dependencies: started
+sync	Install dependencies	2026-02-23T15:12:35.1712223Z   Installing build dependencies: finished with status 'done'
+sync	Install dependencies	2026-02-23T15:12:35.1718620Z   Getting requirements to build wheel: started
+sync	Install dependencies	2026-02-23T15:12:35.7566612Z   Getting requirements to build wheel: finished with status 'done'
+sync	Install dependencies	2026-02-23T15:12:35.7576138Z   Preparing metadata (pyproject.toml): started
+sync	Install dependencies	2026-02-23T15:12:35.9805328Z   Preparing metadata (pyproject.toml): finished with status 'done'
+sync	Install dependencies	2026-02-23T15:12:35.9958547Z Collecting soupsieve>=1.6.1 (from beautifulsoup4->-r requirements.txt (line 4))
+sync	Install dependencies	2026-02-23T15:12:35.9992813Z   Downloading soupsieve-2.8.3-py3-none-any.whl.metadata (4.6 kB)
+sync	Install dependencies	2026-02-23T15:12:36.0152815Z Collecting typing-extensions>=4.0.0 (from beautifulsoup4->-r requirements.txt (line 4))
+sync	Install dependencies	2026-02-23T15:12:36.0187054Z   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+sync	Install dependencies	2026-02-23T15:12:36.0926289Z Collecting charset_normalizer<4,>=2 (from requests->-r requirements.txt (line 5))
+sync	Install dependencies	2026-02-23T15:12:36.0971585Z   Downloading charset_normalizer-3.4.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+sync	Install dependencies	2026-02-23T15:12:36.1128673Z Collecting idna<4,>=2.5 (from requests->-r requirements.txt (line 5))
+sync	Install dependencies	2026-02-23T15:12:36.1160278Z   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+sync	Install dependencies	2026-02-23T15:12:36.1386588Z Collecting urllib3<3,>=1.21.1 (from requests->-r requirements.txt (line 5))
+sync	Install dependencies	2026-02-23T15:12:36.1426481Z   Downloading urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+sync	Install dependencies	2026-02-23T15:12:36.1624627Z Collecting certifi>=2017.4.17 (from requests->-r requirements.txt (line 5))
+sync	Install dependencies	2026-02-23T15:12:36.1667058Z   Downloading certifi-2026.1.4-py3-none-any.whl.metadata (2.5 kB)
+sync	Install dependencies	2026-02-23T15:12:36.1811822Z Collecting httplib2<1.0.0,>=0.19.0 (from google-api-python-client->-r requirements.txt (line 6))
+sync	Install dependencies	2026-02-23T15:12:36.1844936Z   Downloading httplib2-0.31.2-py3-none-any.whl.metadata (2.2 kB)
+sync	Install dependencies	2026-02-23T15:12:36.2311417Z Collecting google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5 (from google-api-python-client->-r requirements.txt (line 6))
+sync	Install dependencies	2026-02-23T15:12:36.2344527Z   Downloading google_api_core-2.30.0-py3-none-any.whl.metadata (3.1 kB)
+sync	Install dependencies	2026-02-23T15:12:36.2464342Z Collecting uritemplate<5,>=3.0.1 (from google-api-python-client->-r requirements.txt (line 6))
+sync	Install dependencies	2026-02-23T15:12:36.2495932Z   Downloading uritemplate-4.2.0-py3-none-any.whl.metadata (2.6 kB)
+sync	Install dependencies	2026-02-23T15:12:36.2731369Z Collecting pyasn1-modules>=0.2.1 (from google-auth->-r requirements.txt (line 7))
+sync	Install dependencies	2026-02-23T15:12:36.2770996Z   Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+sync	Install dependencies	2026-02-23T15:12:36.4386404Z Collecting cryptography>=38.0.3 (from google-auth->-r requirements.txt (line 7))
+sync	Install dependencies	2026-02-23T15:12:36.4423975Z   Downloading cryptography-46.0.5-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+sync	Install dependencies	2026-02-23T15:12:36.4594791Z Collecting rsa<5,>=3.1.4 (from google-auth->-r requirements.txt (line 7))
+sync	Install dependencies	2026-02-23T15:12:36.4626963Z   Downloading rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+sync	Install dependencies	2026-02-23T15:12:36.4796724Z Collecting googleapis-common-protos<2.0.0,>=1.56.3 (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client->-r requirements.txt (line 6))
+sync	Install dependencies	2026-02-23T15:12:36.4830760Z   Downloading googleapis_common_protos-1.72.0-py3-none-any.whl.metadata (9.4 kB)
+sync	Install dependencies	2026-02-23T15:12:36.6224896Z Collecting protobuf<7.0.0,>=4.25.8 (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client->-r requirements.txt (line 6))
+sync	Install dependencies	2026-02-23T15:12:36.6267862Z   Downloading protobuf-6.33.5-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+sync	Install dependencies	2026-02-23T15:12:36.6421114Z Collecting proto-plus<2.0.0,>=1.22.3 (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0,>=1.31.5->google-api-python-client->-r requirements.txt (line 6))
+sync	Install dependencies	2026-02-23T15:12:36.6459068Z   Downloading proto_plus-1.27.1-py3-none-any.whl.metadata (2.2 kB)
+sync	Install dependencies	2026-02-23T15:12:36.6829380Z Collecting pyparsing<4,>=3.1 (from httplib2<1.0.0,>=0.19.0->google-api-python-client->-r requirements.txt (line 6))
+sync	Install dependencies	2026-02-23T15:12:36.6867345Z   Downloading pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+sync	Install dependencies	2026-02-23T15:12:36.7166185Z Collecting pyasn1>=0.1.3 (from rsa<5,>=3.1.4->google-auth->-r requirements.txt (line 7))
+sync	Install dependencies	2026-02-23T15:12:36.7199543Z   Downloading pyasn1-0.6.2-py3-none-any.whl.metadata (8.4 kB)
+sync	Install dependencies	2026-02-23T15:12:36.7391122Z Collecting requests-oauthlib>=0.7.0 (from google-auth-oauthlib->-r requirements.txt (line 9))
+sync	Install dependencies	2026-02-23T15:12:36.7427432Z   Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
+sync	Install dependencies	2026-02-23T15:12:36.8608214Z Collecting cffi>=2.0.0 (from cryptography>=38.0.3->google-auth->-r requirements.txt (line 7))
+sync	Install dependencies	2026-02-23T15:12:36.8651144Z   Downloading cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+sync	Install dependencies	2026-02-23T15:12:36.8769062Z Collecting pycparser (from cffi>=2.0.0->cryptography>=38.0.3->google-auth->-r requirements.txt (line 7))
+sync	Install dependencies	2026-02-23T15:12:36.8802843Z   Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+sync	Install dependencies	2026-02-23T15:12:36.8988191Z Collecting anyio (from httpx>=0.27.0->notebooklm-py->-r requirements.txt (line 1))
+sync	Install dependencies	2026-02-23T15:12:36.9021738Z   Downloading anyio-4.12.1-py3-none-any.whl.metadata (4.3 kB)
+sync	Install dependencies	2026-02-23T15:12:36.9190873Z Collecting httpcore==1.* (from httpx>=0.27.0->notebooklm-py->-r requirements.txt (line 1))
+sync	Install dependencies	2026-02-23T15:12:36.9226469Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+sync	Install dependencies	2026-02-23T15:12:36.9351890Z Collecting h11>=0.16 (from httpcore==1.*->httpx>=0.27.0->notebooklm-py->-r requirements.txt (line 1))
+sync	Install dependencies	2026-02-23T15:12:36.9384068Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+sync	Install dependencies	2026-02-23T15:12:36.9529691Z Collecting oauthlib>=3.0.0 (from requests-oauthlib>=0.7.0->google-auth-oauthlib->-r requirements.txt (line 9))
+sync	Install dependencies	2026-02-23T15:12:36.9563462Z   Downloading oauthlib-3.3.1-py3-none-any.whl.metadata (7.9 kB)
+sync	Install dependencies	2026-02-23T15:12:36.9737550Z Collecting markdown-it-py>=2.2.0 (from rich>=13.0.0->notebooklm-py->-r requirements.txt (line 1))
+sync	Install dependencies	2026-02-23T15:12:36.9771086Z   Downloading markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+sync	Install dependencies	2026-02-23T15:12:36.9978120Z Collecting pygments<3.0.0,>=2.13.0 (from rich>=13.0.0->notebooklm-py->-r requirements.txt (line 1))
+sync	Install dependencies	2026-02-23T15:12:36.9991605Z   Downloading pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
+sync	Install dependencies	2026-02-23T15:12:37.0095123Z Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=13.0.0->notebooklm-py->-r requirements.txt (line 1))
+sync	Install dependencies	2026-02-23T15:12:37.0128093Z   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+sync	Install dependencies	2026-02-23T15:12:37.0264241Z Downloading notebooklm_py-0.3.2-py3-none-any.whl (154 kB)
+sync	Install dependencies	2026-02-23T15:12:37.0345366Z Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+sync	Install dependencies	2026-02-23T15:12:37.0431929Z    ???????????????????????????????????????? 807.9/807.9 kB 95.9 MB/s  0:00:00
+sync	Install dependencies	2026-02-23T15:12:37.0465408Z Downloading feedparser-6.0.12-py3-none-any.whl (81 kB)
+sync	Install dependencies	2026-02-23T15:12:37.0518823Z Downloading beautifulsoup4-4.14.3-py3-none-any.whl (107 kB)
+sync	Install dependencies	2026-02-23T15:12:37.0572674Z Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+sync	Install dependencies	2026-02-23T15:12:37.0637645Z Downloading charset_normalizer-3.4.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+sync	Install dependencies	2026-02-23T15:12:37.0703640Z Downloading idna-3.11-py3-none-any.whl (71 kB)
+sync	Install dependencies	2026-02-23T15:12:37.0762334Z Downloading urllib3-2.6.3-py3-none-any.whl (131 kB)
+sync	Install dependencies	2026-02-23T15:12:37.0847181Z Downloading google_api_python_client-2.190.0-py3-none-any.whl (14.7 MB)
+sync	Install dependencies	2026-02-23T15:12:37.1421402Z    ???????????????????????????????????????? 14.7/14.7 MB 264.8 MB/s  0:00:00
+sync	Install dependencies	2026-02-23T15:12:37.1459999Z Downloading google_auth-2.48.0-py3-none-any.whl (236 kB)
+sync	Install dependencies	2026-02-23T15:12:37.1525224Z Downloading google_auth_httplib2-0.3.0-py3-none-any.whl (9.5 kB)
+sync	Install dependencies	2026-02-23T15:12:37.1579841Z Downloading google_api_core-2.30.0-py3-none-any.whl (173 kB)
+sync	Install dependencies	2026-02-23T15:12:37.1647037Z Downloading googleapis_common_protos-1.72.0-py3-none-any.whl (297 kB)
+sync	Install dependencies	2026-02-23T15:12:37.1716847Z Downloading httplib2-0.31.2-py3-none-any.whl (91 kB)
+sync	Install dependencies	2026-02-23T15:12:37.1777861Z Downloading proto_plus-1.27.1-py3-none-any.whl (50 kB)
+sync	Install dependencies	2026-02-23T15:12:37.1848670Z Downloading protobuf-6.33.5-cp39-abi3-manylinux2014_x86_64.whl (323 kB)
+sync	Install dependencies	2026-02-23T15:12:37.1921654Z Downloading pyparsing-3.3.2-py3-none-any.whl (122 kB)
+sync	Install dependencies	2026-02-23T15:12:37.1984618Z Downloading rsa-4.9.1-py3-none-any.whl (34 kB)
+sync	Install dependencies	2026-02-23T15:12:37.2039942Z Downloading uritemplate-4.2.0-py3-none-any.whl (11 kB)
+sync	Install dependencies	2026-02-23T15:12:37.2093899Z Downloading google_auth_oauthlib-1.2.4-py3-none-any.whl (19 kB)
+sync	Install dependencies	2026-02-23T15:12:37.2151926Z Downloading certifi-2026.1.4-py3-none-any.whl (152 kB)
+sync	Install dependencies	2026-02-23T15:12:37.2215933Z Downloading click-8.3.1-py3-none-any.whl (108 kB)
+sync	Install dependencies	2026-02-23T15:12:37.2282364Z Downloading cryptography-46.0.5-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+sync	Install dependencies	2026-02-23T15:12:37.2512218Z    ???????????????????????????????????????? 4.5/4.5 MB 217.3 MB/s  0:00:00
+sync	Install dependencies	2026-02-23T15:12:37.2635224Z Downloading cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (219 kB)
+sync	Install dependencies	2026-02-23T15:12:37.2716726Z Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+sync	Install dependencies	2026-02-23T15:12:37.2780552Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+sync	Install dependencies	2026-02-23T15:12:37.2840585Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+sync	Install dependencies	2026-02-23T15:12:37.2898645Z Downloading pyasn1-0.6.2-py3-none-any.whl (83 kB)
+sync	Install dependencies	2026-02-23T15:12:37.2957601Z Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+sync	Install dependencies	2026-02-23T15:12:37.3019769Z Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+sync	Install dependencies	2026-02-23T15:12:37.3076645Z Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+sync	Install dependencies	2026-02-23T15:12:37.3135877Z Downloading rich-14.3.3-py3-none-any.whl (310 kB)
+sync	Install dependencies	2026-02-23T15:12:37.3199880Z Downloading pygments-2.19.2-py3-none-any.whl (1.2 MB)
+sync	Install dependencies	2026-02-23T15:12:37.3285434Z    ???????????????????????????????????????? 1.2/1.2 MB 157.2 MB/s  0:00:00
+sync	Install dependencies	2026-02-23T15:12:37.3318427Z Downloading markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+sync	Install dependencies	2026-02-23T15:12:37.3379020Z Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+sync	Install dependencies	2026-02-23T15:12:37.3433008Z Downloading soupsieve-2.8.3-py3-none-any.whl (37 kB)
+sync	Install dependencies	2026-02-23T15:12:37.3486762Z Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+sync	Install dependencies	2026-02-23T15:12:37.3545681Z Downloading anyio-4.12.1-py3-none-any.whl (113 kB)
+sync	Install dependencies	2026-02-23T15:12:37.3601995Z Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+sync	Install dependencies	2026-02-23T15:12:37.4167555Z Building wheels for collected packages: sgmllib3k
+sync	Install dependencies	2026-02-23T15:12:37.4176737Z   Building wheel for sgmllib3k (pyproject.toml): started
+sync	Install dependencies	2026-02-23T15:12:37.6322915Z   Building wheel for sgmllib3k (pyproject.toml): finished with status 'done'
+sync	Install dependencies	2026-02-23T15:12:37.6330512Z   Created wheel for sgmllib3k: filename=sgmllib3k-1.0.0-py3-none-any.whl size=6091 sha256=c87b27df8884d2546d9261804d14e20491a94f22e5dc119886916186a7de1d93
+sync	Install dependencies	2026-02-23T15:12:37.6334586Z   Stored in directory: /home/runner/.cache/pip/wheels/03/f5/1a/23761066dac1d0e8e683e5fdb27e12de53209d05a4a37e6246
+sync	Install dependencies	2026-02-23T15:12:37.6349780Z Successfully built sgmllib3k
+sync	Install dependencies	2026-02-23T15:12:37.6953707Z Installing collected packages: sgmllib3k, urllib3, uritemplate, typing-extensions, soupsieve, pyyaml, pyparsing, pygments, pycparser, pyasn1, protobuf, oauthlib, mdurl, idna, h11, feedparser, click, charset_normalizer, certifi, rsa, requests, pyasn1-modules, proto-plus, markdown-it-py, httplib2, httpcore, googleapis-common-protos, cffi, beautifulsoup4, anyio, rich, requests-oauthlib, httpx, cryptography, notebooklm-py, google-auth, google-auth-oauthlib, google-auth-httplib2, google-api-core, google-api-python-client
+sync	Install dependencies	2026-02-23T15:12:41.3119406Z 
+sync	Install dependencies	2026-02-23T15:12:41.3161532Z Successfully installed anyio-4.12.1 beautifulsoup4-4.14.3 certifi-2026.1.4 cffi-2.0.0 charset_normalizer-3.4.4 click-8.3.1 cryptography-46.0.5 feedparser-6.0.12 google-api-core-2.30.0 google-api-python-client-2.190.0 google-auth-2.48.0 google-auth-httplib2-0.3.0 google-auth-oauthlib-1.2.4 googleapis-common-protos-1.72.0 h11-0.16.0 httpcore-1.0.9 httplib2-0.31.2 httpx-0.28.1 idna-3.11 markdown-it-py-4.0.0 mdurl-0.1.2 notebooklm-py-0.3.2 oauthlib-3.3.1 proto-plus-1.27.1 protobuf-6.33.5 pyasn1-0.6.2 pyasn1-modules-0.4.2 pycparser-3.0 pygments-2.19.2 pyparsing-3.3.2 pyyaml-6.0.3 requests-2.32.5 requests-oauthlib-2.0.0 rich-14.3.3 rsa-4.9.1 sgmllib3k-1.0.0 soupsieve-2.8.3 typing-extensions-4.15.0 uritemplate-4.2.0 urllib3-2.6.3
+sync	Set up NotebookLM Auth	嚜?026-02-23T15:12:41.4712675Z ##[group***Run mkdir -p ~/.notebooklm
+sync	Set up NotebookLM Auth	2026-02-23T15:12:41.4713935Z [36;1mmkdir -p ~/.notebooklm[0m
+sync	Set up NotebookLM Auth	2026-02-23T15:12:41.4715827Z [36;1mpython -c "import os, json; json.dump(json.loads(os.environ['NOTEBOOKLM_AUTH_JSON'***), open(os.path.expanduser('~/.notebooklm/storage_state.json'), 'w'))"[0m
+sync	Set up NotebookLM Auth	2026-02-23T15:12:41.4752653Z shell: /usr/bin/bash -e ***0***
+sync	Set up NotebookLM Auth	2026-02-23T15:12:41.4753796Z env:
+sync	Set up NotebookLM Auth	2026-02-23T15:12:41.4754966Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Set up NotebookLM Auth	2026-02-23T15:12:41.4756534Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.12/x64/lib/pkgconfig
+sync	Set up NotebookLM Auth	2026-02-23T15:12:41.4757961Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Set up NotebookLM Auth	2026-02-23T15:12:41.4759318Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Set up NotebookLM Auth	2026-02-23T15:12:41.4760629Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Set up NotebookLM Auth	2026-02-23T15:12:41.4761915Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.12/x64/lib
+sync	Set up NotebookLM Auth	2026-02-23T15:12:41.4831891Z   NOTEBOOKLM_AUTH_JSON: ***
+sync	Set up NotebookLM Auth	2026-02-23T15:12:41.4851435Z ##[endgroup***
+sync	Run Sync Script	嚜?026-02-23T15:12:41.5200862Z ##[group***Run python main.py
+sync	Run Sync Script	2026-02-23T15:12:41.5202017Z [36;1mpython main.py[0m
+sync	Run Sync Script	2026-02-23T15:12:41.5238294Z shell: /usr/bin/bash -e ***0***
+sync	Run Sync Script	2026-02-23T15:12:41.5239521Z env:
+sync	Run Sync Script	2026-02-23T15:12:41.5240796Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Run Sync Script	2026-02-23T15:12:41.5242253Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.12/x64/lib/pkgconfig
+sync	Run Sync Script	2026-02-23T15:12:41.5243682Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Run Sync Script	2026-02-23T15:12:41.5245045Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Run Sync Script	2026-02-23T15:12:41.5246717Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Run Sync Script	2026-02-23T15:12:41.5248103Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.12/x64/lib
+sync	Run Sync Script	2026-02-23T15:12:41.5249369Z ##[endgroup***
+sync	Run Sync Script	2026-02-23T15:13:52.1995198Z ???瑁? YouTube to NotebookLM Sync...
+sync	Run Sync Script	2026-02-23T15:13:52.1996589Z 
+sync	Run Sync Script	2026-02-23T15:13:52.1997915Z --- 瑼Ｘ?駁?: 銝?蝡霈 ---
+sync	Run Sync Script	2026-02-23T15:13:52.1999004Z 
+sync	Run Sync Script	2026-02-23T15:13:52.2000667Z 潃??潛?啣蔣?? 蝬?摮訾犖嚚?026.02.21????憛??桀靽?蝞???1400?砌犖撠仃?颱??迎??怨??除?蝑之??嚗?降?◤摰矽?箝??遢摮?蝢?銵?箔?甇??瞍????犖璈之?啜?嚚heEconomist
+sync	Run Sync Script	2026-02-23T15:13:52.2003069Z   ?完 皜? 1 ??靘?...
+sync	Run Sync Script	2026-02-23T15:13:52.2004864Z   ??撌脫???1 ??靘???sync	Run Sync Script	2026-02-23T15:13:52.2007009Z   ? ?啣?靘?: https://www.youtube.com/watch?v=dJb_BG7nhxM
+sync	Run Sync Script	2026-02-23T15:13:52.2009096Z   ??靘?撌脣停蝺?(ID: 63b9db5a-9171-4521-b5b2-baf3e8e3b575)
+sync	Run Sync Script	2026-02-23T15:13:52.2011447Z   ? ??蝪∪: 蝬?摮訾犖嚚?026.02.21????憛??桀靽?蝞???1400?砌犖撠仃?颱??迎??怨??除?蝑之??嚗?降?◤摰矽?箝??遢摮?蝢?銵?箔?甇??瞍????犖璈之?啜?嚚heEconomist
+sync	Run Sync Script	2026-02-23T15:13:52.2013739Z   ??蝑?蝪∪?? (task_id: 87fba130-5fa8-44d8-b4b6-c9ac6e86fcf5)...
+sync	Run Sync Script	2026-02-23T15:13:52.2015671Z   ??蝪∪撌脫?????
+sync	Run Sync Script	2026-02-23T15:13:52.2017250Z   ???湔鈭?????sync	Run Sync Script	2026-02-23T15:13:52.2019377Z 撌脰???: 蝬?摮訾犖嚚?026.02.21??瘣?x ?勗????????剔鈭箸??堆??啣噸??銝剖??駁◢?芾?瘜Ｚ撠?憭望?嚗?啣?圈?蝺?撅?獐?嗅嚗???AI?拙?賣??頝??舀???嚗?TheEconomist
+sync	Run Sync Script	2026-02-23T15:13:52.2021933Z 撌脰???: 蝬?摮訾犖嚚?026.02.21?葉??x 鈭散???????葉????鞊芥犖瘞馳雿摯憸冽嚗????雿?貉赤??鈭穿?镼踵?憸券?迤?典援閫??嚗誑?摨衣?AI撟餉情嚗?TheEconomist
+sync	Run Sync Script	2026-02-23T15:13:52.2024902Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖嚚?026.02.21???Ｘ?鈭?x 蝷曇?????鈭箇??閫??瘥嚗銝雿??Ｗ??堆??剔?瘜Ｘ??憭批撥甈??香擛伐?銝??港葉?望?剜迤?券???嚚heEconomist (2026-02-19)
+sync	Run Sync Script	2026-02-23T15:13:52.2027787Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖嚚?026.02.14?楛隢?x ???????咱鋡怨??箇冗蝢文?擃???AI ?渲圾?暹?臬蟡??萎辣嚗??雯蝯∟?敺??狐嚗隞暻潸正?孵?摰園?憪?擃儘?葉???蛛?嚚heEconomist (2026-02-19)
+sync	Run Sync Script	2026-02-23T15:13:52.2030555Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖嚚?026?函?憭扯隅?ｇ?蝘????????皜蟡?啜?瘜??粹?憟折????怨?靽∩遙?望?嚗?026 ?怎??犖憿扔???◤?典?芯?甇伐?嚚?TheEconomist #TheWorldAhead2026 (2026-02-18)
+sync	Run Sync Script	2026-02-23T15:13:52.2033297Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖嚚?026.02.14??璆剔?憛?瘣脰撣??豢祥?蕃頨恬??箔?銝剖?撅勗祠憭批???頝冽絲?犖靘菜?嚗E ?粹???擃平?∪丐嚗I ?????詨?蝢???擃部瘝怎鋆?嚗?TheEconomist (2026-02-17)
+sync	Run Sync Script	2026-02-23T15:13:52.2036157Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖嚚?026.02.14?瓷蝬?憛?000 撟湔部瘝恍?瞍?AI 璁艙?⊥迤?刻???銝剖??踹?靽∪????葬憯?嚗??????賢??嫘霅堆??券?瑞?瞈ㄐ嚗犖?澆?撠嚗?TheEconomist (2026-02-16)
+sync	Run Sync Script	2026-02-23T15:13:52.2038829Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖嚚?026.02.14????x 蝢散??????芸振摨剔雿丐蝣?頝冽批?怎??Ｚ閮渲?憸冽嚗FK Jr. ?乩蜓銵??函??怨??剛降 嚚毀镼輻?瞈撌游璈??擐祆?鈭日?TheEconomist (2026-02-15)
+sync	Run Sync Script	2026-02-23T15:13:52.2041500Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖嚚?026.02.14??瘣?x ?勗???????霈??乓?嚗?撅斗敹摨行迤撘?敶ｇ??勗?擐靽??堆?擐砍?摰?箔滿?郎???暹?臬????芸????摰歹?TheEconomist (2026-02-14)
+sync	Run Sync Script	2026-02-23T15:13:52.2044185Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖嚚?026.02.14?葉??x 鈭散???葉??璆菜?啁嚗 AI ???葉?恍?蝘??啣??舐??仿??舫?撅嚗?祇?雿戊擐擃??抵?靽格?頠???霈?祈死????嚚heEconomist (2026-02-13)
+sync	Run Sync Script	2026-02-23T15:13:52.2047520Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖嚚?026.02.14???Ｘ?鈭?x 蝷曇??????勗??踹?撏拙???Epstein 瑼?閫??嚗蝎曇憭勗噸??仃?抒?銝?嚗?銝駁???雿?嚗?祇?雿戊擐?賣????桅◢?游?嚚heEconomist (2026-02-12)
+sync	Run Sync Script	2026-02-23T15:13:52.2050271Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖嚚?026.02.07?楛隢?x ??????啗??芰撌脫香鞎芾?敹?嚗甇血像銵∪援瞏堆?蝢葉靽??甇衣奎鞈踝???AI 撣嗡??仃璆剛???颲望郎?剁?瘞硃??憒??嗅雿??斗?嚚heEconomist (2026-02-11)
+sync	Run Sync Script	2026-02-23T15:13:52.2052837Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖嚚?026.02.07??璆剔?憛收?臬???AI ??憭芰征嚗?擃平???渲?嚗I 蝡?典?雓?萇?摰?嚗?瞏?血??桀??湔嚚heEconomist (2026-02-10)
+sync	Run Sync Script	2026-02-23T15:13:52.2055593Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖嚚?026.02.07?瓷蝬?憛??甈迤?券???Fed ?唬蜓撣剜?撘?銵援瞏啣?嚗??桃?瞈飛憒??????瘣脰??啗?撣嚚?皜涅PO ??????漪隞暻潭瘝餌?閮?嚚heEconomist (2026-02-09)
+sync	Run Sync Script	2026-02-23T15:13:52.2057704Z --- 瑼Ｘ?駁?: 瘚瑟???豢? ---
+sync	Run Sync Script	2026-02-23T15:13:52.2058581Z 
+sync	Run Sync Script	2026-02-23T15:13:52.2059833Z 潃??潛?啣蔣?? 蝬?摮訾犖2/21?冗隢??函?????鈭箇??箔?瘛芰擉?嚗銝楛?瑞?靽野瘛雿??Ｗ??堆?銝剜??????望?嚗?瘜蝺漱???賜?皞?皜祆靘???蝢?霅啣??Ｚ瞏株??函??踹?嚗葆?其?甈∠???
+sync	Run Sync Script	2026-02-23T15:13:52.2061967Z   ?完 皜? 1 ??靘?...
+sync	Run Sync Script	2026-02-23T15:13:52.2063570Z   ??撌脫???1 ??靘???sync	Run Sync Script	2026-02-23T15:13:52.2065418Z   ? ?啣?靘?: https://www.youtube.com/watch?v=ABzFb6M6mxg
+sync	Run Sync Script	2026-02-23T15:13:52.2067642Z   ??靘?撌脣停蝺?(ID: 2d16a788-91ba-4991-b5d4-ad6d8ec8b6de)
+sync	Run Sync Script	2026-02-23T15:13:52.2069948Z   ? ??蝪∪: 蝬?摮訾犖2/21?冗隢??函?????鈭箇??箔?瘛芰擉?嚗銝楛?瑞?靽野瘛雿??Ｗ??堆?銝剜??????望?嚗?瘜蝺漱???賜?皞?皜祆靘???蝢?霅啣??Ｚ瞏株??函??踹?嚗葆?其?甈∠???
+sync	Run Sync Script	2026-02-23T15:13:52.2072143Z   ??蝑?蝪∪?? (task_id: 9818e704-5f16-4e1c-8d4b-5213ae00a219)...
+sync	Run Sync Script	2026-02-23T15:13:52.2073928Z   ??蝪∪撌脫?????
+sync	Run Sync Script	2026-02-23T15:13:52.2075639Z   ???湔鈭?????sync	Run Sync Script	2026-02-23T15:13:52.2077803Z 撌脰???: 蝬?摮訾犖2/21????瘣脩?憛畾箇?銝矽嚗??鈭箏仃?駁???芥誥?斗除???瑞靽?閬??唬??亙?蝡亦??祟?扎?????蝢?甇??甇瑕???憛????擳舐蜇蝯梯扛銝凋??啁?颲???蝢散蝢散鞊寧?憟?靽?堆?
+sync	Run Sync Script	2026-02-23T15:13:52.2080419Z 撌脰???: 2026/2/23 撌游急?鞈?移??銝?嚗?擃?鋡隹I瘛掠嚗??桅?蝔之??嚗皞??憭Ｙ?嚗楛摨西圾?I隞??憒?撘蝘??∪援?扎??縑鞎詨璈?隞亙?擃?航??航??萇???圈?芰?拍?閮??
+sync	Run Sync Script	2026-02-23T15:13:52.2083017Z 撌脰???: 2026/2/23 撌游急?鞈?移??銝?嚗??Ｘ?鈭?撘梁???隞????蝑嚗?擃??ａ?蝔?瘙箏??嗅?∠??蝔??抬??∪?憒?蝬撖阡?蝬?嚗蒂閫?Ⅳ蝢鞈憭扯憚?雯憌蔥鞈潭?絲憭??⊥璅???憛????拙??sync	Run Sync Script	2026-02-23T15:13:52.2085736Z 撌脰???: 蝬?摮訾犖2/21?葉??瘣脩???蝢?????閬?餈像嚗犖瘞馳?剛?霅?隡?6%嚗葉??鞊芸之????嚗??瘣暸?典之撏拇蔑嚗?銝剖?銝餃??函???憌?嚗?隞亙??啣漲AI?征瘙∠??賂???仿?odcast嚗?sync	Run Sync Script	2026-02-23T15:13:52.2088795Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖2/21??璆剔?憛odcast?亢閬????璈鈭箏之頠?镼莎?頠?撖嚗葉???瘛寞??函?! MAGA ???箔??典??湔????啣漲?豢?銝剖????望蔭!?輯??撘璆剔???!蝢????瑞?踹??誨! (2026-02-20)
+sync	Run Sync Script	2026-02-23T15:13:52.2091594Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖2/21?瓷蝬?憛odcast?銝? 12 ????蝝?AI ?嗥?蝡??舐銵????嚗?圾??????璈??祕???桃??勗耦蝬??箸??挾嚗誑??CEO 憭拙?芷?????扯劑霅?(2026-02-19)
+sync	Run Sync Script	2026-02-23T15:13:52.2094412Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖??璆剔?憛odcast??瘣脖?璆剜?拍????????敺亥蕭嚗rm 甈脰??憌?AI 憭折?嚗葉??撅勗祠頧?蝬剜??I 撘?蝘??⊥???擃?璈?镼踵?芰?孵潮撠葉???????瑕???(2026-02-17)
+sync	Run Sync Script	2026-02-23T15:13:52.2097444Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖2/14???????憛葉???撌脫輔???ｇ?敺?憌??餃?敹怨??唳??其犖閬死蝒嚗?圾霈??瞈飛鈭箝??啗隅?Ｕ楛摨血??隞???璈?璇摰嗆???擃??匱?踴葆?典翰???∠????????嚗?(2026-02-16)
+sync	Run Sync Script	2026-02-23T15:13:52.2100264Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖2/14????蝢散????芷?摰嗅丐蝣?銝剔???撟渲?嚗楊?批?怎?閮渲??嚗??典予?寡???撠?餈箄羲??銵??剁??怨?蝘飛?剛釭?毀镼輸隡??鞎⊥嚗撌游?賊陌瘥尼銋???(2026-02-15)
+sync	Run Sync Script	2026-02-23T15:13:52.2103024Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖2/14??瘣脣??勗????噸??頠??瞈???嚗收??摰??甇散?脣蝺亦???霅血?撠◤蝢葉??粹?嚗?瞏?行?獢辣?憡?摰方??勗??踹?嚗憛?蝮賜?憭找?銝?嚗楛摨西圾??瘣脰??勗????啣??芥?(2026-02-15)
+sync	Run Sync Script	2026-02-23T15:13:52.2106224Z ?哨? 頝喲?嚗撣???3 憭抬?: 2026/2/16撌游急?鞈?移?賂?撠??嚗????寞銝撞! ?蝢嚗I 撘??擃?瞏殷?隞亙??箔??輸?粹?憭找蓮?曉??憟賭葉????瘣脤??⊥嚗??撌券???????望?銝甈∠???(2026-02-14)
+sync	Run Sync Script	2026-02-23T15:13:52.2109161Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖2/14?冗隢odcast??祈?靘?雿戊曋寞晷擐嚗?撣??血葆??祆?銵∩葉?蒂?蝬?嚗?瞏?行?獢圾撖??剝镼踵甈眼?╳?賜雯蝯～?鋆?摰嗅?舫????郊銝毀镼踹?憛蛛? (2026-02-13)
+sync	Run Sync Script	2026-02-23T15:13:52.2111983Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖2/14?葉??鈭散???葉???扔?啁??!鈭散蝛拙?撟??隞??銵?蝟?銝剖?憡??Ｘ平??!AI 蝡?賢??嚗??交曋寞晷憟喲??訾??????挪?典辣?擃??撣嗆銝甈∠???瞈飛鈭箝隅?ｇ? (2026-02-13)
+sync	Run Sync Script	2026-02-23T15:13:52.2114885Z ?哨? 頝喲?嚗撣???3 憭抬?: 蝬?摮訾犖2/14?瓷蝬?憛odcast?狐?臬??株窒?韐振????蝔?隞???銝剖?鞈潭????釭撱箇??斗?蝢?撠??撘??菜平瞏殷??瑕戊?芾?撌株???嚗?撖疏撟?雿仃?餃??堆?AI 瘜⊥疵銝府憒??輸嚗?(2026-02-12)
+sync	Run Sync Script	2026-02-23T15:13:52.2116511Z 
+sync	Run Sync Script	2026-02-23T15:13:52.2117264Z ?? ?瑁?摰?
+sync	Archive Studio Artifacts	嚜?026-02-23T15:13:52.2497130Z ##[group***Run python archive_studio.py
+sync	Archive Studio Artifacts	2026-02-23T15:13:52.2498384Z [36;1mpython archive_studio.py[0m
+sync	Archive Studio Artifacts	2026-02-23T15:13:52.2531512Z shell: /usr/bin/bash -e ***0***
+sync	Archive Studio Artifacts	2026-02-23T15:13:52.2532587Z env:
+sync	Archive Studio Artifacts	2026-02-23T15:13:52.2533736Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Archive Studio Artifacts	2026-02-23T15:13:52.2535114Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.12/x64/lib/pkgconfig
+sync	Archive Studio Artifacts	2026-02-23T15:13:52.2536591Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Archive Studio Artifacts	2026-02-23T15:13:52.2537898Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Archive Studio Artifacts	2026-02-23T15:13:52.2539180Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Archive Studio Artifacts	2026-02-23T15:13:52.2540463Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.12/x64/lib
+sync	Archive Studio Artifacts	2026-02-23T15:13:52.2552699Z   GDRIVE_CREDENTIALS: ***
+sync	Archive Studio Artifacts	
+sync	Archive Studio Artifacts	2026-02-23T15:13:52.2553762Z ##[endgroup***
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1947844Z ???瑁? NotebookLM 撌乩?摰斗飛瑼?璆?..
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1949247Z 
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1950421Z --- 瑼Ｘ Notebook: 瘚瑟???豢? ---
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1952452Z   ?哨? 靽?餈??Ｗ?? 2026撟游?蝬隅?Ｘ楛摨衣陛?梧?敺蝺??蝒??瘝餌?????瑽?sync	Archive Studio Artifacts	2026-02-23T15:14:04.1954341Z   ?哨? 靽?餈??Ｗ?? 蝢???瘣脫蝬??Ｘ楛摨西圾???輻????瘝餅扔???啁楠?喳?蝪∪
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1956095Z   ?哨? 靽?餈??Ｗ?? 2026撟游?蝺?瘝餉?蝬?撅?Ｘ楛摨西圾???sync	Archive Studio Artifacts	2026-02-23T15:14:04.1957714Z   ?哨? 靽?餈??Ｗ?? 蝬??瘝駁?憛???瘣脫憛??輻????冗??蝡???頧?
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1959456Z ?? ?潛???Ｗ?? ?函?蝬??蝺?瘝餉隅?Ｘ楛摨衣陛?梧?敺?蝢撖??I ????輻?颲航? (??2026-02-22 06:21:21 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1961818Z   ? 撌脖?頛 tmp_artifacts/瘚瑟???豢?_?函?蝬??蝺?瘝餉隅?Ｘ楛摨衣陛?勗?靽??臬?蝝I ????輻?颲航?.md嚗?????Google Drive...
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1965670Z   ??銝??Google Drive 憭望?: <HttpError 404 when requesting None returned "File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.". Details: "[***'message': 'File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.', 'domain': 'global', 'reason': 'notFound', 'location': 'fileId', 'locationType': 'parameter'***">
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1968073Z ?? ?潛???Ｗ?? 蝬???璆剛隅?Ｘ楛摨衣陛?梧?敺?蝡舐???啗?渲??箏飛??撅日?頛?(??2026-02-22 06:20:39 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1969526Z   ? 撌脖?頛 tmp_artifacts/瘚瑟???豢?_蝬???璆剛隅?Ｘ楛摨衣陛?勗?撠垢蝘??啗?渲??箏飛??撅日?頛?md嚗?????Google Drive...
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1972457Z   ??銝??Google Drive 憭望?: <HttpError 404 when requesting None returned "File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.". Details: "[***'message': 'File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.', 'domain': 'global', 'reason': 'notFound', 'location': 'fileId', 'locationType': 'parameter'***">
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1975619Z ?? ?潛???Ｗ?? ?函??輻?霈?瘛勗漲蝪∪嚗?鞈瘚??蝺?瘝餃瘞???脩??券?? (??2026-02-22 06:20:08 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1977126Z   ? 撌脖?頛 tmp_artifacts/瘚瑟???豢?_?函??輻?霈?瘛勗漲蝪∪敺??祆??蝺?瘝餃瘞???脩??券??.md嚗?????Google Drive...
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1979643Z   ??銝??Google Drive 憭望?: <HttpError 404 when requesting None returned "File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.". Details: "[***'message': 'File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.', 'domain': 'global', 'reason': 'notFound', 'location': 'fileId', 'locationType': 'parameter'***">
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1982041Z ?? ?潛???Ｗ?? 撌游急?鞈?移?貊陛?梧?2026撟游??瞈?撅??鞈??亙???(??2026-02-22 06:19:27 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1983494Z   ? 撌脖?頛 tmp_artifacts/瘚瑟???豢?_撌游急?鞈?移?貊陛??026撟游??瞈?撅??鞈??亙???md嚗?????Google Drive...
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1986223Z   ??銝??Google Drive 憭望?: <HttpError 404 when requesting None returned "File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.". Details: "[***'message': 'File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.', 'domain': 'global', 'reason': 'notFound', 'location': 'fileId', 'locationType': 'parameter'***">
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1988627Z ?? ?潛???Ｗ?? 2026撟????渲隅?Ｚ???蝑蝪∪嚗I隞??銵??祕擃?瞈儔?西??輸?脣蝘見 (??2026-02-22 06:18:56 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1990181Z   ? 撌脖?頛 tmp_artifacts/瘚瑟???豢?_2026撟????渲隅?Ｚ???蝑蝪∪AI隞??銵?撖阡?蝬?敺拍??芰?拍?閮?md嚗?????Google Drive...
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1992757Z   ??銝??Google Drive 憭望?: <HttpError 404 when requesting None returned "File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.". Details: "[***'message': 'File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.', 'domain': 'global', 'reason': 'notFound', 'location': 'fileId', 'locationType': 'parameter'***">
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1994907Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:14:04.1996171Z --- 瑼Ｘ Notebook: 蝬?摮訾犖?勗?鞈?摨?---
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1997696Z   ?哨? 靽?餈??Ｗ?? ??瞈飛鈭箝陛?梧?2026撟渡??憛楛摨血????輻?撅?
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.1998964Z   ?哨? 靽?餈??Ｗ?? 蝢??輻?撅?Ｘ楛摨衣陛?梧?撌?踹??輻????冗???瑕???sync	Archive Studio Artifacts	2026-02-23T15:14:04.2000247Z ?? ?潛???Ｗ?? 2026 Asian Tectonic Shift (??2026-02-22 01:39:24 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2001829Z   ?? ?⊥?雿 Report 銝? 2026 Asian Tectonic Shift: Report artifact 80d41426-ba1b-4d74-999b-b18a109b57dd is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2003657Z ?? ?潛???Ｗ?? 2026 Global Reality Check (??2026-02-22 01:40:20 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2005232Z   ?? ?⊥?雿 Report 銝? 2026 Global Reality Check: Report artifact 2ee17ea2-a26b-40e5-b975-7a89d294932f is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2006934Z ?? ?潛???Ｗ?? Europe? Survival Game (??2026-02-22 01:38:28 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2008475Z   ?? ?⊥?雿 Report 銝? Europe? Survival Game: Report artifact 0e84cd29-7505-4f0d-b16e-4ab1605466e4 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2010076Z ?? ?潛???Ｗ?? 2026 ?函?憭抒??賂?撖犖蝔瘥嚗銝???撟單??潛???隞亙?雿??仿????撟?(??2026-02-21 15:17:16 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2011574Z   ? 撌脖?頛 tmp_artifacts/蝬?摮訾犖?勗?鞈?摨冒2026 ?函?憭抒??詨?鈭箇??舀??交銝??像??誑??銝??閬??批?.md嚗?????Google Drive...
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2014160Z   ??銝??Google Drive 憭望?: <HttpError 404 when requesting None returned "File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.". Details: "[***'message': 'File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.', 'domain': 'global', 'reason': 'notFound', 'location': 'fileId', 'locationType': 'parameter'***">
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2016385Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:14:04.2017557Z --- 瑼Ｘ Notebook: 銝剖???鈭????遣霅啣??嗉絲?牧??---
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2018854Z ?? ?潛???Ｗ?? China 2060 Green Strategy (??2026-02-18 08:31:53 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2020424Z   ?? ?⊥?雿 Report 銝? China 2060 Green Strategy: Report artifact e02742ed-4e3e-4d83-af06-08ae9177d307 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2022025Z ?? ?潛???Ｗ?? 銝剖??振?澆??啁?葉?瑟?瘞?璅?暺陛?望?隞?(??2026-02-18 08:37:09 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2023434Z   ? 撌脖?頛 tmp_artifacts/銝剖???鈭????遣霅啣??嗉絲?牧?銝剖??振?澆??啁?葉?瑟?瘞?璅?暺陛?望?隞?md嚗?????Google Drive...
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2026026Z   ??銝??Google Drive 憭望?: <HttpError 404 when requesting None returned "File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.". Details: "[***'message': 'File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.', 'domain': 'global', 'reason': 'notFound', 'location': 'fileId', 'locationType': 'parameter'***">
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2028334Z ?? ?潛???Ｗ?? ?振?澆????曄?嚗??豢??????暑?靘?(??2026-02-18 08:34:51 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2029773Z   ? 撌脖?頛 tmp_artifacts/銝剖???鈭????遣霅啣??嗉絲?牧??振?澆????曄?敺???????暑?靘?md嚗?????Google Drive...
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2032329Z   ??銝??Google Drive 憭望?: <HttpError 404 when requesting None returned "File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.". Details: "[***'message': 'File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.', 'domain': 'global', 'reason': 'notFound', 'location': 'fileId', 'locationType': 'parameter'***">
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2034569Z ?? ?潛???Ｗ?? 銝剖??曆誨???４?格? (??2026-02-18 08:33:40 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2036131Z   ?? ?⊥?雿 Report 銝? 銝剖??曆誨???４?格?: Report artifact 4bcf7a2f-a210-4921-b090-039a832994ac is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2037971Z ?? ?潛???Ｗ?? 銝剖?????????鈭?????瞈冗?撅蜓閬?璅??格?銵?(??2026-02-18 08:33:37 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2039530Z   ?? ?⊥?雿 Report 銝? 銝剖?????????鈭?????瞈冗?撅蜓閬?璅??格?銵? Report artifact d302cd8e-8434-404f-b4f0-12cf1495142d is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2041096Z ?? ?潛???Ｗ?? 15th Five-Year Plan Strategic Roadmap (??2026-02-18 08:01:11 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2042926Z   ?? ?⊥?雿 Report 銝? 15th Five-Year Plan Strategic Roadmap: Report artifact e1ed7aea-6c1b-4b4d-99c1-ceebeaa2f531 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2044519Z ?? ?潛???Ｗ?? 銝剖??鈭????潛??蝒? (??2026-02-18 07:55:33 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2046152Z   ?? ?⊥?雿 Report 銝? 銝剖??鈭????潛??蝒?: Report artifact d6fee8f5-e302-4a80-8f06-dd466ce585b6 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:04.2047477Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:14:04.2048670Z --- 瑼Ｘ Notebook: 蝘???????嚗??餃?敹怨??啁隞?冗蝢方??散?芯? ---
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3366410Z ?? ?潛???Ｗ?? Divergence Disruption Value 2026 (??2026-02-17 08:18:06 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3369448Z   ?? ?⊥?雿 Report 銝? Divergence Disruption Value 2026: Report artifact 26a5d3af-1e74-467c-95d3-4ceccbbcf59a is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3371587Z ?? ?潛???Ｗ?? America Divided China Strategic (??2026-02-17 06:30:56 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3373600Z   ?? ?⊥?雿 Report 銝? America Divided China Strategic: Report artifact 503b4b43-4304-42bf-8c96-57df7bfa4940 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3375443Z ?? ?潛???Ｗ?? America Division Renewal (??2026-02-17 06:30:27 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3377536Z   ?? ?⊥?雿 Report 銝? America Division Renewal: Report artifact 2e5b8f9e-5bde-4707-8d3c-e971ed23b36f is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3379361Z ?? ?潛???Ｗ?? Global Shifts 2026 (??2026-02-17 00:53:13 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3381110Z   ?? ?⊥?雿 Report 銝? Global Shifts 2026: Report artifact ba371b83-e90a-4a17-beda-275a38e50f5d is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3382830Z ?? ?潛???Ｗ?? 瘞渡蕉?嫣???憪犖 (??2026-02-17 00:51:59 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3384640Z   ?? ?⊥?雿 Report 銝? 瘞渡蕉?嫣???憪犖: Report artifact 3471a084-c3c3-447f-85b9-05f4c42307cc is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3386147Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:14:25.3387401Z --- 瑼Ｘ Notebook: ?訾?銝餅?嚗ISA 702 ?剛降?蝳行?亙??---
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3388762Z ?? ?潛???Ｗ?? FISA 702 Global Risk 2026 (??2026-02-12 02:18:40 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3390367Z   ?? ?⊥?雿 Report 銝? FISA 702 Global Risk 2026: Report artifact e4b7b69e-9dff-482d-86ff-584832c23ea7 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3391890Z ?? ?潛???Ｗ?? 蝢葉?訾?銝餅?憭扳 (??2026-02-11 09:43:09 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3393402Z   ?? ?⊥?雿 Report 銝? 蝢葉?訾?銝餅?憭扳: Report artifact 3ff18b29-8198-4117-b5ef-21c751ed04cf is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3394901Z ?? ?潛???Ｗ?? Sovereignty Collision 2026 (??2026-02-11 09:45:15 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3396672Z   ?? ?⊥?雿 Report 銝? Sovereignty Collision 2026: Report artifact 538b6039-328b-4806-8cec-9fb584b4ba5d is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3398253Z ?? ?潛???Ｗ?? Europe's Sovereignty Trap (??2026-02-11 09:43:04 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3399840Z   ?? ?⊥?雿 Report 銝? Europe's Sovereignty Trap: Report artifact 700a1488-3ad4-4e0d-a424-edebb359440a is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3401371Z ?? ?潛???Ｗ?? ?函??訾?銝餅????? (??2026-02-11 09:43:17 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3421292Z   ?? ?⊥?雿 Report 銝? ?函??訾?銝餅?????: Report artifact 90dedb4c-e5b2-41a0-a9d6-d9867e0cea4c is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3422847Z ?? ?潛???Ｗ?? ?訾?銝餅????霅瑕蝺?瘝餅撅 (??2026-02-11 09:43:26 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3424379Z   ?? ?⊥?雿 Report 銝? ?訾?銝餅????霅瑕蝺?瘝餅撅: Report artifact d7c7e4f0-442d-4147-8f66-3e7f6d0cb5d4 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3426196Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:14:25.3427475Z --- 瑼Ｘ Notebook: Log AI嚗otebookLM 銝脫撌乩?瘚? OpenAI Prism ---
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3428829Z ?? ?潛???Ｗ?? ??YouTube 敶梁?霈? App (??2026-02-07 23:26:23 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3430357Z   ?? ?⊥?雿 Report 銝? ??YouTube 敶梁?霈? App: Report artifact dc6d1edd-1e57-44ab-bed8-e2e23d95bc22 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3431706Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:14:25.3432946Z --- 瑼Ｘ Notebook: ?蔣銵?嚗蝘?TGR-STA-1030 ?函???瘣餃? ---
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3434367Z ?? ?潛???Ｗ?? Shadow Campaigns Global Espionage Threat (??2026-02-06 04:09:14 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3436280Z   ?? ?⊥?雿 Report 銝? Shadow Campaigns Global Espionage Threat: Report artifact dd4f632a-cad3-4fcd-bdc2-ed704f7b0a1d is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3438046Z ?? ?潛???Ｗ?? 靘??◢?芾?隡啣遣霅唳嚗?撠?摰嗥??餃?閮剖?靘???擏凋?隞嗡?瘛勗漲???蝳血?蝑?(??2026-02-06 04:09:52 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3439650Z   ? 撌脖?頛 tmp_artifacts/?蔣銵?嚗蝘?TGR-STA-1030 ?函???瘣餃?_靘??◢?芾?隡啣遣霅唳???振蝝?身?????妣鈭辣銋楛摨血????脩戌撠?.md嚗?????Google Drive...
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3442353Z   ??銝??Google Drive 憭望?: <HttpError 404 when requesting None returned "File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.". Details: "[***'message': 'File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.', 'domain': 'global', 'reason': 'notFound', 'location': 'fileId', 'locationType': 'parameter'***">
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3444501Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:14:25.3445970Z --- 瑼Ｘ Notebook: ?振?訾??扯??賢??遣?啁?勗? ---
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3447385Z ?? ?潛???Ｗ?? Digital Resilience National Strategy (??2026-02-03 06:53:39 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3449095Z   ?? ?⊥?雿 Report 銝? Digital Resilience National Strategy: Report artifact 5cf05972-8709-4e09-a63e-f73be49920a2 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3450784Z ?? ?潛???Ｗ?? Digital Resilience Protocol (??2026-02-03 06:20:27 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3452423Z   ?? ?⊥?雿 Report 銝? Digital Resilience Protocol: Report artifact df2b59bb-ebc4-4b3e-8df4-14648df3563b is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3454016Z ?? ?潛???Ｗ?? Digital Defense Resilience (??2026-02-03 06:18:00 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3456046Z   ?? ?⊥?雿 Report 銝? Digital Defense Resilience: Report artifact d3c011ee-a867-4aeb-bcba-4b339d697e3d is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3457678Z ?? ?潛???Ｗ?? Digital Sovereignty Survival (??2026-02-03 06:18:25 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3459325Z   ?? ?⊥?雿 Report 銝? Digital Sovereignty Survival: Report artifact c6f0150d-c587-43a0-92be-ce5fa4e85403 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3460975Z ?? ?潛???Ｗ?? Digital Survival Hybrid Warfare Strategy (??2026-02-03 06:16:51 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3462709Z   ?? ?⊥?雿 Report 銝? Digital Survival Hybrid Warfare Strategy: Report artifact 6f7cf0c7-b952-48d2-b979-2676a32b2304 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3464378Z ?? ?潛???Ｗ?? Digital Resilience Doctrine (??2026-02-03 06:05:10 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3466385Z   ?? ?⊥?雿 Report 銝? Digital Resilience Doctrine: Report artifact 1c7515f5-58fd-43e7-925b-6af33eed3213 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3468059Z ?? ?潛???Ｗ?? Digital Sovereignty Survival Protocols (??2026-02-03 04:17:23 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3469796Z   ?? ?⊥?雿 Report 銝? Digital Sovereignty Survival Protocols: Report artifact e998e455-d109-44e4-b402-04c44c514e6b is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3471472Z ?? ?潛???Ｗ?? Ukraine Resilience Hybrid War Survival (??2026-02-03 04:14:01 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3473182Z   ?? ?⊥?雿 Report 銝? Ukraine Resilience Hybrid War Survival: Report artifact b947ce3a-704f-40ca-9332-a7275287bc33 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3474897Z ?? ?潛???Ｗ?? Digital Resilience A National Imperative (??2026-02-02 10:08:20 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3476821Z   ?? ?⊥?雿 Report 銝? Digital Resilience A National Imperative: Report artifact 4aad5d7a-d90c-4b48-b531-d2275244de92 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3478526Z ?? ?潛???Ｗ?? Digital Resilience National Survival (??2026-02-02 10:06:06 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3480284Z   ?? ?⊥?雿 Report 銝? Digital Resilience National Survival: Report artifact 583f14ec-c2d7-4cdc-ad46-53cdec05f574 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3481954Z ?? ?潛???Ｗ?? Digital Resilience National Security (??2026-02-02 10:07:51 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3483800Z   ?? ?⊥?雿 Report 銝? Digital Resilience National Security: Report artifact 90a23628-f9ed-4a24-bb36-654d4377f1a5 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3485431Z ?? ?潛???Ｗ?? 敺?之雿輸尹?雿蜓甈?(??2026-02-01 07:28:07 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3487266Z   ?? ?⊥?雿 Report 銝? 敺?之雿輸尹?雿蜓甈? Report artifact a5ef122c-1c2a-4fe8-ba26-99fe4eca717f is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3488892Z ?? ?潛???Ｗ?? Sovereign Data Embassies 2026 Resilience Strategy (??2026-02-01 07:28:03 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3490756Z   ?? ?⊥?雿 Report 銝? Sovereign Data Embassies 2026 Resilience Strategy: Report artifact 3e4e4356-5f16-40ee-bace-56347584ef30 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3492470Z ?? ?潛???Ｗ?? Defense Cloud Strategy (??2026-02-01 07:19:47 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3494087Z   ?? ?⊥?雿 Report 銝? Defense Cloud Strategy: Report artifact 6175c4a3-2cd2-4f6a-813b-116ff4071788 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3496037Z ?? ?潛???Ｗ?? Digital State Survival Strategy (??2026-01-31 13:31:37 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3497861Z   ?? ?⊥?雿 Report 銝? Digital State Survival Strategy: Report artifact 6bd06f37-eaeb-406b-9b53-d87a25e1ef25 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3499486Z ?? ?潛???Ｗ?? ?振?訾??扯???蝑 (??2026-01-31 13:31:36 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3501017Z   ?? ?⊥?雿 Report 銝? ?振?訾??扯???蝑: Report artifact 11d83d32-c0fe-438c-84c7-41d99fd81c6f is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3502485Z ?? ?潛???Ｗ?? 撠??蜓甈?隞賢?脩垢 (??2026-01-31 13:01:33 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3503969Z   ?? ?⊥?雿 Report 銝? 撠??蜓甈?隞賢?脩垢: Report artifact 073242ad-bd4a-4bcf-89e8-73deecc8f4b1 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3505305Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:14:25.3506656Z --- 瑼Ｘ Notebook: 鞈??駁嚗敶潛撌梯?蝑?折蝳?---
+sync	Archive Studio Artifacts	2026-02-23T15:14:25.3508084Z ?? ?潛???Ｗ?? New Defense Doctrine Critical Infrastructure (??2026-01-19 15:05:28 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3325239Z   ?? ?⊥?雿 Report 銝? New Defense Doctrine Critical Infrastructure: Report artifact ef0c7114-fc85-4905-a385-59c504cbded6 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3329189Z ?? ?潛???Ｗ?? Zero Trust Supply Chain Defense (??2026-01-19 15:03:55 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3332697Z   ?? ?⊥?雿 Report 銝? Zero Trust Supply Chain Defense: Report artifact 2650723c-8b74-49c0-acc1-e09333f93a3f is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3334622Z ?? ?潛???Ｗ?? Critical Infrastructure Chokepoints (??2026-01-19 14:49:38 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3336805Z   ?? ?⊥?雿 Report 銝? Critical Infrastructure Chokepoints: Report artifact 2d013063-d9ce-4cc3-a72c-3a2ad502ddce is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3338611Z ?? ?潛???Ｗ?? 撌交鞈? ?亙楛?亙蝦 (??2026-01-14 08:33:16 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3340245Z   ?? ?⊥?雿 Report 銝? 撌交鞈? ?亙楛?亙蝦: Report artifact b6813432-7359-46c9-b27c-2df172c384e2 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3341907Z ?? ?潛???Ｗ?? 鞈??駁銋? ?啁?祕頦?(??2025-12-12 23:10:05 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3343466Z   ?? ?⊥?雿 Report 銝? 鞈??駁銋? ?啁?祕頦? Report artifact 57ad50a5-5ebf-464b-ba84-c047db1b9bf4 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3344818Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:14:42.3346494Z --- 瑼Ｘ Notebook: 2025 撟游??璆?AI ??蝪∪皜祈岫 ---
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3347908Z ?? ?潛???Ｗ?? AI ?啁?犖????(??2026-01-23 22:51:45 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3349818Z   ?? ?⊥?雿 Report 銝? AI ?啁?犖???? Report artifact 2845c15c-4920-4346-a0a6-02a4a996b2d6 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3351286Z ?? ?潛???Ｗ?? ?Ｘ平AI ?瑁??? (??2026-01-21 15:21:53 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3352728Z   ?? ?⊥?雿 Report 銝? ?Ｘ平AI ?瑁???: Report artifact f9f05061-fe95-400c-8654-2822398e0ca2 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3354226Z ?? ?潛???Ｗ?? Taiwan AI Industrial Scaling Strategy (??2026-01-21 15:16:17 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3356066Z   ?? ?⊥?雿 Report 銝? Taiwan AI Industrial Scaling Strategy: Report artifact 0480a866-39fc-4915-8112-025f3d827150 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3357487Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:14:42.3358646Z --- 瑼Ｘ Notebook: AI 隞??閮???刻?蝟餌絞?嗆?蝬膩 ---
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3359914Z ?? ?潛???Ｗ?? ?遣?迤?交?霈啣??I?箄雿?(??2026-01-31 04:44:38 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3361421Z   ?? ?⊥?雿 Report 銝? ?遣?迤?交?霈啣??I?箄雿? Report artifact 8e2de866-5c79-4a92-be1e-99abbd59445d is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3362895Z ?? ?潛???Ｗ?? ?圾AI?箄雿?雿?霈啣? (??2026-01-31 04:44:35 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3364357Z   ?? ?⊥?雿 Report 銝? ?圾AI?箄雿?雿?霈啣?: Report artifact c27d128d-671d-4c35-b1f1-82f642d15b0c is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3366114Z ?? ?潛???Ｗ?? AI Agent Architecture Frameworks and Memory (??2026-01-31 04:44:42 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3367850Z   ?? ?⊥?雿 Report 銝? AI Agent Architecture Frameworks and Memory: Report artifact a5dfff64-0f36-4fb8-b1a5-94e670a5c738 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3369446Z ?? ?潛???Ｗ?? ??AI隞?????亙之?西?閮 (??2026-01-31 04:43:00 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3370910Z   ?? ?⊥?雿 Report 銝? ??AI隞?????亙之?西?閮: Report artifact 255693e5-6de8-4c58-8d30-bee42a01fb64 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3372203Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:14:42.3373401Z --- 瑼Ｘ Notebook: Google Antigravity嚗I 蝺函?撟喳??韏瑁?? ---
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3374958Z ?? ?潛???Ｗ?? Antigravity Agent Development (??2026-01-22 04:23:41 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3376793Z   ?? ?⊥?雿 Report 銝? Antigravity Agent Development: Report artifact d29cc876-3721-48d9-90cf-a2834646c6eb is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3378423Z ?? ?潛???Ｗ?? Antigravity Agent Architecture (??2026-01-21 15:52:18 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3380075Z   ?? ?⊥?雿 Report 銝? Antigravity Agent Architecture: Report artifact 69a9dd77-20f7-4019-a3ae-4bbd819dde61 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3381664Z ?? ?潛???Ｗ?? Google Antigravity 撽?瘞訾?敺? (??2026-01-21 15:52:08 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3383215Z   ?? ?⊥?雿 Report 銝? Google Antigravity 撽?瘞訾?敺?: Report artifact 250bcfd6-4128-4c6a-a67c-3ca4f4b018b6 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3384578Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:14:42.3385890Z --- 瑼Ｘ Notebook: ?脩?蝑恣?摨衣?蝛?---
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3387206Z ?? ?潛???Ｗ?? Logic Driven Firewall Architecture (??2026-01-20 09:13:46 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3388844Z   ?? ?⊥?雿 Report 銝? Logic Driven Firewall Architecture: Report artifact e8fb0327-49a6-4409-88ea-af3100f886f4 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3390422Z ?? ?潛???Ｗ?? 閬???望??芸???SOP (??2026-01-20 09:02:59 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3391873Z   ?? ?⊥?雿 Report 銝? 閬???望??芸???SOP: Report artifact da908781-f6d5-4528-a55d-baeddaa79714 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3393379Z ?? ?潛???Ｗ?? Firewall Governance Transformation (??2026-01-20 08:46:57 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3395176Z   ?? ?⊥?雿 Report 銝? Firewall Governance Transformation: Report artifact 72cd60da-60cf-460e-90fe-e262c8c4c1a0 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3396915Z ?? ?潛???Ｗ?? 閬?蝞∠?嚗??游?脖???(??2026-01-20 08:48:08 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3398372Z   ?? ?⊥?雿 Report 銝? 閬?蝞∠?嚗??游?脖??? Report artifact 70fbfbfb-a5b7-4e14-a148-6614c44353d6 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3450498Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:14:42.3451821Z --- 瑼Ｘ Notebook: CS230 瘛勗漲摮貊?撠?嚗?025 蝘迤隤脩?璁汗 ---
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3453148Z ?? ?潛???Ｗ?? ?臬蝳?CS230 瘛勗漲摮貊?雓漣銝駁??瘜?閬?(??2026-01-20 13:32:04 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3454746Z   ?? ?⊥?雿 Report 銝? ?臬蝳?CS230 瘛勗漲摮貊?雓漣銝駁??瘜?閬? Report artifact b449001c-4025-4edc-808a-92d17a636ad3 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3456445Z ?? ?潛???Ｗ?? 瘛勗瘛箏嚗?甈⊥????典飛蝧楛摨血飛蝧???撘I??靽?(??2026-01-20 04:20:21 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3457921Z   ? 撌脖?頛 tmp_artifacts/CS230 瘛勗漲摮貊?撠?嚗?025 蝘迤隤脩?璁汗_瘛勗瘛箏銝甈⊥????典飛蝧楛摨血飛蝧???撘I??靽?md嚗?????Google Drive...
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3460529Z   ??銝??Google Drive 憭望?: <HttpError 404 when requesting None returned "File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.". Details: "[***'message': 'File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.', 'domain': 'global', 'reason': 'notFound', 'location': 'fileId', 'locationType': 'parameter'***">
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3462854Z ?? ?潛???Ｗ?? 瘛勗漲摮貊??詨?閰??極雿? (??2026-01-20 04:14:59 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3464365Z   ?? ?⊥?雿 Report 銝? 瘛勗漲摮貊??詨?閰??極雿?: Report artifact 623817a8-cd36-47e7-a162-0c35c0a97513 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3465945Z ?? ?潛???Ｗ?? 蟡?蝬脰楝閮毀?冽?蝔?(??2026-01-20 04:13:33 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3467410Z   ?? ?⊥?雿 Report 銝? 蟡?蝬脰楝閮毀?冽?蝔? Report artifact 1efc6ab6-9553-4bd9-b049-5850048c4236 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3469121Z ?? ?潛???Ｗ?? CNN vs. RNN ?嗆?撠? (??2026-01-20 04:02:42 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3470621Z   ?? ?⊥?雿 Report 銝? CNN vs. RNN ?嗆?撠?: Report artifact 38a5bfa6-471b-4f22-9a1d-00300e8b5c58 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3472114Z ?? ?潛???Ｗ?? 瘛勗漲摮貊??詨???閫??銵?(??2026-01-20 03:50:57 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3473589Z   ?? ?⊥?雿 Report 銝? 瘛勗漲摮貊??詨???閫??銵? Report artifact a565d50a-7836-4c3a-b101-ae5555c200bd is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3475074Z ?? ?潛???Ｗ?? 瘛勗漲摮貊?璅∪?閮毀??AI 撠??瑁?瘚?銵?(??2026-01-20 03:49:34 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3476758Z   ?? ?⊥?雿 Report 銝? 瘛勗漲摮貊?璅∪?閮毀??AI 撠??瑁?瘚?銵? Report artifact b5e5a1d5-c7dc-46d2-a564-624b0f00309d is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3478248Z ?? ?潛???Ｗ?? 瘛勗漲摮貊??詨?閫敹菜?頛” (??2026-01-20 03:48:41 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3479709Z   ?? ?⊥?雿 Report 銝? 瘛勗漲摮貊??詨?閫敹菜?頛”: Report artifact bd09e031-01d3-40dd-8001-1ec30d5d6289 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3481191Z ?? ?潛???Ｗ?? AI Career Navigator 2025 (??2026-01-20 03:35:03 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3482779Z   ?? ?⊥?雿 Report 銝? AI Career Navigator 2025: Report artifact 0fe0f98a-96fd-4bba-8684-bf528d106972 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3484336Z ?? ?潛???Ｗ?? Defense and Creation (??2026-01-20 03:34:28 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3485974Z   ?? ?⊥?雿 Report 銝? Defense and Creation: Report artifact ea463b6d-2f61-475b-9ecc-91b05cb11937 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3487704Z ?? ?潛???Ｗ?? Deep RL From Atari to ChatGPT (??2026-01-20 03:34:39 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3489331Z   ?? ?⊥?雿 Report 銝? Deep RL From Atari to ChatGPT: Report artifact 8f0f80cc-2a2f-4f5d-9816-02868814d926 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3491014Z ?? ?潛???Ｗ?? AI Engineering Systems Prompts RAG Agents (??2026-01-20 03:34:59 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3492719Z   ?? ?⊥?雿 Report 銝? AI Engineering Systems Prompts RAG Agents: Report artifact 284900da-7ade-4aba-a786-0c737d2169b3 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3494343Z ?? ?潛???Ｗ?? AI Project Debugging and Speed (??2026-01-20 03:34:45 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:14:42.3496042Z   ?? ?⊥?雿 Report 銝? AI Project Debugging and Speed: Report artifact 6a9bf17c-e6d5-4be0-8576-c9991233fa05 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2391780Z ?? ?潛???Ｗ?? AI Project Real World Management (??2026-01-19 13:27:39 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2394912Z   ?? ?⊥?雿 Report 銝? AI Project Real World Management: Report artifact 3e4891c1-e35c-466f-a0de-85f45651bc16 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2398353Z ?? ?潛???Ｗ?? Deep Learning Roadmap Fundamentals to GenAI (??2026-01-19 13:27:21 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2401699Z   ?? ?⊥?雿 Report 銝? Deep Learning Roadmap Fundamentals to GenAI: Report artifact 934b4052-3e60-4d21-95d5-7ed72345d921 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2403862Z ?? ?潛???Ｗ?? Deep Learning Project Strategies (??2026-01-19 13:27:29 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2405855Z   ?? ?⊥?雿 Report 銝? Deep Learning Project Strategies: Report artifact 493859ca-4e4e-4061-b8c0-e699be768665 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2407494Z ?? ?潛???Ｗ?? CS230 瘛勗漲摮虫??詨??? (??2026-01-19 07:42:51 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2409006Z   ?? ?⊥?雿 Report 銝? CS230 瘛勗漲摮虫??詨???: Report artifact 154cc1d8-a001-4e83-8ff8-d7c4c5ff8933 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2410517Z ?? ?潛???Ｗ?? 瘛勗漲摮貊???暻潸? (??2026-01-19 04:46:54 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2411979Z   ?? ?⊥?雿 Report 銝? 瘛勗漲摮貊???暻潸?: Report artifact 615cf3a6-9bd0-421e-9fe4-873ef7eed883 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2413310Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:02.2414524Z --- 瑼Ｘ Notebook: 鞈?瘝餌???雯頝舐?蝛?---
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2415938Z ?? ?潛???Ｗ?? ?函?憌?璅∪????雯??(??2026-01-20 02:15:11 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2417494Z   ?? ?⊥?雿 Report 銝? ?函?憌?璅∪????雯?? Report artifact e4cc4dc4-701d-46bc-a816-f28b60a4964a is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2418848Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:02.2420063Z --- 瑼Ｘ Notebook: NotebookLM ?箸?內閰頂蝯望瑽?蝛嗅??---
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2423426Z ?? ?潛???Ｗ?? 霈?NotebookLM 蝎暹???蝪∪??銵?(??2026-01-18 03:06:08 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2425001Z   ?? ?⊥?雿 Report 銝? 霈?NotebookLM 蝎暹???蝪∪??銵? Report artifact 203475c0-3a51-4e36-867a-1858bd7e81d1 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2426714Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:02.2427971Z --- 瑼Ｘ Notebook: ??箇?閮剜銋雿??批?獢??菜嚗閰??? ---
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2429246Z ?? ?潛???Ｗ?? ?振鞈??脰??詨?蝑 (??2026-01-18 03:28:10 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2431096Z   ?? ?⊥?雿 Report 銝? ?振鞈??脰??詨?蝑: Report artifact 39fe37c4-a491-4491-820a-1f95ab0fb5f2 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2432641Z ?? ?潛???Ｗ?? Digital Resilience Zero Trust Wargaming (??2026-01-15 14:50:21 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2434328Z   ?? ?⊥?雿 Report 銝? Digital Resilience Zero Trust Wargaming: Report artifact 2ebbdda6-5849-4376-b031-aeb668ed79d4 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2436490Z ?? ?潛???Ｗ?? Engineer National Resilience (??2026-01-15 10:26:42 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2438109Z   ?? ?⊥?雿 Report 銝? Engineer National Resilience: Report artifact 872751fc-f0b8-4e71-8a66-83f8535e67fc is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2439637Z ?? ?潛???Ｗ?? ?訾??批??靽∩遙?啁 (??2026-01-15 10:27:21 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2441068Z   ?? ?⊥?雿 Report 銝? ?訾??批??靽∩遙?啁: Report artifact bcf68ef8-1bae-45eb-b7c7-dd2014e4674b is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2442465Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:02.2443630Z --- 瑼Ｘ Notebook:  ---
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2444682Z   瘝??Ｗ?押?sync	Archive Studio Artifacts	2026-02-23T15:15:02.2446061Z --- 瑼Ｘ Notebook: ?閮剜APT嚗?隡?銵?菜葫 ---
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2447337Z ?? ?潛???Ｗ?? AI撽?蝬脰楝?餅??拙 (??2026-01-14 08:34:36 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2448815Z   ?? ?⊥?雿 Report 銝? AI撽?蝬脰楝?餅??拙: Report artifact e7dbc796-7923-466c-af95-61d4f883c957 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2450260Z ?? ?潛???Ｗ?? OT ??箇?閮剜?????(??2025-12-04 07:21:16 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2451761Z   ?? ?⊥?雿 Report 銝? OT ??箇?閮剜????? Report artifact 490edd55-db8c-4703-9b6c-7e314029d5a3 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2453252Z ?? ?潛???Ｗ?? GTG-1002鈭辣嚗I ?洵銝?渡雯頝舀??(??2025-12-03 09:18:56 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2454766Z   ?? ?⊥?雿 Report 銝? GTG-1002鈭辣嚗I ?洵銝?渡雯頝舀?? Report artifact a4483f9c-7e21-4e56-89ab-9e37befd4826 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2456365Z ?? ?潛???Ｗ?? Autonomous Defense (??2025-12-03 09:19:15 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2457884Z   ?? ?⊥?雿 Report 銝? Autonomous Defense: Report artifact a81ebb90-c421-4256-973c-e1f4c4f54c7a is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2459406Z ?? ?潛???Ｗ?? Autonomous Cyber Arms Race (??2025-12-03 04:22:56 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2460995Z   ?? ?⊥?雿 Report 銝? Autonomous Cyber Arms Race: Report artifact 3e346f85-8293-4465-bc5b-44c1b53442f5 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2462507Z ?? ?潛???Ｗ?? AI Cyber Resilience (??2025-12-01 09:32:56 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2463999Z   ?? ?⊥?雿 Report 銝? AI Cyber Resilience: Report artifact 1f4de2e5-4e97-4ab3-b927-2ad6ce3f7479 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2465822Z ?? ?潛???Ｗ?? Critical Infrastructure APT Defense Shift (??2025-12-01 09:17:57 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2467580Z   ?? ?⊥?雿 Report 銝? Critical Infrastructure APT Defense Shift: Report artifact 973c4d45-7dfb-4e7e-ae5c-3205fa6952d9 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2469012Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:02.2470220Z --- 瑼Ｘ Notebook: How To Build A Life, from The Atlantic ---
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2471536Z ?? ?潛???Ｗ?? Scorecards to Light (??2025-12-05 16:17:25 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2473027Z   ?? ?⊥?雿 Report 銝? Scorecards to Light: Report artifact 4d7fbd41-5369-4a31-8e87-d8ddf74ae7e2 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2474625Z ?? ?潛???Ｗ?? Ancient wisdom modern science happiness strategies (??2025-12-01 19:23:40 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2477688Z   ?? ?⊥?雿 Report 銝? Ancient wisdom modern science happiness strategies: Report artifact 868ea206-6d5e-4f19-8ab9-c78f1c1ae323 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2479491Z ?? ?潛???Ｗ?? Durable Happiness The Architecture of Flourishing (??2025-12-01 19:23:55 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2481273Z   ?? ?⊥?雿 Report 銝? Durable Happiness The Architecture of Flourishing: Report artifact 25507a1b-b593-46f2-ad67-ba99e58e217a is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2483101Z ?? ?潛???Ｗ?? Ancient Secrets to a Happy Life (??2025-11-18 22:09:31 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2484733Z   ?? ?⊥?雿 Report 銝? Ancient Secrets to a Happy Life: Report artifact 141451e9-6bbd-421a-99d8-dfd60554dcd1 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2486707Z ?? ?潛???Ｗ?? The Timeless Blueprint for the Good Life: Stoics, Science, and the Strategy for Enduring Well-being (??2025-10-10 14:57:29 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2488828Z   ?? ?⊥?雿 Report 銝? The Timeless Blueprint for the Good Life: Stoics, Science, and the Strategy for Enduring Well-being: Report artifact 495f85d3-e40d-4416-8e9f-cd9062c437fb is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2491027Z ?? ?潛???Ｗ?? The Ancient Blueprint for Flourishing: How Stoics, Aristotle, and Modern Psychology Define the Good Life (??2025-10-10 14:44:39 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2493448Z   ?? ?⊥?雿 Report 銝? The Ancient Blueprint for Flourishing: How Stoics, Aristotle, and Modern Psychology Define the Good Life: Report artifact 7dab8b90-2ac9-4b0e-9e02-fae78759efa0 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2495695Z ?? ?潛???Ｗ?? From Plato to Dopamine: Escaping the Achievement Trap and Building Aristotle's Eudaimonia (??2025-10-07 15:09:28 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2497822Z   ?? ?⊥?雿 Report 銝? From Plato to Dopamine: Escaping the Achievement Trap and Building Aristotle's Eudaimonia: Report artifact 57bf77cf-eb8c-48f1-a040-33aaa7c415ac is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2499886Z ?? ?潛???Ｗ?? Plato to Neuroscience: How to Build an Unconquerable Inner Life and Achieve Eudaimonia (??2025-10-06 15:10:39 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2501968Z   ?? ?⊥?雿 Report 銝? Plato to Neuroscience: How to Build an Unconquerable Inner Life and Achieve Eudaimonia: Report artifact 7c6d03a7-733d-45e5-a2c6-76a7f054d24c is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2504031Z ?? ?潛???Ｗ?? From Validation Trap to Euthymia: Ancient Philosophy's Guide to Unlocking the Stable and Good Life (??2025-09-24 15:44:54 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2506412Z   ?? ?⊥?雿 Report 銝? From Validation Trap to Euthymia: Ancient Philosophy's Guide to Unlocking the Stable and Good Life: Report artifact 8f4c423c-53ae-4527-8525-05988846aee7 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2508294Z ?? ?潛???Ｗ?? A User's Manual for the Mind (??2025-09-09 04:41:25 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2509890Z   ?? ?⊥?雿 Report 銝? A User's Manual for the Mind: Report artifact 2ce944f8-abbb-4b6a-8250-f6305c183d2f is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2521998Z ?? ?潛???Ｗ?? How to Build a Life (??2025-05-19 16:42:56 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2523574Z   ?? ?⊥?雿 Report 銝? How to Build a Life: Report artifact 847507d2-f937-4b32-8810-122cad5a4f82 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2525428Z ?? ?潛???Ｗ?? A Compendium of Philosophical and Practical Happiness (??2025-10-10 14:44:48 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:02.2527513Z   ?? ?⊥?雿 Report 銝? A Compendium of Philosophical and Practical Happiness: Report artifact 3199e884-ac14-4115-abe2-e61f051f3e09 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7426306Z ?? ?潛???Ｗ?? Paths to Philosophical and Practical Well-Being (??2025-09-24 15:45:14 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7429110Z   ?? ?⊥?雿 Report 銝? Paths to Philosophical and Practical Well-Being: Report artifact 469bd07c-4272-4b04-8ffb-37e0dbc80738 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7431183Z ?? ?潛???Ｗ?? Paths to Well-Being: Ancient and Modern Philosophy (??2025-10-07 15:10:18 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7433276Z   ?? ?⊥?雿 Report 銝? Paths to Well-Being: Ancient and Modern Philosophy: Report artifact 81a0b251-82be-4d6e-9fbc-fbed914e385c is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7435131Z ?? ?潛???Ｗ?? A Compendium of Philosophical and Practical Happiness (??2025-11-06 16:38:42 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7437281Z   ?? ?⊥?雿 Report 銝? A Compendium of Philosophical and Practical Happiness: Report artifact 8619f02b-069f-4a2b-a65f-2001059af95a is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7439062Z ?? ?潛???Ｗ?? The Pursuit of Happiness: Strategies and Obstacles (??2025-07-12 02:05:33 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7441246Z   ?? ?⊥?雿 Report 銝? The Pursuit of Happiness: Strategies and Obstacles: Report artifact dbde53df-a088-4a2c-bffe-44bfde21d844 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7443028Z ?? ?潛???Ｗ?? A Compendium of Philosophical and Practical Happiness (??2025-10-10 14:58:37 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7444818Z   ?? ?⊥?雿 Report 銝? A Compendium of Philosophical and Practical Happiness: Report artifact ea35bdb6-8383-4227-9757-568555db88bd is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7446521Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:38.7447784Z --- 瑼Ｘ Notebook: 2025?函??踹??訾?頧????曇??隅?Ｗ??---
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7449106Z ?? ?潛???Ｗ?? Autonomous AI Global Fracture (??2025-12-29 07:17:28 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7450743Z   ?? ?⊥?雿 Report 銝? Autonomous AI Global Fracture: Report artifact 4790af6d-5afe-4021-ad9d-c822762c1f9c is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7452313Z ?? ?潛???Ｗ?? 2025?踹?頧? 瘝餌?璅∪?憭抒蕃頧?(??2025-12-29 07:12:46 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7453809Z   ?? ?⊥?雿 Report 銝? 2025?踹?頧? 瘝餌?璅∪?憭抒蕃頧? Report artifact 32bdab71-0f96-499f-ba52-c09d083373f6 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7455140Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:38.7456496Z --- 瑼Ｘ Notebook: ??箇?閮剜蝬脰楝摰??恣??隞嗅??---
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7457777Z ?? ?潛???Ｗ?? Colonial Pipeline 頧暺?(??2025-12-07 04:15:04 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7459317Z   ?? ?⊥?雿 Report 銝? Colonial Pipeline 頧暺? Report artifact a5ab4b92-6b64-442f-8ee8-74ff1d58240d is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7460868Z ?? ?潛???Ｗ?? Pipeline Crisis Policy Paradigm (??2025-12-07 03:39:54 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7462493Z   ?? ?⊥?雿 Report 銝? Pipeline Crisis Policy Paradigm: Report artifact 6462b894-a97e-4315-a812-30679c3743c3 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7464031Z ?? ?潛???Ｗ?? 瘝寧恣?望??孵神鞈??輻? (??2025-12-07 03:45:17 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7465664Z   ?? ?⊥?雿 Report 銝? 瘝寧恣?望??孵神鞈??輻?: Report artifact 4803bb0a-bc51-40ea-ac3f-98f357a79e79 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7466994Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:38.7468161Z --- 瑼Ｘ Notebook: ?賣?撌交蝟餌絞鞈??駁銋撌梁敶?---
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7469413Z ?? ?潛???Ｗ?? ?訾??蔣 鞈??舐蔽瑼? (??2025-12-07 13:34:46 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7470845Z   ?? ?⊥?雿 Report 銝? ?訾??蔣 鞈??舐蔽瑼?: Report artifact 8edafc39-09d9-42dc-87ee-9bb82c36deaf is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7472300Z ?? ?潛???Ｗ?? ?雁?? ?嗡縑隞餉?摰?芯? (??2025-12-07 13:14:10 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7473735Z   ?? ?⊥?雿 Report 銝? ?雁?? ?嗡縑隞餉?摰?芯?: Report artifact 2516eefa-2733-44de-8f65-92c615c2b469 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7475162Z ?? ?潛???Ｗ?? ?訾??蔣 ??啁 (??2025-12-07 13:07:59 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7476790Z   ?? ?⊥?雿 Report 銝? ?訾??蔣 ??啁: Report artifact 8292107c-b9a5-4a88-8e56-d688249d1123 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7478214Z ?? ?潛???Ｗ?? 鞈??脤?嚗?怎?銋?????(??2025-12-02 04:15:53 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7479642Z   ?? ?⊥?雿 Report 銝? 鞈??脤?嚗?怎?銋????? Report artifact 2c7000ba-870b-43a0-848f-a907bcd63cb4 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7481286Z ?? ?潛???Ｗ?? 撌交蝟餌?韏??駁? (??2025-12-01 14:57:27 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7482728Z   ?? ?⊥?雿 Report 銝? 撌交蝟餌?韏??駁?: Report artifact 4f2ac9f9-068d-4a67-b528-8ac02565bb56 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7484241Z ?? ?潛???Ｗ?? Lurking War Critical Systems Resilience (??2025-12-01 14:44:16 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7486360Z   ?? ?⊥?雿 Report 銝? Lurking War Critical Systems Resilience: Report artifact dee24dfc-ab3d-40d3-86e9-59f58b76ab2c is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7487986Z ?? ?潛???Ｗ?? 蝬脰楝摰嚗??渡?銝???撅 (??2025-12-01 14:35:03 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7489426Z   ?? ?⊥?雿 Report 銝? 蝬脰楝摰嚗??渡?銝???撅: Report artifact 80351628-92d8-4353-be2e-4f178e28f83e is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7490887Z ?? ?潛???Ｗ?? OT APT 瞏??啗????箏皜祈???(??2025-12-01 14:28:35 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7492372Z   ?? ?⊥?雿 Report 銝? OT APT 瞏??啗????箏皜祈??? Report artifact 574b396c-ea00-45f6-9191-53b78ccc0abb is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7493808Z ?? ?潛???Ｗ?? ?賣?鞈??抒???(??2025-12-01 13:57:22 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7495238Z   ?? ?⊥?雿 Report 銝? ?賣?鞈??抒??? Report artifact 42cd6ab4-ee6e-4b01-becf-33b3b36852c5 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7496977Z ?? ?潛???Ｗ?? Zero Trust Resilience Strategy (??2025-12-01 13:26:29 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7498584Z   ?? ?⊥?雿 Report 銝? Zero Trust Resilience Strategy: Report artifact 03980a97-8998-45d6-9133-53528aaa0662 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7500208Z ?? ?潛???Ｗ?? Changing The Economics Of Cyber Attack (??2025-12-01 13:14:57 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7501876Z   ?? ?⊥?雿 Report 銝? Changing The Economics Of Cyber Attack: Report artifact fb309555-1a93-46e9-8020-9864a094acde is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7503433Z ?? ?潛???Ｗ?? ?嗡縑隞餉?摰蝳行蝑 (??2025-12-01 13:19:34 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7504880Z   ?? ?⊥?雿 Report 銝? ?嗡縑隞餉?摰蝳行蝑: Report artifact d9019ad3-0285-48fb-8dab-befaf71ce9ab is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7506432Z ?? ?潛???Ｗ?? 鞈??脩戌?堆???擏剖恥? (??2025-12-01 13:19:07 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7507885Z   ?? ?⊥?雿 Report 銝? 鞈??脩戌?堆???擏剖恥?: Report artifact 46f38389-77fd-4bd8-8d2e-3ee59934e681 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7509405Z ?? ?潛???Ｗ?? Critical Infrastructure Resilience (??2025-12-01 13:03:18 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7511074Z   ?? ?⊥?雿 Report 銝? Critical Infrastructure Resilience: Report artifact c30174f9-3cf4-48f0-bec8-4234345cb072 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7512851Z ?? ?潛???Ｗ?? Energy Zero Trust Defense (??2025-12-01 12:35:47 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7514452Z   ?? ?⊥?雿 Report 銝? Energy Zero Trust Defense: Report artifact 0d7bb560-b54b-441e-ba90-5afba222765e is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7516211Z ?? ?潛???Ｗ?? 蝚??其遢-Expanding Security Zero Trust Blueprint v2 (??2025-12-01 09:34:15 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7517982Z   ?? ?⊥?雿 Report 銝? 蝚??其遢-Expanding Security Zero Trust Blueprint v2: Report artifact bd800cb7-d8b2-410c-a771-efeec2194c72 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7519669Z ?? ?潛???Ｗ?? 蝚??其遢-Strategic Cyber Offense Defense v2 (??2025-12-01 09:20:37 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7521355Z   ?? ?⊥?雿 Report 銝? 蝚??其遢-Strategic Cyber Offense Defense v2: Report artifact 9fc985a5-dfda-40f5-b761-7dd3525398d4 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7523117Z ?? ?潛???Ｗ?? ?啁?? 敺??圾瑽?折蝳?(??2025-12-01 08:54:14 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7524580Z   ?? ?⊥?雿 Report 銝? ?啁?? 敺??圾瑽?折蝳? Report artifact a3f30a97-0a60-4a62-a2ed-6084d894a8a9 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7526148Z ?? ?潛???Ｗ?? 蝚??其遢-?雁?脤???瘜刻隅?▔1 (??2025-11-30 07:35:51 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7527821Z   ?? ?⊥?雿 Report 銝? 蝚??其遢-?雁?脤???瘜刻隅?▔1: Report artifact dbd24cfb-50d4-40c9-b595-df384e708b01 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7529273Z ?? ?潛???Ｗ?? 蝚??其遢-鞈??駁?敶潛撌恿1 (??2025-11-30 06:07:59 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7530738Z   ?? ?⊥?雿 Report 銝? 蝚??其遢-鞈??駁?敶潛撌恿1: Report artifact de8ddb37-e6d4-4ea0-aae3-bfdaa2c5a42a is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7532188Z ?? ?潛???Ｗ?? 撌交鞈??駁蝑v1 (??2025-11-30 07:49:36 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7533621Z   ?? ?⊥?雿 Report 銝? 撌交鞈??駁蝑v1: Report artifact 9541f79f-42eb-470e-8642-f81511594524 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7535036Z ?? ?潛???Ｗ?? ?賣?撌交摰?駁蝑 (??2025-11-30 03:45:57 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7536578Z   ?? ?⊥?雿 Report 銝? ?賣?撌交摰?駁蝑: Report artifact 2e0ec7d3-2119-4cd8-82dd-ebe31b06f729 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7538016Z ?? ?潛???Ｗ?? ?雁?脤?????瑽?(??2025-11-30 03:24:01 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:38.7539438Z   ?? ?⊥?雿 Report 銝? ?雁?脤?????瑽? Report artifact b6eabc6f-9135-4631-8d95-54533eeb94a1 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7312911Z ?? ?潛???Ｗ?? ?脩???蝢?瘣??勗耦?啣 (??2025-11-30 01:50:54 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7314969Z   ?? ?⊥?雿 Report 銝? ?脩???蝢?瘣??勗耦?啣: Report artifact 4b68c25e-1f37-447a-b3f7-acbe4b680bbb is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7317153Z ?? ?潛???Ｗ?? ?賣?鞈??駁蝑 ?亙楛?亙蝦 (??2025-11-29 14:32:59 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7319007Z   ?? ?⊥?雿 Report 銝? ?賣?鞈??駁蝑 ?亙楛?亙蝦: Report artifact cdc79c09-a91e-4f1a-905b-b863cdb6a006 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7320834Z ?? ?潛???Ｗ?? 鞈??駁嚗妣摰Ｗ??祈??脩戌 (??2025-11-28 14:13:23 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7322644Z   ?? ?⊥?雿 Report 銝? 鞈??駁嚗妣摰Ｗ??祈??脩戌: Report artifact 8c663f73-bba6-4707-941a-bd4b280f6f23 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7324367Z ?? ?潛???Ｗ?? OT Security Strategic Defense (??2025-11-28 13:11:41 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7326401Z   ?? ?⊥?雿 Report 銝? OT Security Strategic Defense: Report artifact 9345d477-3f3c-43bb-8de2-129b7dd5fc61 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7328278Z ?? ?潛???Ｗ?? Energy Cyber War Strategy (??2025-11-27 15:46:29 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7330070Z   ?? ?⊥?雿 Report 銝? Energy Cyber War Strategy: Report artifact 57b907fb-36bc-4ffb-ad75-eddc1358164b is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7331808Z ?? ?潛???Ｗ?? ?唬誨韏??駁??(??2025-11-27 15:46:51 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7354400Z   ?? ?⊥?雿 Report 銝? ?唬誨韏??駁?? Report artifact fd047900-ce80-4851-bf93-8400439af252 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7355902Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:55.7357143Z --- 瑼Ｘ Notebook: Globalisation since 1997 ---
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7358486Z ?? ?潛???Ｗ?? The Story of Globalization (??2025-11-04 02:31:41 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7360113Z   ?? ?⊥?雿 Report 銝? The Story of Globalization: Report artifact 026e0e7b-227c-4e78-baf6-442be782cc9e is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7362052Z ?? ?潛???Ｗ?? From Hyper-Globalization to Homeland Economics: Why the World Economy Just Hit the U-Turn Button (??2025-11-04 02:31:45 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7364590Z   ?? ?⊥?雿 Report 銝? From Hyper-Globalization to Homeland Economics: Why the World Economy Just Hit the U-Turn Button: Report artifact 4044731a-a330-4c79-a059-a9917e368ce8 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7366755Z ?? ?潛???Ｗ?? The Ebb and Flow of Integration: A Historical Review of Globalization (??2025-11-04 02:32:34 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7369216Z   ? 撌脖?頛 tmp_artifacts/Globalisation since 1997_The Ebb and Flow of Integration A Historical Review of Globalization.md嚗?????Google Drive...
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7372137Z   ??銝??Google Drive 憭望?: <HttpError 404 when requesting None returned "File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.". Details: "[***'message': 'File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.', 'domain': 'global', 'reason': 'notFound', 'location': 'fileId', 'locationType': 'parameter'***">
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7374572Z ?? ?潛???Ｗ?? The Great Debate: A Balanced Look at Globalization (??2025-11-04 02:32:50 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7376430Z   ? 撌脖?頛 tmp_artifacts/Globalisation since 1997_The Great Debate A Balanced Look at Globalization.md嚗?????Google Drive...
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7379111Z   ??銝??Google Drive 憭望?: <HttpError 404 when requesting None returned "File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.". Details: "[***'message': 'File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.', 'domain': 'global', 'reason': 'notFound', 'location': 'fileId', 'locationType': 'parameter'***">
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7381411Z ?? ?潛???Ｗ?? Globalisation Quiz (??2025-11-04 02:31:55 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7382963Z   ?? ?⊥?雿 Report 銝? Globalisation Quiz: Report artifact e1927dfa-8881-4858-8cc9-5faaf9faa0b0 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7384500Z ?? ?潛???Ｗ?? Globalization Flashcards (??2025-11-04 02:31:51 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7386271Z   ?? ?⊥?雿 Report 銝? Globalization Flashcards: Report artifact 83da86fb-8390-4137-a4e2-a0d4a51bf681 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7387932Z ?? ?潛???Ｗ?? The Epochs and Challenges of Globalisation (??2025-11-04 02:32:19 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7389698Z   ?? ?⊥?雿 Report 銝? The Epochs and Challenges of Globalisation: Report artifact b6031c9b-f33f-48de-91cc-9eab3e6fe9dc is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7391155Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:55.7392351Z --- 瑼Ｘ Notebook: HITCON CISO 2025瘣??勗? ---
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7393751Z ?? ?潛???Ｗ?? APAC Cyber Leadership Strategic Insights (??2025-12-21 13:03:21 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7395596Z   ?? ?⊥?雿 Report 銝? APAC Cyber Leadership Strategic Insights: Report artifact 8d85506f-8671-4360-a40b-07fb2240d389 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7397191Z ?? ?潛???Ｗ?? ?芯?鞈??啁??瘣? (??2025-12-21 13:03:26 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7398658Z   ?? ?⊥?雿 Report 銝? ?芯?鞈??啁??瘣?: Report artifact 74200564-c1bb-4b0b-b137-48f5063b3f33 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7399975Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:55.7401205Z --- 瑼Ｘ Notebook: 敺?AlphaGo ??AlphaFold嚗蕭撠?箄 ---
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7402679Z ?? ?潛???Ｗ?? Mastering Games Solving Life (??2025-12-01 08:54:48 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7404331Z   ?? ?⊥?雿 Report 銝? Mastering Games Solving Life: Report artifact 6339ba87-2635-494c-bc2b-aed416b94375 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7406243Z ?? ?潛???Ｗ?? DeepMind 憒??券??脫???箸 (??2025-12-01 08:14:04 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7407793Z   ?? ?⊥?雿 Report 銝? DeepMind 憒??券??脫???箸: Report artifact dbf7b3f7-d667-4e3c-9037-4d537b830c14 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7409295Z ?? ?潛???Ｗ?? 皜豢??啁?摮衣??箄憌? (??2025-12-01 08:14:16 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7410758Z   ?? ?⊥?雿 Report 銝? 皜豢??啁?摮衣??箄憌?: Report artifact 32003c78-dc3b-4d73-accb-f3634372cd21 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7412206Z ?? ?潛???Ｗ?? ?箄?? (??2025-12-01 08:15:00 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7413626Z   ?? ?⊥?雿 Report 銝? ?箄??: Report artifact 4fc91446-12f1-4a01-a761-5520d2486a62 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7415112Z ?? ?潛???Ｗ?? DeepMind嚗犖撌仿?箸?蕭瘙?蝘飛蝒 (??2025-12-01 08:56:05 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7416820Z   ?? ?⊥?雿 Report 銝? DeepMind嚗犖撌仿?箸?蕭瘙?蝘飛蝒: Report artifact 059296fd-a76b-4b99-baee-73fa9d991136 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7418195Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:55.7419348Z --- 瑼Ｘ Notebook: ?賣?鞈?蝪∪閮剛?獢 ---
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7420618Z ?? ?潛???Ｗ?? 蝬脰楝?扯???(??2025-11-22 11:44:45 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7422056Z   ?? ?⊥?雿 Report 銝? 蝬脰楝?扯??? Report artifact 6f5ac874-c924-4d67-96cf-3d0a671538ff is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7423510Z ?? ?潛???Ｗ?? ???脩戌?圈靽∩遙?嗆? (??2025-11-22 11:44:24 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7425170Z   ?? ?⊥?雿 Report 銝? ???脩戌?圈靽∩遙?嗆?: Report artifact 5a1f3f55-0e9e-4374-a9e1-68f3f94b5219 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7426630Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:55.7427834Z --- 瑼Ｘ Notebook: ?釭????蝭???摰風 ---
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7429104Z ?? ?潛???Ｗ?? ????摰風銵?AI???? (??2025-12-14 04:32:33 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7430595Z   ?? ?⊥?雿 Report 銝? ????摰風銵?AI????: Report artifact 6c8938a5-8fde-4f0c-9fb3-8f3d1339d5db is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7431917Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:55.7433063Z --- 瑼Ｘ Notebook: GPT-5.1 ?內撌亦??? ---
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7434356Z ?? ?潛???Ｗ?? GPT ??蝷箸?銵圾瘙?AI 蝎曄??? (??2025-12-13 15:58:20 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7436057Z   ?? ?⊥?雿 Report 銝? GPT ??蝷箸?銵圾瘙?AI 蝎曄???: Report artifact 84dc102a-6b05-4f84-b6b3-d7e494578b5a is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7437414Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:55.7438539Z --- 瑼Ｘ Notebook: ?AI鋆賭?蝪∪ ---
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7439797Z ?? ?潛???Ｗ?? ?失憸刻?璆萇陛憸函??詨?撌桃?典 (??2025-11-30 00:23:38 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7441277Z   ?? ?⊥?雿 Report 銝? ?失憸刻?璆萇陛憸函??詨?撌桃?典: Report artifact 62756220-d826-4f22-9897-607bb1ee8ca9 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7442745Z ?? ?潛???Ｗ?? AI蝪∪鋆賭?撖行憭批 (??2025-10-28 10:11:25 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7444207Z   ?? ?⊥?雿 Report 銝? AI蝪∪鋆賭?撖行憭批: Report artifact ce384da5-212b-4c50-88cb-5b3b214dc815 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7445608Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:15:55.7446754Z --- 瑼Ｘ Notebook: AI?內撌亦???????---
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7448090Z ?? ?潛???Ｗ?? Prompting Power The AI Frontier (??2025-11-22 11:35:24 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7449748Z   ?? ?⊥?雿 Report 銝? Prompting Power The AI Frontier: Report artifact 9e60d14c-f97a-4edf-aa8d-db430e3fa22b is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7451314Z ?? ?潛???Ｗ?? AI?內撌亦?敺?隞文?菟?(??2025-11-22 11:06:42 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7452982Z   ?? ?⊥?雿 Report 銝? AI?內撌亦?敺?隞文?菟? Report artifact 35eb876b-b168-49af-920f-e7636a973f0c is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7454470Z ?? ?潛???Ｗ?? AI ?內撌亦?撖西?????(??2025-11-22 11:06:25 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:15:55.7456033Z   ?? ?⊥?雿 Report 銝? AI ?內撌亦?撖西????? Report artifact 0fd7c4e5-70f0-4f81-ac72-7b5e36050e32 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4810369Z ?? ?潛???Ｗ?? ?內撌亦??仿??? (??2025-11-22 11:00:41 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4813726Z   ?? ?⊥?雿 Report 銝? ?內撌亦??仿???: Report artifact 9b8f4ddd-208b-4ed1-831d-3f0921326e52 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4817017Z ?? ?潛???Ｗ?? Google?脩垢????撖怠?撘嫂I?? (??2025-11-22 10:51:26 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4819636Z   ?? ?⊥?雿 Report 銝? Google?脩垢????撖怠?撘嫂I??: Report artifact 59bccf9e-318f-45fc-95fb-18d24efcbd3f is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4822016Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:16:13.4823453Z --- 瑼Ｘ Notebook: Trends in Health, Wealth and Happiness ---
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4825053Z ?? ?潛???Ｗ?? The Great Escape Two Centuries of Progress (??2025-11-20 19:43:49 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4827264Z   ?? ?⊥?雿 Report 銝? The Great Escape Two Centuries of Progress: Report artifact 1dbc672d-2396-4333-ba12-85e0316368e8 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4829001Z ?? ?潛???Ｗ?? The Paradox of Progress: Better, Awful, Much Better (??2025-11-20 19:43:28 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4830762Z   ?? ?⊥?雿 Report 銝? The Paradox of Progress: Better, Awful, Much Better: Report artifact fd79db45-27e9-486e-a005-b8817935ce5c is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4832833Z ?? ?潛???Ｗ?? Economics Flashcards (??2025-09-18 23:05:19 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4834376Z   ?? ?⊥?雿 Report 銝? Economics Flashcards: Report artifact 89919c32-86d0-4903-bf55-d5bf571b68f4 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4836236Z ?? ?潛???Ｗ?? The World Today: Better, Awful, and Improvable (??2025-07-26 18:20:02 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4838014Z   ?? ?⊥?雿 Report 銝? The World Today: Better, Awful, and Improvable: Report artifact 09bf60b3-1e27-4168-81e2-456a6bf44b61 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4839704Z ?? ?潛???Ｗ?? Trends in Health, Wealth and Happines (??2025-06-07 17:12:10 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4841415Z   ?? ?⊥?雿 Report 銝? Trends in Health, Wealth and Happines: Report artifact 58e78252-29c1-4027-8ba8-1fb41edf5fc4 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4843058Z ?? ?潛???Ｗ?? Global Development: Trends and Issues (??2025-04-15 07:55:13 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4844732Z   ?? ?⊥?雿 Report 銝? Global Development: Trends and Issues: Report artifact ad0848ec-ca83-4291-9ac6-aee960021025 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4846393Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:16:13.4847575Z --- 瑼Ｘ Notebook: The World Ahead 2025 ---
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4848964Z ?? ?潛???Ｗ?? The World Ahead: 2025's Surprising Contradictions (??2025-07-29 02:17:52 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4850713Z   ?? ?⊥?雿 Report 銝? The World Ahead: 2025's Surprising Contradictions: Report artifact f28cf356-7907-4d55-88bd-e8cf96d657d0 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4852481Z ?? ?潛???Ｗ?? The World Ahead 2025: Tech, Economy, and Geopolitics Unpacked (??2025-07-07 22:06:41 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4854326Z   ?? ?⊥?雿 Report 銝? The World Ahead 2025: Tech, Economy, and Geopolitics Unpacked: Report artifact abb3f325-c0ec-4986-bb63-8d17ea77b450 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4856599Z ?? ?潛???Ｗ?? The World Ahead 2025: Geopolitics & Global Affairs (??2025-07-10 13:10:34 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4858357Z   ?? ?⊥?雿 Report 銝? The World Ahead 2025: Geopolitics & Global Affairs: Report artifact 1765677d-ca41-47c4-a4cb-dc6e7a0e6892 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4860192Z ?? ?潛???Ｗ?? The World Ahead: Geopolitics, Economy, Technology, and Society in 2025 (??2025-07-30 20:14:44 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4862102Z   ?? ?⊥?雿 Report 銝? The World Ahead: Geopolitics, Economy, Technology, and Society in 2025: Report artifact 6e98caf4-8251-4f38-bc1f-073a2712d823 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4863968Z ?? ?潛???Ｗ?? The World Ahead: Geopolitics, Economy, Technology, Society in 2025 (??2025-08-19 00:53:58 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4866083Z   ?? ?⊥?雿 Report 銝? The World Ahead: Geopolitics, Economy, Technology, Society in 2025: Report artifact cdfd48bf-fd27-47c1-b5a9-61bc21c46d75 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4867662Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:16:13.4874105Z --- 瑼Ｘ Notebook: Introduction to NotebookLM ---
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4875887Z ?? ?潛???Ｗ?? NotebookLM The AI Research and Thinking Partner (??2026-02-13 20:52:00 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4877762Z   ?? ?⊥?雿 Report 銝? NotebookLM The AI Research and Thinking Partner: Report artifact 73cff563-ecc5-46ee-bc1d-586465f383a5 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4879704Z ?? ?潛???Ｗ?? NotebookLM AI Research Workflow (??2026-01-27 20:06:32 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4881382Z   ?? ?⊥?雿 Report 銝? NotebookLM AI Research Workflow: Report artifact 549ec0b2-21f3-42ee-8946-c7a6dc7008ac is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4882996Z ?? ?潛???Ｗ?? NotebookLM The Insight Engine (??2026-01-13 22:11:09 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4884623Z   ?? ?⊥?雿 Report 銝? NotebookLM The Insight Engine: Report artifact f72dcaac-0e1f-41bb-9542-49b0333503bd is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4886325Z ?? ?潛???Ｗ?? NotebookLM (??2025-12-09 21:00:12 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4887807Z   ?? ?⊥?雿 Report 銝? NotebookLM: Report artifact 1f7e3938-975a-4ea2-ab30-4cbeb5488b71 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4889367Z ?? ?潛???Ｗ?? NotebookLM Understand Anything (??2025-12-09 20:58:41 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4891000Z   ?? ?⊥?雿 Report 銝? NotebookLM Understand Anything: Report artifact 2884eecb-0f6e-48d3-89e2-c2d31b6cdb81 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4892662Z ?? ?潛???Ｗ?? NotebookLM Verified AI Research and Audio (??2025-12-09 20:42:55 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4894379Z   ?? ?⊥?雿 Report 銝? NotebookLM Verified AI Research and Audio: Report artifact 3a1524ed-909d-4551-bb11-6d4b85dd1cec is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4896380Z ?? ?潛???Ｗ?? NotebookLM: A Comprehensive Overview of Your AI Research Partner (??2025-11-21 18:17:03 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4898300Z   ? 撌脖?頛 tmp_artifacts/Introduction to NotebookLM_NotebookLM A Comprehensive Overview of Your AI Research Partner.md嚗?????Google Drive...
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4901121Z   ??銝??Google Drive 憭望?: <HttpError 404 when requesting None returned "File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.". Details: "[***'message': 'File not found: 1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP.', 'domain': 'global', 'reason': 'notFound', 'location': 'fileId', 'locationType': 'parameter'***">
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4903503Z ?? ?潛???Ｗ?? NotebookLM: Understand Anything (??2025-10-24 19:50:45 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4905200Z   ?? ?⊥?雿 Report 銝? NotebookLM: Understand Anything: Report artifact b6ab09cc-480e-4bf9-b232-e46c30111e04 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4907107Z ?? ?潛???Ｗ?? Understand Anything with NotebookLM (??2025-08-22 23:39:59 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4908790Z   ?? ?⊥?雿 Report 銝? Understand Anything with NotebookLM: Report artifact 5ed4de4c-e369-460b-a45c-01072f79c085 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4910493Z ?? ?潛???Ｗ?? NotebookLM: Seu Assistente de Pesquisa Particular (??2025-08-25 23:41:59 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4912278Z   ?? ?⊥?雿 Report 銝? NotebookLM: Seu Assistente de Pesquisa Particular: Report artifact df91856a-e242-4931-96ea-b4e151420d8f is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4914175Z ?? ?潛???Ｗ?? NotebookLM: ????AI?芥?潦??Ｕ?嫘?喋? (??2025-08-25 21:28:41 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4916005Z   ?? ?⊥?雿 Report 銝? NotebookLM: ????AI?芥?潦??Ｕ?嫘?喋?: Report artifact 30554077-8340-4caa-89c8-52c0862a03bb is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4917668Z ?? ?潛???Ｗ?? NotebookLM: 鄐云鄐冗 鄐菽?鄐能?鄍中鄐賴?鄐?鄐啤凶鄐詮什鄍? 鄐元鄐賴元鄍?鄍?鄐?(??2025-08-25 21:29:50 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4919364Z   ?? ?⊥?雿 Report 銝? NotebookLM: 鄐云鄐冗 鄐菽?鄐能?鄍中鄐賴?鄐?鄐啤凶鄐詮什鄍? 鄐元鄐賴元鄍?鄍?鄐? Report artifact f20ef4e3-b49a-41a8-ae8c-86f3cd6afd65 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4921000Z ?? ?潛???Ｗ?? NotebookLM: Asistente Personal (??2025-08-25 19:56:38 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4922644Z   ?? ?⊥?雿 Report 銝? NotebookLM: Asistente Personal: Report artifact 6ecd582d-d44b-4ba0-90f0-92a8e873623d is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4924200Z ?? ?潛???Ｗ?? NotebookLM Quiz (??2025-08-22 23:41:21 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4925823Z   ?? ?⊥?雿 Report 銝? NotebookLM Quiz: Report artifact 12b1fa18-4303-46bb-94e2-65b9745027b7 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4927367Z ?? ?潛???Ｗ?? NotebookLM Flashcards (??2025-08-22 23:41:25 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4928973Z   ?? ?⊥?雿 Report 銝? NotebookLM Flashcards: Report artifact c9f8e35f-e641-45fa-9678-21368d8036bb is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4930532Z ?? ?潛???Ｗ?? Introduction to NotebookLM (??2024-09-10 22:59:09 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4932142Z   ?? ?⊥?雿 Report 銝? Introduction to NotebookLM: Report artifact f0694362-dcbd-43d7-8e44-c3962a5384ad is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4933967Z ?? ?潛???Ｗ?? NotebookLM: Features and Functionality Guide (??2025-08-22 23:41:35 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4935841Z   ?? ?⊥?雿 Report 銝? NotebookLM: Features and Functionality Guide: Report artifact 4ea69de9-c18f-49e6-95e1-3ee7600205b8 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4937339Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:16:13.4938540Z --- 瑼Ｘ Notebook: 2H25 Gartner CIO ?勗?閬? ---
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.4939867Z ?? ?潛???Ｗ?? CIO?鈭之???圾瘙箸獢?(??2025-10-02 05:45:33 撱箇?)
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.6839514Z   ?? ?⊥?雿 Report 銝? CIO?鈭之???圾瘙箸獢? Report artifact bebb2bc7-c94a-4c31-9fba-d5b87663aad3 is not ready
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.6841821Z ??摰?嚗甇豢? 0 ???柴?sync	Archive Studio Artifacts	2026-02-23T15:16:13.6843527Z --- 瑼Ｘ Notebook: 撌乩?鞈? ---
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.6846466Z   瘝??Ｗ?押?sync	Archive Studio Artifacts	2026-02-23T15:16:13.6847385Z 
+sync	Archive Studio Artifacts	2026-02-23T15:16:13.6848135Z ?? 甇豢??瑁?摰?
+sync	Commit state changes	嚜?026-02-23T15:16:13.7571488Z ##[group***Run stefanzweifel/git-auto-commit-action@v5
+sync	Commit state changes	2026-02-23T15:16:13.7572684Z with:
+sync	Commit state changes	2026-02-23T15:16:13.7573885Z   commit_message: chore: update processed videos state
+sync	Commit state changes	2026-02-23T15:16:13.7575151Z   file_pattern: processed_videos.json
+sync	Commit state changes	2026-02-23T15:16:13.7576429Z   repository: .
+sync	Commit state changes	2026-02-23T15:16:13.7577595Z   commit_user_name: github-actions[bot***
+sync	Commit state changes	2026-02-23T15:16:13.7578912Z   commit_user_email: 41898282+github-actions[bot***@users.noreply.github.com
+sync	Commit state changes	2026-02-23T15:16:13.7580326Z   commit_author: zing1971 <10044662+zing1971@users.noreply.github.com>
+sync	Commit state changes	2026-02-23T15:16:13.7581826Z   skip_dirty_check: false
+sync	Commit state changes	2026-02-23T15:16:13.7583099Z   skip_fetch: false
+sync	Commit state changes	2026-02-23T15:16:13.7584347Z   skip_checkout: false
+sync	Commit state changes	2026-02-23T15:16:13.7585444Z   disable_globbing: false
+sync	Commit state changes	2026-02-23T15:16:13.7586660Z   create_branch: false
+sync	Commit state changes	2026-02-23T15:16:13.7587747Z   create_git_tag_only: false
+sync	Commit state changes	2026-02-23T15:16:13.7588847Z   internal_git_binary: git
+sync	Commit state changes	2026-02-23T15:16:13.7589889Z env:
+sync	Commit state changes	2026-02-23T15:16:13.7591041Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Commit state changes	2026-02-23T15:16:13.7592420Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.12/x64/lib/pkgconfig
+sync	Commit state changes	2026-02-23T15:16:13.7593781Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Commit state changes	2026-02-23T15:16:13.7595088Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Commit state changes	2026-02-23T15:16:13.7596517Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.12/x64
+sync	Commit state changes	2026-02-23T15:16:13.7597871Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.12/x64/lib
+sync	Commit state changes	2026-02-23T15:16:13.7599072Z ##[endgroup***
+sync	Commit state changes	2026-02-23T15:16:13.7859361Z Started: bash /home/runner/work/_actions/stefanzweifel/git-auto-commit-action/v5/entrypoint.sh
+sync	Commit state changes	2026-02-23T15:16:13.7899454Z INPUT_REPOSITORY value: .
+sync	Commit state changes	2026-02-23T15:16:13.7900736Z INPUT_STATUS_OPTIONS: 
+sync	Commit state changes	2026-02-23T15:16:13.7902553Z INPUT_FILE_PATTERN: processed_videos.json
+sync	Commit state changes	2026-02-23T15:16:13.7957490Z INPUT_BRANCH value: 
+sync	Commit state changes	2026-02-23T15:16:14.0818656Z M	processed_videos.json
+sync	Commit state changes	2026-02-23T15:16:14.0820909Z Your branch is up to date with 'origin/master'.
+sync	Commit state changes	2026-02-23T15:16:14.0823045Z INPUT_ADD_OPTIONS: 
+sync	Commit state changes	2026-02-23T15:16:14.0826685Z INPUT_FILE_PATTERN: processed_videos.json
+sync	Commit state changes	2026-02-23T15:16:14.0865224Z INPUT_COMMIT_OPTIONS: 
+sync	Commit state changes	2026-02-23T15:16:14.0868769Z INPUT_COMMIT_USER_NAME: github-actions[bot***
+sync	Commit state changes	2026-02-23T15:16:14.0871222Z INPUT_COMMIT_USER_EMAIL: 41898282+github-actions[bot***@users.noreply.github.com
+sync	Commit state changes	2026-02-23T15:16:14.0873710Z INPUT_COMMIT_MESSAGE: chore: update processed videos state
+sync	Commit state changes	2026-02-23T15:16:14.0876320Z INPUT_COMMIT_AUTHOR: zing1971 <10044662+zing1971@users.noreply.github.com>
+sync	Commit state changes	2026-02-23T15:16:14.0913016Z [master 45fa35c*** chore: update processed videos state
+sync	Commit state changes	2026-02-23T15:16:14.0915381Z  Author: zing1971 <10044662+zing1971@users.noreply.github.com>
+sync	Commit state changes	2026-02-23T15:16:14.0917845Z  1 file changed, 4 insertions(+), 2 deletions(-)
+sync	Commit state changes	2026-02-23T15:16:14.0933889Z INPUT_TAGGING_MESSAGE: 
+sync	Commit state changes	2026-02-23T15:16:14.0936191Z No tagging message supplied. No tag will be added.
+sync	Commit state changes	2026-02-23T15:16:14.0938377Z INPUT_PUSH_OPTIONS: 
+sync	Commit state changes	2026-02-23T15:16:14.7190138Z To https://github.com/zing1971/youtube-to-notebooklm-ppt
+sync	Commit state changes	2026-02-23T15:16:14.7191585Z    06a346d..45fa35c  master -> master
+sync	Post Set up Python	嚜?026-02-23T15:16:14.7402563Z Post job cleanup.
+sync	Post Checkout repository	嚜?026-02-23T15:16:14.9202835Z Post job cleanup.
+sync	Post Checkout repository	2026-02-23T15:16:15.0165336Z [command***/usr/bin/git version
+sync	Post Checkout repository	2026-02-23T15:16:15.0201194Z git version 2.52.0
+sync	Post Checkout repository	2026-02-23T15:16:15.0244681Z Temporarily overriding HOME='/home/runner/work/_temp/df960596-e443-49ac-b59c-3ddaf8f5d0e0' before making global git config changes
+sync	Post Checkout repository	2026-02-23T15:16:15.0247492Z Adding repository directory to the temporary git global config as a safe directory
+sync	Post Checkout repository	2026-02-23T15:16:15.0250321Z [command***/usr/bin/git config --global --add safe.directory /home/runner/work/youtube-to-notebooklm-ppt/youtube-to-notebooklm-ppt
+sync	Post Checkout repository	2026-02-23T15:16:15.0288934Z [command***/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+sync	Post Checkout repository	2026-02-23T15:16:15.0324014Z [command***/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+sync	Post Checkout repository	2026-02-23T15:16:15.0550981Z [command***/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+sync	Post Checkout repository	2026-02-23T15:16:15.0574483Z http.https://github.com/.extraheader
+sync	Post Checkout repository	2026-02-23T15:16:15.0587157Z [command***/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+sync	Post Checkout repository	2026-02-23T15:16:15.0617284Z [command***/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+sync	Post Checkout repository	2026-02-23T15:16:15.0837013Z [command***/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+sync	Post Checkout repository	2026-02-23T15:16:15.0866649Z [command***/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+sync	Complete job	嚜?026-02-23T15:16:15.1223116Z Cleaning up orphan processes
