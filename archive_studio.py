@@ -5,18 +5,40 @@ import yaml
 from pathlib import Path
 from datetime import datetime, timedelta, timezone
 
-from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
+import asyncio
+import json
+import os
+import yaml
+import sys
+import requests
+from pathlib import Path
+from datetime import datetime, timedelta, timezone
+
+from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 from notebooklm import NotebookLMClient
 from dotenv import load_dotenv
+
 load_dotenv()
 
 CONFIG_FILE = "config.yaml"
 # 使用 Google Drive API v3
 SCOPES = ['https://www.googleapis.com/auth/drive']
+
+def send_line_notify(message: str):
+    """發送 Line Notify 通知"""
+    token = os.environ.get("LINE_NOTIFY_TOKEN")
+    if not token:
+        return
+        
+    url = "https://notify-api.line.me/api/notify"
+    headers = {"Authorization": f"Bearer {token}"}
+    payload = {"message": f"\n[Archive Studio]\n{message}"}
+    try:
+        requests.post(url, headers=headers, data=payload)
+    except Exception as e:
+        print(f"發送 Line Notify 失敗: {e}")
 
 def load_config():
     if not os.path.exists(CONFIG_FILE):
@@ -32,26 +54,15 @@ def extract_notebook_id(notebook_url):
     return notebook_url.rstrip("/").split("/")[-1]
 
 def get_drive_service():
-    """初始化 Google Drive API"""
-    creds = None
-    # the file token.json stores the user's access and refresh tokens
-    if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+    """初始化 Google Drive API (使用 Service Account)"""
+    creds_json = os.environ.get("GCP_CREDENTIALS")
+    if not creds_json:
+        raise ValueError("環境變數 GCP_CREDENTIALS 未設定或為空")
         
-    # If there are no (valid) credentials available, let the user log in.
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            if not os.path.exists('credentials.json'):
-                raise FileNotFoundError("找不到 credentials.json！請先從 Google Cloud Console 下載 OAuth 用戶端 ID 憑證並命名為 credentials.json")
-            flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
-            creds = flow.run_local_server(port=0)
-            
-        # Save the credentials for the next run
-        with open('token.json', 'w') as token:
-            token.write(creds.to_json())
-
+    creds_dict = json.loads(creds_json)
+    creds = service_account.Credentials.from_service_account_info(
+        creds_dict, scopes=SCOPES
+    )
     return build('drive', 'v3', credentials=creds)
 
 def upload_to_drive(service, file_path, folder_id, mime_type=None):
@@ -155,8 +166,6 @@ async def archive_notebook_artifacts(client, notebook, drive_service, folder_id)
             
     print(f"✅ 完成，共歸檔 {archived_count} 個項目。")
 
-import sys
-
 async def main():
     print("開始執行 NotebookLM 工作室歸檔作業...\n")
     
@@ -164,7 +173,9 @@ async def main():
     folder_id = config.get("gdrive_folder_id")
     
     if not folder_id:
-        print("❌ 錯誤：尚未在 config.yaml 中設定 gdrive_folder_id")
+        msg = "❌ 錯誤：尚未在 config.yaml 中設定 gdrive_folder_id"
+        print(msg)
+        send_line_notify(msg)
         sys.exit(1)
         
     try:
@@ -172,16 +183,21 @@ async def main():
         # 驗證資料夾是否存在且具備存取權
         drive_service.files().get(fileId=folder_id, fields='id, name').execute()
     except Exception as e:
-        print(f"❌ 初始化 Google Drive API 或存取目標資料夾失敗: {e}")
+        msg = f"❌ 初始化 Google Drive API 或存取目標資料夾失敗: {e}"
+        print(msg)
+        send_line_notify(msg)
         sys.exit(1)
         
-    client = await NotebookLMClient.from_storage()
+    # NotebookLM 驗證改用環境變數
+    cookie = os.environ.get("NOTEBOOKLM_COOKIE")
+    if not cookie:
+        msg = "❌ 未設定環境變數 NOTEBOOKLM_COOKIE"
+        print(msg)
+        send_line_notify(msg)
+        sys.exit(1)
+        
     try:
-        async with client:
-            channels = config.get("channels", [])
-            # 取得所有在 config.yaml 中指定的 notebook ID
-            target_notebook_ids = []
-            for channel in channels:
+        client = NotebookLMClient(cookie=cookie)
                 nb_url = channel.get("notebook_url")
                 nb_id = extract_notebook_id(nb_url)
                 if nb_id:
@@ -201,7 +217,9 @@ async def main():
                     # 選項：可以印出跳過的訊息，但若太多則略過
                     pass
     except Exception as e:
-        print(f"❌ 執行歸檔作業時發生錯誤: {e}")
+        msg = f"❌ 執行歸檔作業時發生錯誤: {e}"
+        print(msg)
+        send_line_notify(msg)
         sys.exit(1)
             
     print("\n🏁 歸檔執行完成")
