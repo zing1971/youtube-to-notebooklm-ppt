@@ -3,43 +3,41 @@ name: YouTube to NotebookLM Sync
 on:
   schedule:
     # 每天 UTC 00:00 和 12:00 執行 (台灣時間早上 8 點與晚上 8 點)
-    - cron: '0 0,12 * * *'
+    - cron: "0 0,12 * * *"
   workflow_dispatch: # 允許手動觸發
 
 jobs:
   sync_and_archive:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.12'
-        cache: 'pip'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install google-cloud-firestore
-        pip install requests
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Run YouTube to NotebookLM Sync (main.py)
-      env:
-        GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
-        NOTEBOOKLM_COOKIE: ${{ secrets.NOTEBOOKLM_COOKIE }}
-        LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
-      run: |
-        python main.py
+      - name: Run YouTube to NotebookLM Sync (main.py)
+        env:
+          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          NOTEBOOKLM_COOKIE: ${{ secrets.NOTEBOOKLM_COOKIE }}
+          LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
+        run: |
+          python main.py
 
-    - name: Run Archive Studio (archive_studio.py)
-      if: success() || failure() # 即使 main.py 失敗也嘗試執行歸檔
-      env:
-        GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
-        NOTEBOOKLM_COOKIE: ${{ secrets.NOTEBOOKLM_COOKIE }}
-        LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
-      run: |
-        python archive_studio.py
+      - name: Run Archive Studio (archive_studio.py)
+        if: success() || failure() # 即使 main.py 失敗也嘗試執行歸檔
+        env:
+          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          NOTEBOOKLM_COOKIE: ${{ secrets.NOTEBOOKLM_COOKIE }}
+          LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
+        run: |
+          python archive_studio.py
