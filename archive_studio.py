@@ -198,6 +198,10 @@ async def main():
         
     try:
         client = NotebookLMClient(cookie=cookie)
+        async with client:
+            target_notebook_ids = []
+            channels = config.get("channels", [])
+            for channel in channels:
                 nb_url = channel.get("notebook_url")
                 nb_id = extract_notebook_id(nb_url)
                 if nb_id:
