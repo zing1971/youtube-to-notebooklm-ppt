@@ -197,7 +197,11 @@ async def main():
         sys.exit(1)
         
     try:
-        client = NotebookLMClient(cookie=cookie)
+        from notebooklm.auth import AuthTokens, fetch_tokens
+        cookies_dict = dict(item.split("=", 1) for item in cookie.split("; ") if "=" in item)
+        csrf, sess = await fetch_tokens(cookies_dict)
+        auth = AuthTokens(cookies=cookies_dict, csrf_token=csrf, session_id=sess)
+        client = NotebookLMClient(auth=auth)
         async with client:
             target_notebook_ids = []
             channels = config.get("channels", [])

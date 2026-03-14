@@ -180,7 +180,11 @@ async def main():
         return
         
     try:
-        client = NotebookLMClient(cookie=cookie)
+        from notebooklm.auth import AuthTokens, fetch_tokens
+        cookies_dict = dict(item.split("=", 1) for item in cookie.split("; ") if "=" in item)
+        csrf, sess = await fetch_tokens(cookies_dict)
+        auth = AuthTokens(cookies=cookies_dict, csrf_token=csrf, session_id=sess)
+        client = NotebookLMClient(auth=auth)
     except Exception as e:
         msg = f"❌ NotebookLMCookie 失效或初始化失敗: {e}\n請執行 sync_secret_to_cloud.py 更新 GitHub Secrets。"
         print(msg)
