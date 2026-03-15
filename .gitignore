@@ -1,13 +1,44 @@
+# ── Python ──────────────────────────────────────────
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 .venv/
-auth_state.json
-local_browser_profile/
-gh_browser_profile/
-error.png
-notebooklm_profile/
 
+# ── 機密 / 認證 ──────────────────────────────────────
+.env
 credentials.json
 token.json
-.env
+auth_state.json
+cookie_output.txt
+jobs.json
+
+# ── 暫存 / 產出物 ────────────────────────────────────
+tmp_artifacts/
+*.png
+*.txt
+*.log
+run_logs*
+error_log*
+
+# ── 瀏覽器 Profile ───────────────────────────────────
+local_browser_profile/
+notebooklm_profile/
+gh_browser_profile/
+
+# ── IDE / 編輯器 ─────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# ── AI 工具自動產生目錄 ──────────────────────────────
+.adal/
+.agent/
+.agents/
+.augment/
+.claude/
+.codebuddy/
 .firecrawl/
+skills-lock.json

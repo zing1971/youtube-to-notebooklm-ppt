@@ -98,16 +98,17 @@ def upload_to_drive(service, file_path, folder_id, mime_type=None):
         ).execute()
         return created_file.get('id')
 
-async def archive_notebook_artifacts(client, notebook, drive_service, folder_id):
+async def archive_notebook_artifacts(client, notebook, drive_service, folder_id,
+                                     artifact_max_age_days: int = 3):
     """將單一 Notebook 的舊產出物上傳到 Drive 並從 Notebook 刪除"""
     print(f"--- 檢查 Notebook: {notebook.title} ---")
     artifacts = await client.artifacts.list(notebook.id)
     if not artifacts:
         print("  沒有產出物。")
         return
-        
-    # 歸檔超過 3 天 (72 小時) 的產出物
-    cutoff_time = datetime.now(timezone.utc) - timedelta(days=3)
+
+    # 歸檔超過 N 天的產出物（由 config.yaml archive.artifact_max_age_days 控制）
+    cutoff_time = datetime.now(timezone.utc) - timedelta(days=artifact_max_age_days)
     archived_count = 0
     
     for art in artifacts:
@@ -171,6 +172,8 @@ async def main():
     
     config = load_config()
     folder_id = config.get("gdrive_folder_id")
+    archive_cfg = config.get("archive", {})
+    artifact_max_age_days = archive_cfg.get("artifact_max_age_days", 3)
     
     if not folder_id:
         msg = "❌ 錯誤：尚未在 config.yaml 中設定 gdrive_folder_id"
@@ -220,7 +223,8 @@ async def main():
             notebooks = await client.notebooks.list()
             for nb in notebooks:
                 if nb.id in target_notebook_ids:
-                    await archive_notebook_artifacts(client, nb, drive_service, folder_id)
+                    await archive_notebook_artifacts(client, nb, drive_service, folder_id,
+                                                     artifact_max_age_days=artifact_max_age_days)
                 else:
                     # 選項：可以印出跳過的訊息，但若太多則略過
                     pass

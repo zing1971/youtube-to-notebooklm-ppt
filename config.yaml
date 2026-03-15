@@ -1,6 +1,22 @@
-# 你的 Google Drive 備份資料夾 ID（從資料夾網址取得）
+# ── Google Drive 備份設定 ─────────────────────────────────────────────
+# 從資料夾網址取得資料夾 ID（網址末段的亂碼）
 gdrive_folder_id: "1qo4HV3aKg-UMCDQuQKG4xGsgIABURMjP"
 
+# ── 同步行為設定 ──────────────────────────────────────────────────────
+sync:
+  # 只處理幾天內發布的影片（超過此天數的影片直接略過）
+  video_max_age_days: 3
+
+  # NotebookLM 生成簡報時等待確認的上限秒數
+  # 超時後視為「已成功送出請求」，由後續排程或歸檔腳本跟進
+  briefing_wait_timeout_seconds: 30
+
+# ── 歸檔行為設定 ──────────────────────────────────────────────────────
+archive:
+  # 超過幾天的產出物（Briefing/Audio 等）才會被歸檔至 Google Drive
+  artifact_max_age_days: 3
+
+# ── YouTube 頻道清單 ──────────────────────────────────────────────────
 channels:
   - name: "下一章閱讀"
     url: "https://www.youtube.com/@%E4%B8%8B%E4%B8%80%E7%AB%A0%E9%96%B1%E8%AE%80"

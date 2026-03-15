@@ -18,8 +18,6 @@ from google.cloud import firestore
 from google.oauth2 import service_account
 
 CONFIG_FILE = "config.yaml"
-# 移除本地 JSON 常數
-# PROCESSED_FILE = "processed_videos.json"
 
 def send_line_notify(message: str):
     """發送 Line Notify 通知"""
@@ -38,6 +36,25 @@ def send_line_notify(message: str):
 def load_config():
     with open(CONFIG_FILE, "r", encoding="utf-8") as f:
         return yaml.safe_load(f)
+
+
+def validate_config(config: dict) -> bool:
+    """驗證 config.yaml 的必要欄位，啟動時快速失敗"""
+    ok = True
+    channels = config.get("channels", [])
+    if not channels:
+        print("❌ config.yaml 缺少 channels 清單，請至少設定一個頻道。")
+        ok = False
+    else:
+        for i, ch in enumerate(channels):
+            for key in ("name", "url", "notebook_url"):
+                if not ch.get(key):
+                    print(f"❌ channels[{i}] 缺少欄位：{key}")
+                    ok = False
+    if not config.get("gdrive_folder_id"):
+        print("❌ config.yaml 缺少 gdrive_folder_id，archive_studio.py 將無法歸檔。")
+        # 僅警告，不中斷同步主流程
+    return ok
 
 def get_firestore_client():
     """初始化 Firestore 客戶端"""
@@ -114,7 +131,7 @@ async def add_video_source(client, notebook_id, video_url):
     return source
 
 
-async def generate_briefing(client, notebook_id, title):
+async def generate_briefing(client, notebook_id, title, timeout_seconds: int = 30):
     """使用 NotebookLM API 生成簡報"""
     print(f"  🎬 生成簡報: {title}")
 
@@ -125,11 +142,11 @@ async def generate_briefing(client, notebook_id, title):
             language="zh-TW",
         )
         print(f"  ⏳ 觸發簡報生成 (task_id: {status.task_id})...")
-        
+
         # 雲端優化：為避免 GitHub Actions 分鐘數耗盡，將等待時間縮短。
         # 因為 NotebookLM 生成 Audio/Briefing 通常需要數分鐘。
         # 如果超時，我們視為「已成功送出請求」，交由下一次排程或後續的歸檔腳本處理。
-        TIMEOUT_SECONDS = 30 
+        TIMEOUT_SECONDS = timeout_seconds
         print(f"  ⏳ 等待最多 {TIMEOUT_SECONDS} 秒以確認初步狀態 (為節省雲端成本不在此死等)...")
 
         result = await client.artifacts.wait_for_completion(
@@ -161,8 +178,15 @@ async def main():
     print("開始執行 YouTube to NotebookLM Sync...\n")
 
     config = load_config()
+    if not validate_config(config):
+        print("❌ config.yaml 驗證失敗，終止執行。")
+        return
+
     channels = config.get("channels", [])
-    
+    sync_cfg = config.get("sync", {})
+    video_max_age_days = sync_cfg.get("video_max_age_days", 3)
+    briefing_timeout = sync_cfg.get("briefing_wait_timeout_seconds", 30)
+
     # 建立 Firestore 客戶端
     try:
         db = get_firestore_client()
@@ -204,8 +228,8 @@ async def main():
 
             processed_ids = get_processed_videos_from_db(db, channel["name"])
 
-            # 篩選：只處理最近 3 天內發布的影片
-            cutoff = datetime.now(timezone.utc) - timedelta(days=3)
+            # 篩選：只處理最近 N 天內發布的影片（由 config.yaml sync.video_max_age_days 控制）
+            cutoff = datetime.now(timezone.utc) - timedelta(days=video_max_age_days)
 
             for item in feed.entries:
                 video_url = item.link
@@ -216,7 +240,7 @@ async def main():
                 try:
                     published_dt = datetime.fromisoformat(item.published)
                     if published_dt < cutoff:
-                        print(f"⏭️ 跳過（發布超過 3 天）: {title} ({item.published[:10]})")
+                        print(f"⏭️ 跳過（發布超過 {video_max_age_days} 天）: {title} ({item.published[:10]})")
                         continue
                 except Exception:
                     pass
@@ -235,7 +259,8 @@ async def main():
                         continue
 
                     # 3. 生成簡報
-                    ppt_ok = await generate_briefing(client, notebook_id, title)
+                    ppt_ok = await generate_briefing(client, notebook_id, title,
+                                                     timeout_seconds=briefing_timeout)
 
                     if ppt_ok:
                         add_processed_video_to_db(db, channel["name"], video_id)

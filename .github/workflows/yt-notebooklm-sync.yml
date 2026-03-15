@@ -25,7 +25,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run YouTube to NotebookLM Sync (main.py)
+      # ── 認證前置驗證：確認 Cookie 與 GCP 憑證在執行主流程前皆有效 ──
+      - name: Validate credentials (pre-flight check)
+        env:
+          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          NOTEBOOKLM_COOKIE: ${{ secrets.NOTEBOOKLM_COOKIE }}
+          LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
+        run: |
+          python scripts/validate_auth.py
+
+      # ── 主流程：偵測新影片並匯入 NotebookLM ─────────────────────────
+      - name: Run YouTube to NotebookLM Sync
         env:
           GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
           NOTEBOOKLM_COOKIE: ${{ secrets.NOTEBOOKLM_COOKIE }}
@@ -33,8 +43,9 @@ jobs:
         run: |
           python main.py
 
-      - name: Run Archive Studio (archive_studio.py)
-        if: success() || failure() # 即使 main.py 失敗也嘗試執行歸檔
+      # ── 歸檔：即使 main.py 失敗也嘗試清理過期產出物 ───────────────
+      - name: Archive old Studio artifacts to Google Drive
+        if: success() || failure()
         env:
           GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
           NOTEBOOKLM_COOKIE: ${{ secrets.NOTEBOOKLM_COOKIE }}
