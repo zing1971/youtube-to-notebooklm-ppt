@@ -1,4 +1,4 @@
-notebooklm-py
+notebooklm-py==0.3.2
 pyyaml
 feedparser
 beautifulsoup4

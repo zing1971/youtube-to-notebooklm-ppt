@@ -196,21 +196,33 @@ async def main():
         return
 
     # 建立 NotebookLM API 客戶端
-    cookie = os.environ.get("NOTEBOOKLM_COOKIE")
-    if not cookie:
-        msg = "❌ 未設定環境變數 NOTEBOOKLM_COOKIE，無法執行同步。"
-        print(msg)
-        send_line_notify(msg)
-        return
-        
+    # 支援兩種認證格式（優先新版，向下相容舊版）：
+    #   新版 NOTEBOOKLM_AUTH_JSON — Playwright storage_state.json 完整 JSON（推薦）
+    #   舊版 NOTEBOOKLM_COOKIE   — 原始 cookie 字串（key1=v1; key2=v2）
     try:
         from notebooklm.auth import AuthTokens, fetch_tokens
-        cookies_dict = dict(item.split("=", 1) for item in cookie.split("; ") if "=" in item)
-        csrf, sess = await fetch_tokens(cookies_dict)
-        auth = AuthTokens(cookies=cookies_dict, csrf_token=csrf, session_id=sess)
-        client = NotebookLMClient(auth=auth)
+
+        if os.environ.get("NOTEBOOKLM_AUTH_JSON"):
+            # 新版：from_storage() 會自動讀取 NOTEBOOKLM_AUTH_JSON 環境變數
+            auth = await AuthTokens.from_storage()
+            print("✅ 使用 NOTEBOOKLM_AUTH_JSON 認證。")
+        elif os.environ.get("NOTEBOOKLM_COOKIE"):
+            # 舊版相容：手動解析原始 cookie 字串
+            cookie = os.environ["NOTEBOOKLM_COOKIE"]
+            cookies_dict = dict(
+                item.split("=", 1) for item in cookie.split("; ") if "=" in item
+            )
+            csrf, sess = await fetch_tokens(cookies_dict)
+            auth = AuthTokens(cookies=cookies_dict, csrf_token=csrf, session_id=sess)
+            print("✅ 使用 NOTEBOOKLM_COOKIE 認證（建議升級為 NOTEBOOKLM_AUTH_JSON）。")
+        else:
+            raise RuntimeError(
+                "未設定 NOTEBOOKLM_AUTH_JSON 或 NOTEBOOKLM_COOKIE 環境變數，無法執行同步。"
+            )
+
+        client = NotebookLMClient(auth)
     except Exception as e:
-        msg = f"❌ NotebookLMCookie 失效或初始化失敗: {e}\n請執行 sync_secret_to_cloud.py 更新 GitHub Secrets。"
+        msg = f"❌ NotebookLM 認證失敗: {e}\n請執行 scripts/sync_secret_to_cloud.py 更新 GitHub Secrets。"
         print(msg)
         send_line_notify(msg)
         return

@@ -191,20 +191,28 @@ async def main():
         send_line_notify(msg)
         sys.exit(1)
         
-    # NotebookLM 驗證改用環境變數
-    cookie = os.environ.get("NOTEBOOKLM_COOKIE")
-    if not cookie:
-        msg = "❌ 未設定環境變數 NOTEBOOKLM_COOKIE"
-        print(msg)
-        send_line_notify(msg)
-        sys.exit(1)
-        
+    # NotebookLM 認證（支援兩種格式）
     try:
         from notebooklm.auth import AuthTokens, fetch_tokens
-        cookies_dict = dict(item.split("=", 1) for item in cookie.split("; ") if "=" in item)
-        csrf, sess = await fetch_tokens(cookies_dict)
-        auth = AuthTokens(cookies=cookies_dict, csrf_token=csrf, session_id=sess)
-        client = NotebookLMClient(auth=auth)
+
+        if os.environ.get("NOTEBOOKLM_AUTH_JSON"):
+            auth = await AuthTokens.from_storage()
+            print("✅ 使用 NOTEBOOKLM_AUTH_JSON 認證。")
+        elif os.environ.get("NOTEBOOKLM_COOKIE"):
+            cookie = os.environ["NOTEBOOKLM_COOKIE"]
+            cookies_dict = dict(
+                item.split("=", 1) for item in cookie.split("; ") if "=" in item
+            )
+            csrf, sess = await fetch_tokens(cookies_dict)
+            auth = AuthTokens(cookies=cookies_dict, csrf_token=csrf, session_id=sess)
+            print("✅ 使用 NOTEBOOKLM_COOKIE 認證（建議升級為 NOTEBOOKLM_AUTH_JSON）。")
+        else:
+            msg = "❌ 未設定 NOTEBOOKLM_AUTH_JSON 或 NOTEBOOKLM_COOKIE 環境變數"
+            print(msg)
+            send_line_notify(msg)
+            sys.exit(1)
+
+        client = NotebookLMClient(auth)
         async with client:
             target_notebook_ids = []
             channels = config.get("channels", [])

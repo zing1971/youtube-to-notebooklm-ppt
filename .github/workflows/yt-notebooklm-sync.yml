@@ -25,10 +25,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # ── 認證前置驗證：確認 Cookie 與 GCP 憑證在執行主流程前皆有效 ──
+      # ── 認證前置驗證：確認 Cookie/Auth JSON 與 GCP 憑證在執行主流程前皆有效 ──
+      # 優先使用 NOTEBOOKLM_AUTH_JSON（新版 Playwright storage_state）
+      # 若未設定則 fallback 至 NOTEBOOKLM_COOKIE（舊版 raw cookie 字串）
       - name: Validate credentials (pre-flight check)
         env:
           GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          NOTEBOOKLM_AUTH_JSON: ${{ secrets.NOTEBOOKLM_AUTH_JSON }}
           NOTEBOOKLM_COOKIE: ${{ secrets.NOTEBOOKLM_COOKIE }}
           LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
         run: |
@@ -38,6 +41,7 @@ jobs:
       - name: Run YouTube to NotebookLM Sync
         env:
           GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          NOTEBOOKLM_AUTH_JSON: ${{ secrets.NOTEBOOKLM_AUTH_JSON }}
           NOTEBOOKLM_COOKIE: ${{ secrets.NOTEBOOKLM_COOKIE }}
           LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
         run: |
@@ -48,6 +52,7 @@ jobs:
         if: success() || failure()
         env:
           GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          NOTEBOOKLM_AUTH_JSON: ${{ secrets.NOTEBOOKLM_AUTH_JSON }}
           NOTEBOOKLM_COOKIE: ${{ secrets.NOTEBOOKLM_COOKIE }}
           LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
         run: |
