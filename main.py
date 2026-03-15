@@ -19,19 +19,16 @@ from google.oauth2 import service_account
 
 CONFIG_FILE = "config.yaml"
 
-def send_line_notify(message: str):
-    """發送 Line Notify 通知"""
-    token = os.environ.get("LINE_NOTIFY_TOKEN")
-    if not token:
+def send_discord_notify(message: str):
+    """發送 Discord Webhook 通知（LINE Notify 已於 2025/03/31 停止服務）"""
+    webhook_url = os.environ.get("DISCORD_WEBHOOK_URL")
+    if not webhook_url:
         return
-        
-    url = "https://notify-api.line.me/api/notify"
-    headers = {"Authorization": f"Bearer {token}"}
-    payload = {"message": f"\n[NotebookLM Sync]\n{message}"}
+    payload = {"content": f"**[NotebookLM Sync]**\n{message}"}
     try:
-        requests.post(url, headers=headers, data=payload)
+        requests.post(webhook_url, json=payload, timeout=10)
     except Exception as e:
-        print(f"發送 Line Notify 失敗: {e}")
+        print(f"發送 Discord 通知失敗: {e}")
 
 def load_config():
     with open(CONFIG_FILE, "r", encoding="utf-8") as f:
@@ -157,20 +154,20 @@ async def generate_briefing(client, notebook_id, title, timeout_seconds: int = 3
 
         if result.is_complete:
             print(f"  ✅ 簡報已提早完成生成！")
-            send_line_notify(f"✅ 成功為新影片生成簡報：\n{title}")
+            send_discord_notify(f"✅ 成功為新影片生成簡報：\n{title}")
             return True
         else:
             print(f"  ⚠️ 簡報仍在生成中。")
-            send_line_notify(f"⏳ 新影片簡報生成中：\n{title}\n(已送出請求，將於背景處理)")
+            send_discord_notify(f"⏳ 新影片簡報生成中：\n{title}\n(已送出請求，將於背景處理)")
             return True # 標記為 True 寫入資料庫，避免下次重複戳 API
 
     except TimeoutError:
         print("  ⚠️ 簡報生成初步確認逾時，已轉入背景處理。")
-        send_line_notify(f"⏳ 新影片簡報已送出生成請求：\n{title}\n(將於背景處理)")
+        send_discord_notify(f"⏳ 新影片簡報已送出生成請求：\n{title}\n(將於背景處理)")
         return True  # 不阻擋流程，視為成功送出
     except Exception as e:
         print(f"  ❌ 簡報生成錯誤: {e}")
-        send_line_notify(f"❌ 簡報生成失敗：\n{title}\n錯誤: {e}")
+        send_discord_notify(f"❌ 簡報生成失敗：\n{title}\n錯誤: {e}")
         return False
 
 
@@ -224,7 +221,7 @@ async def main():
     except Exception as e:
         msg = f"❌ NotebookLM 認證失敗: {e}\n請執行 scripts/sync_secret_to_cloud.py 更新 GitHub Secrets。"
         print(msg)
-        send_line_notify(msg)
+        send_discord_notify(msg)
         return
         
     async with client:

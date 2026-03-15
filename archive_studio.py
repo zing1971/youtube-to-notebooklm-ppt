@@ -1,15 +1,8 @@
 import asyncio
 import json
 import os
-import yaml
-from pathlib import Path
-from datetime import datetime, timedelta, timezone
-
-import asyncio
-import json
-import os
-import yaml
 import sys
+import yaml
 import requests
 from pathlib import Path
 from datetime import datetime, timedelta, timezone
@@ -26,19 +19,16 @@ CONFIG_FILE = "config.yaml"
 # 使用 Google Drive API v3
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
-def send_line_notify(message: str):
-    """發送 Line Notify 通知"""
-    token = os.environ.get("LINE_NOTIFY_TOKEN")
-    if not token:
+def send_discord_notify(message: str):
+    """發送 Discord Webhook 通知（LINE Notify 已於 2025/03/31 停止服務）"""
+    webhook_url = os.environ.get("DISCORD_WEBHOOK_URL")
+    if not webhook_url:
         return
-        
-    url = "https://notify-api.line.me/api/notify"
-    headers = {"Authorization": f"Bearer {token}"}
-    payload = {"message": f"\n[Archive Studio]\n{message}"}
+    payload = {"content": f"**[Archive Studio]**\n{message}"}
     try:
-        requests.post(url, headers=headers, data=payload)
+        requests.post(webhook_url, json=payload, timeout=10)
     except Exception as e:
-        print(f"發送 Line Notify 失敗: {e}")
+        print(f"發送 Discord 通知失敗: {e}")
 
 def load_config():
     if not os.path.exists(CONFIG_FILE):
@@ -178,7 +168,7 @@ async def main():
     if not folder_id:
         msg = "❌ 錯誤：尚未在 config.yaml 中設定 gdrive_folder_id"
         print(msg)
-        send_line_notify(msg)
+        send_discord_notify(msg)
         sys.exit(1)
         
     try:
@@ -188,7 +178,7 @@ async def main():
     except Exception as e:
         msg = f"❌ 初始化 Google Drive API 或存取目標資料夾失敗: {e}"
         print(msg)
-        send_line_notify(msg)
+        send_discord_notify(msg)
         sys.exit(1)
         
     # NotebookLM 認證（支援兩種格式）
@@ -209,7 +199,7 @@ async def main():
         else:
             msg = "❌ 未設定 NOTEBOOKLM_AUTH_JSON 或 NOTEBOOKLM_COOKIE 環境變數"
             print(msg)
-            send_line_notify(msg)
+            send_discord_notify(msg)
             sys.exit(1)
 
         client = NotebookLMClient(auth)
@@ -239,7 +229,7 @@ async def main():
     except Exception as e:
         msg = f"❌ 執行歸檔作業時發生錯誤: {e}"
         print(msg)
-        send_line_notify(msg)
+        send_discord_notify(msg)
         sys.exit(1)
             
     print("\n🏁 歸檔執行完成")
